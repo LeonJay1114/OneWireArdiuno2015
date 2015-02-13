@@ -25,15 +25,15 @@
 
 const int RGB_LED_PINUMBERS[] = { 5, 6, 7 }; // Номера пинов-выходов для RGB-светодиода
 const int SERVO_PINUMBER = 3;  // Номер пина управления сервомоторчиком
-const int BUZZER_PINUMBER = 4; // номер пина управления пищалкой
+const int BUZZER_PINUMBER = 8; // номер пина управления пищалкой
 const int BUTTON_PINUMBER = 2; // номер входа, подключенный к кнопке
 
 const int NEW_KEY_CHECK_DELAY = 500; // задержка между проверками поднесённости карты в милисекундах
 const int OPEN_CLOSE_DELAY = 3000; // задержка между открытием и закрытием
 
 OneWire ds(touchPIN); // использующийся пин отправляется инициализатору класса OneWire
-byte* curKey;
-const byte tehUID[8] = {0x01, 0xff, 0x40, 0x11, 0x5A, 0x36, 0x00, 0xE1}; // tehUID карты, на которую реагируем положительно
+byte curKey[8];
+const byte tehUID[8] = { 0x01, 0xff, 0x40, 0x11, 0x5A, 0x36, 0x00, 0xE1 }; // tehUID карты, на которую реагируем положительно
 
 bool buttonState = 0; // переменная для хранения состояния кнопки
 
@@ -52,7 +52,7 @@ void setup() {
     SPI.begin();			// Инициализация SPI-шины. 
     myservo.attach(SERVO_PINUMBER);	// Инициализация управляющего сервоприводом объекта с указанием пина для работы
 	
-	curKey = new byte[8];
+	//curKey = new byte[8];
 
     Serial.println("Scan PICC to see UID and type..."); // разговариваем с портом, ага.
 
@@ -68,13 +68,6 @@ void setup() {
     pinMode(BUTTON_PINUMBER, INPUT); //активируем пин на вход, ждем кнопку
 }
 
-//void Waiting();
-//void Checking();
-//void Opening();
-//void Closing();
-//bool SearchKey(byte* key);
-//void ServoOpen();
-//void ServoClose();
 
 void loop() {
     switch (state){
@@ -111,9 +104,11 @@ if (!white){
     }
 	
 
-	if(SearchKey(curKey))
+	if(SearchKey())
         state = check;
-    // считываем значения с входа кнопки
+    
+	
+	// считываем значения с входа кнопки
     buttonState = digitalRead(BUTTON_PINUMBER);
     // проверяем нажата ли кнопка
     // если нажата, то buttonState будет HIGH:
@@ -132,7 +127,7 @@ void Checking(){
 
     rightCard = true; // Забываем о предыдущей проверке
     // Проверяем считанный UID:
-    for (byte i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {
         if (tehUID[i] != curKey[i])
             rightCard = false;
     }
@@ -141,13 +136,13 @@ void Checking(){
         state = open; // Открываемся, если та самая
     else{
         Serial.println("Unknown CARD.");
-        digitalWrite(5, HIGH);   // зажигаем светодиод
-        digitalWrite(6, LOW);   // тушим светодиод
-        digitalWrite(7, LOW);   // тушим светодиод
-        digitalWrite(4, HIGH);
+        digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем красный
+        digitalWrite(RGB_LED_PINUMBERS[1], LOW);   // тушим зелёный
+        digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
+        digitalWrite(BUZZER_PINUMBER, HIGH);
         //buzz(4, 7000, 2000); // buzz the buzzer on pin 4 at 2500Hz for 500 milliseconds
-        delay(200); // wait a bit between buzzes
-        digitalWrite(4, LOW);
+        delay(200); //  buzzing period
+        digitalWrite(BUZZER_PINUMBER, LOW);
 
         state = wait; // Ждём другую, если не
     }
@@ -158,8 +153,7 @@ void Opening(){
     digitalWrite(RGB_LED_PINUMBERS[0], LOW);
     digitalWrite(RGB_LED_PINUMBERS[1], HIGH); // Зеленеем
     digitalWrite(RGB_LED_PINUMBERS[2], LOW);
-    delay(500); // имитируем активную деятельность. Считывание происходит гораздо быстрее. Эта задержка создана для красоты презентации.
-    
+    //delay(500); 
     ServoOpen();
     state = close;
 }
@@ -185,20 +179,20 @@ void ServoClose(){
     }
 }
 
-bool SearchKey(byte* key){
+bool SearchKey(){
     ds.reset();
     delay(50);
     ds.write(0x33); // "READ" command
     
-    ds.read_bytes(key, 8);
+    ds.read_bytes(curKey, 8);
   
-    for(int i = 0; i < 8; i++) {
-      if (i != 7) Serial.print(":");
-    }
+//    for(int i = 0; i < 8; i++) {
+//      if (i != 7) Serial.print(":");
+//    }
 
     if (curKey[0] & curKey[1] & curKey[2] & curKey[3] & curKey[4] & curKey[5] & curKey[6] & curKey[7] == 0xFF){
       Serial.println("...nothing found!"); 
-      return 0;
+      return false;
     }
     return true;
 }
