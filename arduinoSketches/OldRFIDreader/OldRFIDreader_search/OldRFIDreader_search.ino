@@ -181,27 +181,20 @@ void ServoClose(){
 
 bool SearchKey(){
 	byte data[8];
-
-    ds.reset();
-    delay(50);
-    ds.write(0x33); // "READ" command
-    
-    ds.read_bytes(data, 8);
-  	
-//    for(int i = 0; i < 8; i++) {
-//      if (i != 7) Serial.print(":");
-//    }
 	
+	ds.search(curKey);
+
 	Serial.print("KEY ");
 	for(byte i = 0; i < 8; i++) {
-		  Serial.print(data[i], HEX);
+		  Serial.print(curKey[i], HEX);
 		    if (i != 7) Serial.print(":");
 	}Serial.println("");
-
-	ds.read_bytes(curKey, 8);
+	
+		//ds.read_bytes(curKey, 8);
     if (curKey[0] & curKey[1] & curKey[2] & curKey[3] & curKey[4] & curKey[5] & curKey[6] & curKey[7] == 0xFF){
       Serial.println("...nothing found!"); 
       return false;
+	  ds.reset_search();
     }
     return true;
 }

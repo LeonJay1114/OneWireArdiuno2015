@@ -37,7 +37,7 @@ void Waiting(){
 	byte i;
 	byte data[8];
 
-	delay(100); // 1 sec
+	delay(100); // 0,1 sec
 
 	ds.reset();
 	delay(50);
