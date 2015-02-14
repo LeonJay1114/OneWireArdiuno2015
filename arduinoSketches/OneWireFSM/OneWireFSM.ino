@@ -30,10 +30,6 @@ Servo myservo; // Экземпляр Servo для управления серв�
 void setup() {
     Serial.begin(9600);	// Начать общение с компом по последовательному порту
     myservo.attach(SERVO_PINUMBER);	// Инициализация управляющего сервоприводом объекта с указанием пина для работы
-	
-	//curKey = new byte[8];
-
-    Serial.println("Scan PICC to see UID and type..."); // разговариваем с портом, ага.
 
     white = false; // До начала работы светодиод не горит
     state = wait; // Работа начинается с состояния ожидания
@@ -164,16 +160,16 @@ bool SearchKey(){
     
     ds.read_bytes(curKey, 8);
 	
-	Serial.print("KEY ");
+	//Serial.print("KEY ");
 	for(byte i = 0; i < 8; i++) {
-		  Serial.print(curKey[i], HEX);
-		    if (i != 7) Serial.print(":");
-	}Serial.println("");
+		  Serial.print((char)curKey[i]);
+		    //if (i != 7) Serial.print(":");
+	}//Serial.println("");
 
     if (curKey[0] & curKey[1] & curKey[2] & curKey[3] & curKey[4] & curKey[5] & curKey[6] & curKey[7] == 0xFF){
-      Serial.println("...nothing found!"); 
+      //Serial.println("...nothing found!"); 
       return false;
     }
-    Serial.println("Key found!\n\n"); 
+    //Serial.println("Key found!\n\n"); 
     return true;
 }
