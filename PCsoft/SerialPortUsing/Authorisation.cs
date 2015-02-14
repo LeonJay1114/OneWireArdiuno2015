@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using SerialPortUsing.AC_DataSetTableAdapters;
+using SerialPortUsing.Access_control_in_OneWireTableAdapters;
+using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 
 namespace SerialPortUsing {
 	public partial class Authorisation : Form {
 
 		// Компонент-драйвер базы Access: http://www.microsoft.com/en-us/download/confirmation.aspx?id=23734
 
-		private AC_DataSet _base; // Экземпляр класса подключенного источника данных
+		private Access_control_in_OneWire _base; // Экземпляр класса подключенного источника данных
 		private SystemUsersTableAdapter _sysUsersTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
 		private const string LOGIN_PASS_FILTER = "login='{0}' AND password='{1}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
 		// TODO: Это всё хуйня, надо пилить красотищу про хэши и соли.
 
 		public Authorisation() {
 			InitializeComponent();
-			
-			_base = new AC_DataSet(); // Инициализируем адаптер базы
+
+            _base = new Access_control_in_OneWire(); // Инициализируем адаптер базы
 			_sysUsersTableAdapter = new SystemUsersTableAdapter(); // Инициализируем адаптер таблицы
 			_sysUsersTableAdapter.ClearBeforeFill = true; // Говорим нашему адаптеру таблицы, чтобы очищал таблицу перед заполнением
 			

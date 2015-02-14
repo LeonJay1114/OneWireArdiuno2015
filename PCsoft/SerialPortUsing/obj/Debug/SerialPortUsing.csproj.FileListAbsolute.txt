@@ -40,3 +40,13 @@ C:\Access_control\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.AdminForm.res
 C:\Access_control\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.TestForm.resources
 C:\Access_control\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Authorisation.resources
 C:\Access_control\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csprojResolveAssemblyReference.cache
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Debug\SerialPortUsing.exe.config
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.exe
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.pdb
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Debug\SerialPortUsing.exe
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Debug\SerialPortUsing.pdb
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.AdminForm.resources
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Authorisation.resources
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.TestForm.resources
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Properties.Resources.resources
+c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csproj.GenerateResource.Cache

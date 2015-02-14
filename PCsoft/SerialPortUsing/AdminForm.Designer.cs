@@ -43,11 +43,11 @@
 			this.tab_staff = new System.Windows.Forms.TabPage();
 			this.tab_log = new System.Windows.Forms.TabPage();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
-			this.aC_DataSet = new SerialPortUsing.AC_DataSet();
+            this.aC_DataSet = new SerialPortUsing.Access_control_in_OneWire();
 			this.systemUsersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-			this.systemUsersTableAdapter = new SerialPortUsing.AC_DataSetTableAdapters.SystemUsersTableAdapter();
+            this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
 			this.staffBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-			this.staffTableAdapter = new SerialPortUsing.AC_DataSetTableAdapters.StaffTableAdapter();
+            this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
 			this.tabC_rawData.SuspendLayout();
@@ -286,10 +286,10 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn должностьDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn поле1DataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn uIDDataGridViewTextBoxColumn1;
-		private AC_DataSet aC_DataSet;
+        private Access_control_in_OneWire aC_DataSet;
 		private System.Windows.Forms.BindingSource systemUsersBindingSource1;
-		private AC_DataSetTableAdapters.SystemUsersTableAdapter systemUsersTableAdapter;
+		private Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter systemUsersTableAdapter;
 		private System.Windows.Forms.BindingSource staffBindingSource1;
-		private AC_DataSetTableAdapters.StaffTableAdapter staffTableAdapter;
+		private Access_control_in_OneWireTableAdapters.StaffTableAdapter staffTableAdapter;
 	}
 }

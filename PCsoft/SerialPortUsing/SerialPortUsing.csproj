@@ -64,10 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AC_DataSet.Designer.cs">
+    <Compile Include="Access_control_in_OneWire.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AC_DataSet.xsd</DependentUpon>
+      <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>
     </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
@@ -108,16 +108,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AC_DataSet.xsc">
-      <DependentUpon>AC_DataSet.xsd</DependentUpon>
+    <None Include="Access_control_in_OneWire.xsc">
+      <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>
     </None>
-    <None Include="AC_DataSet.xsd">
+    <None Include="Access_control_in_OneWire.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AC_DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>Access_control_in_OneWire.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="AC_DataSet.xss">
-      <DependentUpon>AC_DataSet.xsd</DependentUpon>
+    <None Include="Access_control_in_OneWire.xss">
+      <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
