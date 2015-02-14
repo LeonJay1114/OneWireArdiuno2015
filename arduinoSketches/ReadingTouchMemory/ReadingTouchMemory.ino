@@ -10,13 +10,13 @@ void loop(){
   byte key[8];
   
    if(ds.search(key)){
-     for(int i=0; i<8; i++){
-      Serial.println(key[i], HEX); 
-     }
+     for(int i=0; i<8; i++){ 
+      Serial.print(key[i], HEX);
+        Serial.print(" ");
+         }
      Serial.println("\n\n");
    }
 }
-
 //
 //1
 //FF

@@ -1,4 +1,3 @@
-#include <SPI.h>	// стандартная в Arduino IDE библиотека для работы с SPI шиной. Шта? https://ru.wikipedia.org/wiki/Serial_Peripheral_Interface
 #include <Servo.h>  // стандартная в Arduino IDE библиотека для управления сервомоторчиком
 #include <OneWire.h>// Библиотека, позволяющая пользоваться протоколом OneWire, не зная протокола OneWire
 
@@ -14,7 +13,7 @@ const int OPEN_CLOSE_DELAY = 3000; // задержка между открыти
 
 OneWire ds(touchPIN); // использующийся пин отправляется инициализатору класса OneWire
 byte curKey[8];
-const byte tehUID[8] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x00, 0x0}; // tehUID карты, на которую реагируем положительно
+const byte tehUID[8] = {0x01, 0xBE,0x40,0x11,0x5A,0x36,0x0,0xE1}; // tehUID карты, на которую реагируем положительно
 
 bool buttonState = 0; // переменная для хранения состояния кнопки
 
@@ -30,7 +29,6 @@ Servo myservo; // Экземпляр Servo для управления серв�
 
 void setup() {
     Serial.begin(9600);	// Начать общение с компом по последовательному порту
-    SPI.begin();			// Инициализация SPI-шины. 
     myservo.attach(SERVO_PINUMBER);	// Инициализация управляющего сервоприводом объекта с указанием пина для работы
 	
 	//curKey = new byte[8];
@@ -84,9 +82,9 @@ if (!white){
         white = false;
     }
 	
-
-	if(SearchKey())
+    if(SearchKey())
         state = check;
+        
 	// считываем значения с входа кнопки
     buttonState = digitalRead(BUTTON_PINUMBER);
     // проверяем нажата ли кнопка
@@ -159,28 +157,23 @@ void ServoClose(){
 }
 
 bool SearchKey(){
-	byte data[8];
 
     ds.reset();
     delay(50);
     ds.write(0x33); // "READ" command
     
-    ds.read_bytes(data, 8);
-  	
-//    for(int i = 0; i < 8; i++) {
-//      if (i != 7) Serial.print(":");
-//    }
+    ds.read_bytes(curKey, 8);
 	
 	Serial.print("KEY ");
 	for(byte i = 0; i < 8; i++) {
-		  Serial.print(data[i], HEX);
+		  Serial.print(curKey[i], HEX);
 		    if (i != 7) Serial.print(":");
 	}Serial.println("");
 
-	ds.read_bytes(curKey, 8);
     if (curKey[0] & curKey[1] & curKey[2] & curKey[3] & curKey[4] & curKey[5] & curKey[6] & curKey[7] == 0xFF){
       Serial.println("...nothing found!"); 
       return false;
     }
+    Serial.println("Key found!\n\n"); 
     return true;
 }
