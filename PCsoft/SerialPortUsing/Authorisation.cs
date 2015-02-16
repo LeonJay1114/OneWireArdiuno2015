@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+//using System.Linq;
 using System.Windows.Forms;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
@@ -45,7 +45,7 @@ namespace SerialPortUsing {
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _base.SystemUsers.Select(String.Format(LOGIN_PASS_FILTER, uName, uPass)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
 
-			int count = searchResult.Count();
+			int count = searchResult.Length;
 
 			if (count == 1) {
 				MessageBox.Show("Логин и пароль верны.");

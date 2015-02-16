@@ -522,7 +522,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DismissedStaffDataTable : global::System.Data.TypedTableBase<DismissedStaffRow> {
+        public partial class DismissedStaffDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnКод;
             
@@ -662,6 +662,12 @@ namespace SerialPortUsing {
             public DismissedStaffRow FindByКод(int Код) {
                 return ((DismissedStaffRow)(this.Rows.Find(new object[] {
                             Код})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -842,7 +848,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EventLogDataTable : global::System.Data.TypedTableBase<EventLogRow> {
+        public partial class EventLogDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnUid;
             
@@ -960,6 +966,12 @@ namespace SerialPortUsing {
             public EventLogRow FindByEnterTime(System.DateTime EnterTime) {
                 return ((EventLogRow)(this.Rows.Find(new object[] {
                             EnterTime})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1129,7 +1141,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ScheduleDataTable : global::System.Data.TypedTableBase<ScheduleRow> {
+        public partial class ScheduleDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnКод;
             
@@ -1269,6 +1281,12 @@ namespace SerialPortUsing {
             public ScheduleRow FindByКод(int Код) {
                 return ((ScheduleRow)(this.Rows.Find(new object[] {
                             Код})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1450,7 +1468,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class StaffDataTable : global::System.Data.TypedTableBase<StaffRow> {
+        public partial class StaffDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnДолжность;
             
@@ -1660,6 +1678,12 @@ namespace SerialPortUsing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 StaffDataTable cln = ((StaffDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1855,7 +1879,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SystemUsersDataTable : global::System.Data.TypedTableBase<SystemUsersRow> {
+        public partial class SystemUsersDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnUid;
             
@@ -1984,6 +2008,12 @@ namespace SerialPortUsing {
             public SystemUsersRow FindByUid(string Uid) {
                 return ((SystemUsersRow)(this.Rows.Find(new object[] {
                             Uid})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2159,7 +2189,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class UIDDataTable : global::System.Data.TypedTableBase<UIDRow> {
+        public partial class UIDDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnКод;
             
@@ -2288,6 +2318,12 @@ namespace SerialPortUsing {
             public UIDRow FindByКод(int Код) {
                 return ((UIDRow)(this.Rows.Find(new object[] {
                             Код})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2464,7 +2500,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class UserTypesDataTable : global::System.Data.TypedTableBase<UserTypesRow> {
+        public partial class UserTypesDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnuserType;
             
@@ -2560,6 +2596,12 @@ namespace SerialPortUsing {
             public UserTypesRow FindByuserType(string userType) {
                 return ((UserTypesRow)(this.Rows.Find(new object[] {
                             userType})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2723,7 +2765,7 @@ namespace SerialPortUsing {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class Тип_меткиDataTable : global::System.Data.TypedTableBase<Тип_меткиRow> {
+        public partial class Тип_меткиDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
             
             private global::System.Data.DataColumn columnКод;
             
@@ -2841,6 +2883,12 @@ namespace SerialPortUsing {
             public Тип_меткиRow FindByКод(int Код) {
                 return ((Тип_меткиRow)(this.Rows.Find(new object[] {
                             Код})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
