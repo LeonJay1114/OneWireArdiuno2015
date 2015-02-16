@@ -10,17 +10,24 @@ namespace SerialPortUsing
         {
             InitializeComponent();
         }
-
         private void Options_Load(object sender, EventArgs e)
         {
             string[] ports = SerialPort.GetPortNames();
-
-            Console.WriteLine("The following serial ports were found:");
-            Console.WriteLine(ports.Length);
             foreach (string port in ports)
             {
-                Console.WriteLine(port);
+                cb_ComPort.Items.Add(port);
             }
+        }
+
+        private void tb_dbpath_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            tb_dbpath.Text = openFileDialog1.FileName;
+        }
+
+        private void b_saveConfig_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
