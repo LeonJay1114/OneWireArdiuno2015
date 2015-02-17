@@ -43,10 +43,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.разделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.панельНавигатораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aC_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource1)).BeginInit();
@@ -92,6 +94,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.насстройкиToolStripMenuItem,
+            this.видToolStripMenuItem,
             this.разделыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -115,6 +118,20 @@
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // разделыToolStripMenuItem
+            // 
+            this.разделыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.администрированиеToolStripMenuItem});
+            this.разделыToolStripMenuItem.Name = "разделыToolStripMenuItem";
+            this.разделыToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.разделыToolStripMenuItem.Text = "Разделы";
+            // 
+            // администрированиеToolStripMenuItem
+            // 
+            this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
+            this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.администрированиеToolStripMenuItem.Text = "Администрирование";
             // 
             // groupBox1
             // 
@@ -143,19 +160,25 @@
             this.treeView1.Size = new System.Drawing.Size(132, 109);
             this.treeView1.TabIndex = 3;
             // 
-            // разделыToolStripMenuItem
+            // видToolStripMenuItem
             // 
-            this.разделыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.администрированиеToolStripMenuItem});
-            this.разделыToolStripMenuItem.Name = "разделыToolStripMenuItem";
-            this.разделыToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.разделыToolStripMenuItem.Text = "Разделы";
+            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.панельНавигатораToolStripMenuItem});
+            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
+            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.видToolStripMenuItem.Text = "Вид";
             // 
-            // администрированиеToolStripMenuItem
+            // панельНавигатораToolStripMenuItem
             // 
-            this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
-            this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.администрированиеToolStripMenuItem.Text = "Администрирование";
+            this.панельНавигатораToolStripMenuItem.Checked = true;
+            this.панельНавигатораToolStripMenuItem.CheckOnClick = true;
+            this.панельНавигатораToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.панельНавигатораToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("панельНавигатораToolStripMenuItem.Image")));
+            this.панельНавигатораToolStripMenuItem.Name = "панельНавигатораToolStripMenuItem";
+            this.панельНавигатораToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.панельНавигатораToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.панельНавигатораToolStripMenuItem.Text = "Панель навигатора";
+            this.панельНавигатораToolStripMenuItem.Click += new System.EventHandler(this.панельНавигатораToolStripMenuItem_Click);
             // 
             // AdminForm
             // 
@@ -204,5 +227,7 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem разделыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem администрированиеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem панельНавигатораToolStripMenuItem;
 	}
 }

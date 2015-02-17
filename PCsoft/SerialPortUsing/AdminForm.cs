@@ -18,5 +18,18 @@ namespace SerialPortUsing {
         {
             this.Close();
         }
+
+        private void панельНавигатораToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (панельНавигатораToolStripMenuItem.Checked = true)
+            {
+                treeView1.Width = 0;
+            }
+            if (панельНавигатораToolStripMenuItem.Checked)
+            {
+                treeView1.Width = 132;
+            }
+            
+        }
 	}
 }
