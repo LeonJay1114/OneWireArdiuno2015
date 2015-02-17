@@ -51,3 +51,4 @@ c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.TestForm.
 c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Properties.Resources.resources
 c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csproj.GenerateResource.Cache
 c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Options.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csprojResolveAssemblyReference.cache
