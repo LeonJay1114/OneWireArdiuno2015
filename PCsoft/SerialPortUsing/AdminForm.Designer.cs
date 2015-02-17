@@ -24,6 +24,14 @@
 		/// </summary>
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.systemUsersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.aC_DataSet = new SerialPortUsing.Access_control_in_OneWire();
             this.staffBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -33,9 +41,12 @@
             this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.systemUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.разделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aC_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource1)).BeginInit();
@@ -80,40 +91,78 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.насстройкиToolStripMenuItem});
+            this.насстройкиToolStripMenuItem,
+            this.разделыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(837, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
-            // 
             // насстройкиToolStripMenuItem
             // 
+            this.насстройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выходToolStripMenuItem});
             this.насстройкиToolStripMenuItem.Name = "насстройкиToolStripMenuItem";
-            this.насстройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.насстройкиToolStripMenuItem.Text = "Настройки";
+            this.насстройкиToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.насстройкиToolStripMenuItem.Text = "Файл";
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(150, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(813, 414);
+            this.groupBox1.Size = new System.Drawing.Size(675, 414);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Узел1";
+            treeNode1.Text = "Узел1";
+            treeNode2.Name = "Узел2";
+            treeNode2.Text = "Узел2";
+            treeNode3.Name = "Узел3";
+            treeNode3.Text = "Узел3";
+            treeNode4.BackColor = System.Drawing.Color.Transparent;
+            treeNode4.Name = "Узел0";
+            treeNode4.Text = "Администрирование";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4});
+            this.treeView1.Size = new System.Drawing.Size(132, 109);
+            this.treeView1.TabIndex = 3;
+            // 
+            // разделыToolStripMenuItem
+            // 
+            this.разделыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.администрированиеToolStripMenuItem});
+            this.разделыToolStripMenuItem.Name = "разделыToolStripMenuItem";
+            this.разделыToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.разделыToolStripMenuItem.Text = "Разделы";
+            // 
+            // администрированиеToolStripMenuItem
+            // 
+            this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
+            this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.администрированиеToolStripMenuItem.Text = "Администрирование";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 453);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.menuStrip1);
@@ -149,8 +198,11 @@
 		private Access_control_in_OneWireTableAdapters.StaffTableAdapter staffTableAdapter;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem насстройкиToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem разделыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem администрированиеToolStripMenuItem;
 	}
 }

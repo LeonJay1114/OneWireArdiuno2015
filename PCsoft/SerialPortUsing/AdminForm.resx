@@ -118,30 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="systemUsersBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>851, 17</value>
+    <value>546, 19</value>
   </metadata>
   <metadata name="aC_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>738, 17</value>
-  </metadata>
-  <metadata name="aC_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>738, 17</value>
+    <value>448, 18</value>
   </metadata>
   <metadata name="staffBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1248, 17</value>
+    <value>922, 20</value>
   </metadata>
   <metadata name="systemUsersTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1056, 17</value>
+    <value>741, 20</value>
   </metadata>
   <metadata name="staffTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1409, 17</value>
+    <value>1068, 22</value>
   </metadata>
   <metadata name="staffBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>584, 17</value>
+    <value>305, 15</value>
   </metadata>
   <metadata name="systemUsersBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 17</value>
+    <value>122, 13</value>
   </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>18, 13</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="выходToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIYAALcCAtcMDMUQEccHB+wcHL8FBdATE7sDA8MGBp8FBcuBgdMKCs8JCbsODssICPN1
+        deQgINZtbc1ra+B2dtEaGvB1ddsdHdwjI9BycqQTE78bG9xubsxwcLMTE58VFfosLOZ4ePUqKuVycsNu
+        br5oaPonJ60WFpgGBqINDaQhIcp+fvQlJb0WFscXGOt5eepzc5oLC/Z9fdZ0dKAYGJoJCeUmJtt1dcdv
+        b6sQEMyEhO10dJ0SEtMgIO0oKNJtbfN7e8BnZ8RoaOFwcJ0REchpabUYGO0jI8gdHu96er1lZfQeHpcD
+        A/ogIP+FhcN0dJwPD6IeHpYAAMgAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQA
+        AAAAACwAAAAAEAAQAAAIuwAVzIhCsKBBglAUQHnQpKHDhw0f7IBS4QOTixgzlojxBIqOEEpCihy54kfH
+        Fz0CSJESgAABlSyNIOkoooaUKVOkLFhwMycEFx2FXGDQcyVOKQwsgOi4gYcBBz2POjBAYULHCEcECBhQ
+        dIDWFjY6+tDQAEHUnAgasJDRUUKRAkWLFuiAoSMRE0UPHCiKg0PHIBkArASQIIFgKQBQ3OgIZMiSx5Aj
+        wxjxJEUSJ5gza8ZMwoOKEwdDR6GRIyAAOw==
+</value>
+  </data>
 </root>

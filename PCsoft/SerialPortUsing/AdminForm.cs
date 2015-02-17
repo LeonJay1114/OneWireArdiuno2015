@@ -13,5 +13,10 @@ namespace SerialPortUsing {
 			// TODO: This line of code loads data into the 'aC_DataSet.SystemUsers' table. You can move, or remove it, as needed.
 			this.systemUsersTableAdapter.Fill(this.aC_DataSet.SystemUsers);
 		}
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 	}
 }
