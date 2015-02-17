@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SerialPortUsing
@@ -9,11 +10,16 @@ namespace SerialPortUsing
 		/// Главная точка входа для приложения.
 		/// </summary>
 		[STAThread]
-		static void Main()
-		{
+		static void Main(){
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
+
+			//SecurityForm test:
+			SecurityForm form = new SecurityForm();
+			form.ShowFace(@"C:\OneWireArdiuno2015\Photo\manager.png", "Кирилицын Антон Сергеевич", 3000);
+
 			Application.Run(new Options());
 		}
+
 	}
 }
