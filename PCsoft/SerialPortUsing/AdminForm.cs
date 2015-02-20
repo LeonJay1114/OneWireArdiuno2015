@@ -2,9 +2,16 @@
 using System.Windows.Forms;
 
 namespace SerialPortUsing {
-	public partial class AdminForm : Form {
+	public partial class AdminForm : Form
+	{
+
+	    private const int NAVIGATION_TREE_WIDTH = 132;
+	    private const int GROUP_BOXES_PADDING = 10;
+
 		public AdminForm() {
 			InitializeComponent();
+		    groupBox2.Location = groupBox1.Location;
+		    groupBox2.Size = groupBox1.Size;
 		}
 
 		private void AdminForm_Load(object sender, EventArgs e) {
@@ -21,15 +28,26 @@ namespace SerialPortUsing {
 
         private void панельНавигатораToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (панельНавигатораToolStripMenuItem.Checked = true)
-            {
-                treeView1.Width = 0;
-            }
-            if (панельНавигатораToolStripMenuItem.Checked)
-            {
-                treeView1.Width = 132;
-            }
-            
+            switchNavigationPanel(панельНавигатораToolStripMenuItem.Checked);
         }
+
+	    private void switchNavigationPanel(bool open)
+	    {
+	        if (open)
+	        {
+                treeView1.Width = NAVIGATION_TREE_WIDTH;
+	        }
+	        else
+	        {
+                treeView1.Width = 0;
+	        }
+
+            // TODO: do this for all groupboxes!
+            groupBox1.Left = treeView1.Width + GROUP_BOXES_PADDING;
+
+            // TODO: do this for all groupboxes!
+            groupBox1.Width = this.Width - treeView1.Width - GROUP_BOXES_PADDING*2 - treeView1.Left;
+
+	    }
 	}
 }

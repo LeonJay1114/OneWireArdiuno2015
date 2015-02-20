@@ -25,13 +25,13 @@
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Узел2");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Узел3");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.systemUsersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.aC_DataSet = new SerialPortUsing.Access_control_in_OneWire();
             this.staffBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -43,12 +43,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.панельНавигатораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.разделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.панельНавигатораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aC_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource1)).BeginInit();
@@ -115,9 +116,29 @@
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // видToolStripMenuItem
+            // 
+            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.панельНавигатораToolStripMenuItem});
+            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
+            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.видToolStripMenuItem.Text = "Вид";
+            // 
+            // панельНавигатораToolStripMenuItem
+            // 
+            this.панельНавигатораToolStripMenuItem.Checked = true;
+            this.панельНавигатораToolStripMenuItem.CheckOnClick = true;
+            this.панельНавигатораToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.панельНавигатораToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("панельНавигатораToolStripMenuItem.Image")));
+            this.панельНавигатораToolStripMenuItem.Name = "панельНавигатораToolStripMenuItem";
+            this.панельНавигатораToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.панельНавигатораToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.панельНавигатораToolStripMenuItem.Text = "Панель навигатора";
+            this.панельНавигатораToolStripMenuItem.Click += new System.EventHandler(this.панельНавигатораToolStripMenuItem_Click);
             // 
             // разделыToolStripMenuItem
             // 
@@ -146,45 +167,35 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 27);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Узел1";
-            treeNode1.Text = "Узел1";
-            treeNode2.Name = "Узел2";
-            treeNode2.Text = "Узел2";
-            treeNode3.Name = "Узел3";
-            treeNode3.Text = "Узел3";
-            treeNode4.BackColor = System.Drawing.Color.Transparent;
-            treeNode4.Name = "Узел0";
-            treeNode4.Text = "Администрирование";
+            treeNode5.Name = "Узел1";
+            treeNode5.Text = "Узел1";
+            treeNode6.Name = "Узел2";
+            treeNode6.Text = "Узел2";
+            treeNode7.Name = "Узел3";
+            treeNode7.Text = "Узел3";
+            treeNode8.BackColor = System.Drawing.Color.Transparent;
+            treeNode8.Name = "Узел0";
+            treeNode8.Text = "Администрирование";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            this.treeView1.Size = new System.Drawing.Size(132, 109);
+            treeNode8});
+            this.treeView1.Size = new System.Drawing.Size(132, 414);
             this.treeView1.TabIndex = 3;
             // 
-            // видToolStripMenuItem
+            // groupBox2
             // 
-            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.панельНавигатораToolStripMenuItem});
-            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
-            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.видToolStripMenuItem.Text = "Вид";
-            // 
-            // панельНавигатораToolStripMenuItem
-            // 
-            this.панельНавигатораToolStripMenuItem.Checked = true;
-            this.панельНавигатораToolStripMenuItem.CheckOnClick = true;
-            this.панельНавигатораToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.панельНавигатораToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("панельНавигатораToolStripMenuItem.Image")));
-            this.панельНавигатораToolStripMenuItem.Name = "панельНавигатораToolStripMenuItem";
-            this.панельНавигатораToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.панельНавигатораToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.панельНавигатораToolStripMenuItem.Text = "Панель навигатора";
-            this.панельНавигатораToolStripMenuItem.Click += new System.EventHandler(this.панельНавигатораToolStripMenuItem_Click);
+            this.groupBox2.Location = new System.Drawing.Point(135, 46);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(675, 414);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 453);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel1);
@@ -229,5 +240,6 @@
         private System.Windows.Forms.ToolStripMenuItem администрированиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem панельНавигатораToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
 	}
 }
