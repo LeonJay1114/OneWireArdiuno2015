@@ -123,6 +123,9 @@
   <metadata name="aC_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>448, 18</value>
   </metadata>
+  <metadata name="aC_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>448, 18</value>
+  </metadata>
   <metadata name="staffBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>922, 20</value>
   </metadata>
@@ -157,4 +160,15 @@
         wxjxJEUSJ5gza8ZMwoOKEwdDR6GRIyAAOw==
 </value>
   </data>
+  <data name="панельНавигатораToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAIAAACpTQvdAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAFlJREFUKFNj8PX9TwryBWnI3/U/fxJRCKJhJSnIl2HlypX/YQCZjQnu3r1LgQbf
+        /LtAEsJGczccUdGGfOyIejYA2VgRZTZAALEaQJaBATIbKwBpAGISgK8vADjW5f6laOROAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>136</value>
+  </metadata>
 </root>
