@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 using System.Management; //Тулзы управления. Доступны после подключения ссылки на System.Management чрез *Проект->ПодключитьСсылку*.

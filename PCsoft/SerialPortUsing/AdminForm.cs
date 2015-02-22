@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.Ports;
 using System.Windows.Forms;
 
 namespace SerialPortUsing {
@@ -12,20 +13,24 @@ namespace SerialPortUsing {
 			InitializeComponent();
 		    groupBox2.Location = groupBox1.Location;
 		    groupBox2.Size = groupBox1.Size;
+            openFileDialog1.Filter = "accdb files (*.accdb)|*.accdb|All files (*.*)|*.*";//Маска OpenFileDialog
 		}
 
 		private void AdminForm_Load(object sender, EventArgs e) {
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cb_ComPort.Items.Add(port);
+            }
 			// TODO: This line of code loads data into the 'aC_DataSet.Staff' table. You can move, or remove it, as needed.
 			this.staffTableAdapter.Fill(this.aC_DataSet.Staff);
 			// TODO: This line of code loads data into the 'aC_DataSet.SystemUsers' table. You can move, or remove it, as needed.
 			this.systemUsersTableAdapter.Fill(this.aC_DataSet.SystemUsers);
 		}
-
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void панельНавигатораToolStripMenuItem_Click(object sender, EventArgs e)
         {
             switchNavigationPanel(панельНавигатораToolStripMenuItem.Checked);
@@ -49,5 +54,22 @@ namespace SerialPortUsing {
             groupBox1.Width = this.Width - treeView1.Width - GROUP_BOXES_PADDING*2 - treeView1.Left;
 
 	    }
+
+        private void b_saveConfig_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            tb_dbpath.Text = openFileDialog1.FileName;
+        }
+
+        private void b_saveConfig_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
 	}
 }
