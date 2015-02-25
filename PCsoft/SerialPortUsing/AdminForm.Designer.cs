@@ -25,21 +25,13 @@
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Настройки");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Узел2");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Узел3");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
-            this.systemUsersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.aC_DataSet = new SerialPortUsing.Access_control_in_OneWire();
-            this.staffBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
-            this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.systemUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Настройки");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Пользователи");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Сотрудники");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode18,
+            treeNode19});
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,8 +40,6 @@
             this.разделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.b_DBPath = new System.Windows.Forms.Button();
             this.b_saveConfig = new System.Windows.Forms.Button();
             this.tb_dbpath = new System.Windows.Forms.TextBox();
@@ -58,48 +48,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cb_speed = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.uidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.systemUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.access_control_in_OneWire = new SerialPortUsing.Access_control_in_OneWire();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aC_DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).BeginInit();
+            this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).BeginInit();
             this.SuspendLayout();
-            // 
-            // systemUsersBindingSource1
-            // 
-            this.systemUsersBindingSource1.DataMember = "SystemUsers";
-            this.systemUsersBindingSource1.DataSource = this.aC_DataSet;
-            // 
-            // aC_DataSet
-            // 
-            this.aC_DataSet.DataSetName = "AC_DataSet";
-            this.aC_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // staffBindingSource1
-            // 
-            this.staffBindingSource1.DataMember = "Staff";
-            this.staffBindingSource1.DataSource = this.aC_DataSet;
-            // 
-            // systemUsersTableAdapter
-            // 
-            this.systemUsersTableAdapter.ClearBeforeFill = true;
-            // 
-            // staffTableAdapter
-            // 
-            this.staffTableAdapter.ClearBeforeFill = true;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(770, 9);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(62, 13);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Настройки";
             // 
             // menuStrip1
             // 
@@ -109,7 +75,7 @@
             this.разделыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(837, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(836, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -166,6 +132,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.b_DBPath);
             this.groupBox1.Controls.Add(this.b_saveConfig);
             this.groupBox1.Controls.Add(this.tb_dbpath);
@@ -174,41 +143,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cb_speed);
-            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(150, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(675, 414);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(257, 221);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(675, 414);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            this.groupBox2.Visible = false;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(12, 27);
-            this.treeView1.Name = "treeView1";
-            treeNode9.Name = "Option";
-            treeNode9.Text = "Настройки";
-            treeNode10.Name = "Узел2";
-            treeNode10.Text = "Узел2";
-            treeNode11.Name = "Узел3";
-            treeNode11.Text = "Узел3";
-            treeNode12.BackColor = System.Drawing.Color.Transparent;
-            treeNode12.Name = "Узел0";
-            treeNode12.Text = "Администрирование";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
-            this.treeView1.Size = new System.Drawing.Size(132, 414);
-            this.treeView1.TabIndex = 3;
             // 
             // b_DBPath
             // 
@@ -228,7 +167,6 @@
             this.b_saveConfig.TabIndex = 14;
             this.b_saveConfig.Text = "Save";
             this.b_saveConfig.UseVisualStyleBackColor = true;
-            this.b_saveConfig.Click += new System.EventHandler(this.b_saveConfig_Click_1);
             // 
             // tb_dbpath
             // 
@@ -290,32 +228,128 @@
             this.cb_speed.TabIndex = 8;
             this.cb_speed.Text = "9600";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Location = new System.Drawing.Point(151, 26);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(674, 415);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.uidDataGridViewTextBoxColumn,
+            this.userTypeDataGridViewTextBoxColumn,
+            this.loginDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.systemUsersBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(446, 209);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // uidDataGridViewTextBoxColumn
+            // 
+            this.uidDataGridViewTextBoxColumn.DataPropertyName = "Uid";
+            this.uidDataGridViewTextBoxColumn.HeaderText = "Uid";
+            this.uidDataGridViewTextBoxColumn.Name = "uidDataGridViewTextBoxColumn";
+            this.uidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userTypeDataGridViewTextBoxColumn
+            // 
+            this.userTypeDataGridViewTextBoxColumn.DataPropertyName = "userType";
+            this.userTypeDataGridViewTextBoxColumn.HeaderText = "userType";
+            this.userTypeDataGridViewTextBoxColumn.Name = "userTypeDataGridViewTextBoxColumn";
+            this.userTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loginDataGridViewTextBoxColumn
+            // 
+            this.loginDataGridViewTextBoxColumn.DataPropertyName = "login";
+            this.loginDataGridViewTextBoxColumn.HeaderText = "login";
+            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+            this.loginDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // systemUsersBindingSource
+            // 
+            this.systemUsersBindingSource.DataMember = "SystemUsers";
+            this.systemUsersBindingSource.DataSource = this.access_control_in_OneWire;
+            // 
+            // access_control_in_OneWire
+            // 
+            this.access_control_in_OneWire.DataSetName = "Access_control_in_OneWire";
+            this.access_control_in_OneWire.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Name = "treeView1";
+            treeNode17.Name = "Option";
+            treeNode17.Text = "Настройки";
+            treeNode18.Name = "addUser";
+            treeNode18.Text = "Пользователи";
+            treeNode19.Name = "staff";
+            treeNode19.Text = "Сотрудники";
+            treeNode20.BackColor = System.Drawing.Color.Transparent;
+            treeNode20.Name = "Узел0";
+            treeNode20.Text = "Администрирование";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode20});
+            this.treeView1.Size = new System.Drawing.Size(132, 414);
+            this.treeView1.TabIndex = 3;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // systemUsersTableAdapter
+            // 
+            this.systemUsersTableAdapter.ClearBeforeFill = true;
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 453);
+            this.ClientSize = new System.Drawing.Size(836, 453);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AdminForm";
             this.Text = "Администрирование СКУД";
             this.Load += new System.EventHandler(this.AdminForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aC_DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,19 +357,11 @@
 
 		#endregion
 
-        private System.Windows.Forms.BindingSource systemUsersBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn типПользователяDataGridViewTextBoxColumn;
-		private System.Windows.Forms.BindingSource staffBindingSource;
 		private System.Windows.Forms.DataGridViewTextBoxColumn фамилияDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn имяDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn отчествоDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn поле1DataGridViewTextBoxColumn;
-        private Access_control_in_OneWire aC_DataSet;
-		private System.Windows.Forms.BindingSource systemUsersBindingSource1;
-		private Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter systemUsersTableAdapter;
-		private System.Windows.Forms.BindingSource staffBindingSource1;
-		private Access_control_in_OneWireTableAdapters.StaffTableAdapter staffTableAdapter;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem насстройкиToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -355,5 +381,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cb_speed;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private Access_control_in_OneWire access_control_in_OneWire;
+        private System.Windows.Forms.BindingSource systemUsersBindingSource;
+        private Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter systemUsersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
 	}
 }
