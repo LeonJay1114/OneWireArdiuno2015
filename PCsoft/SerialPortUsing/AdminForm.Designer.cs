@@ -25,13 +25,13 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-			System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Настройки");
-			System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Пользователи");
-			System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Сотрудники");
-			System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode21,
-            treeNode22,
-            treeNode23});
+			System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Настройки");
+			System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Пользователи");
+			System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Сотрудники");
+			System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode25,
+            treeNode26,
+            treeNode27});
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,17 +322,17 @@
 			// 
 			this.tv_navigation.Location = new System.Drawing.Point(12, 27);
 			this.tv_navigation.Name = "tv_navigation";
-			treeNode21.Name = "Option";
-			treeNode21.Text = "Настройки";
-			treeNode22.Name = "addUser";
-			treeNode22.Text = "Пользователи";
-			treeNode23.Name = "staff";
-			treeNode23.Text = "Сотрудники";
-			treeNode24.BackColor = System.Drawing.Color.Transparent;
-			treeNode24.Name = "Узел0";
-			treeNode24.Text = "Администрирование";
+			treeNode25.Name = "Option";
+			treeNode25.Text = "Настройки";
+			treeNode26.Name = "addUser";
+			treeNode26.Text = "Пользователи";
+			treeNode27.Name = "staff";
+			treeNode27.Text = "Сотрудники";
+			treeNode28.BackColor = System.Drawing.Color.Transparent;
+			treeNode28.Name = "Узел0";
+			treeNode28.Text = "Администрирование";
 			this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode24});
+            treeNode28});
 			this.tv_navigation.Size = new System.Drawing.Size(132, 547);
 			this.tv_navigation.TabIndex = 3;
 			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
