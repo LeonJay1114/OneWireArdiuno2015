@@ -5,19 +5,29 @@ using System.Windows.Forms;
 namespace SerialPortUsing {
 	public partial class AdminForm : Form
 	{
-
-	    private const int NAVIGATION_TREE_WIDTH = 132;
 	    private const int GROUP_BOXES_PADDING = 10;
+		private const int GROUP_BOXES_TOP = 21;
 
 		public AdminForm() {
 			InitializeComponent();
-		    groupBox2.Location = groupBox1.Location;
-		    groupBox2.Size = groupBox1.Size;
+		    gb_users.Location = gb_sys.Location;
+		    gb_users.Size = gb_sys.Size;
             openFileDialog1.Filter = "accdb files (*.accdb)|*.accdb|All files (*.*)|*.*";//Маска OpenFileDialog
+
+			MakeGroupBoxesUp();
+		}
+
+		private void MakeGroupBoxesUp() {
+			gb_staff.Left = gb_sys.Left = gb_users.Left = tv_navigation.Width + GROUP_BOXES_PADDING + tv_navigation.Left;
+			gb_staff.Top = gb_sys.Top = gb_users.Top = GROUP_BOXES_TOP;
+			gb_staff.Width = gb_sys.Width = gb_users.Width = this.Width - gb_staff.Left - GROUP_BOXES_PADDING*2;
+			gb_staff.Height = gb_sys.Height = gb_users.Height = this.Height - 72;
 		}
 
 		private void AdminForm_Load(object sender, EventArgs e)
 		{
+			// TODO: This line of code loads data into the 'access_control_in_OneWire.Staff' table. You can move, or remove it, as needed.
+			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.SystemUsers". При необходимости она может быть перемещена или удалена.
             this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 
@@ -26,7 +36,7 @@ namespace SerialPortUsing {
             {
                 cb_ComPort.Items.Add(port);
             }
-            groupBox2.BringToFront();
+            gb_users.BringToFront();
             //// TODO: This line of code loads data into the 'aC_DataSet.Staff' table. You can move, or remove it, as needed.
             //this.staffTableAdapter.Fill(this.aC_DataSet.Staff);
             //// TODO: This line of code loads data into the 'aC_DataSet.SystemUsers' table. You can move, or remove it, as needed.
@@ -45,18 +55,18 @@ namespace SerialPortUsing {
 	    {
 	        if (open)
 	        {
-                treeView1.Width = NAVIGATION_TREE_WIDTH;
+                tv_navigation.Width = tv_navigation.Width;
 	        }
 	        else
 	        {
-                treeView1.Width = 0;
+                tv_navigation.Width = 0;
 	        }
 
             // TODO: do this for all groupboxes!
-            groupBox1.Left = treeView1.Width + GROUP_BOXES_PADDING;
+            gb_sys.Left = tv_navigation.Width + GROUP_BOXES_PADDING;
 
             // TODO: do this for all groupboxes!
-            groupBox1.Width = this.Width - treeView1.Width - GROUP_BOXES_PADDING*2 - treeView1.Left;
+            gb_sys.Width = this.Width - tv_navigation.Width - GROUP_BOXES_PADDING*2 - tv_navigation.Left;
 
 	    }
 
@@ -75,13 +85,18 @@ namespace SerialPortUsing {
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            switch (treeView1.SelectedNode.Text){
+            switch (tv_navigation.SelectedNode.Text){
                 case "Настройки":
-
+					gb_sys.BringToFront();
                     break;
-
+				case "Пользователи":
+					gb_users.BringToFront();
+					break;
+				case "Сотрудники":
+					gb_staff.BringToFront();
+					break;
             }
-            MessageBox.Show(treeView1.SelectedNode.Text);
+            //MessageBox.Show(tv_navigation.SelectedNode.Text);
         }
 
 	}
