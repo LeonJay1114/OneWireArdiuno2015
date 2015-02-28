@@ -35,9 +35,7 @@ bool SearchKey(){
 }
 
 void PrintKey(){
-	Serial.print("KEY ");
 	for(byte i = 0; i < 8; i++) {
-		Serial.print(curKey[i], HEX);
-	    if (i != 7) Serial.print(":");
-	}Serial.println("");
+		Serial.print((char)curKey[i]);
+	}
 }
