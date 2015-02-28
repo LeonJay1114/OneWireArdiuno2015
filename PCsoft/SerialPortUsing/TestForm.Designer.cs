@@ -31,7 +31,7 @@
 			this.CB_displayCOMs = new System.Windows.Forms.Button();
 			this.CB_displayUSBs = new System.Windows.Forms.Button();
 			this.CB_openPort = new System.Windows.Forms.Button();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.lb_test = new System.Windows.Forms.ListBox();
 			this.CB_closePort = new System.Windows.Forms.Button();
 			this.tB_PortToOpen = new System.Windows.Forms.TextBox();
 			this.CB_writeToPort = new System.Windows.Forms.Button();
@@ -47,10 +47,10 @@
 			this.tab_testing = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
 			this.tab_uidReading = new System.Windows.Forms.TabPage();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button3 = new System.Windows.Forms.Button();
+			this.tb_uidOutput = new System.Windows.Forms.TextBox();
+			this.cB_listen = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
-			this.CoB_coms = new System.Windows.Forms.ComboBox();
+			this.coB_coms = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.nUD_bytesToRead)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -88,14 +88,14 @@
 			this.CB_openPort.UseVisualStyleBackColor = true;
 			this.CB_openPort.Click += new System.EventHandler(this.CB_openPort_Click);
 			// 
-			// listBox1
+			// lb_test
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(6, 35);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(448, 329);
-			this.listBox1.TabIndex = 4;
-			this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
+			this.lb_test.FormattingEnabled = true;
+			this.lb_test.Location = new System.Drawing.Point(6, 35);
+			this.lb_test.Name = "lb_test";
+			this.lb_test.Size = new System.Drawing.Size(448, 329);
+			this.lb_test.TabIndex = 4;
+			this.lb_test.DoubleClick += new System.EventHandler(this.lb_test_DoubleClick);
 			// 
 			// CB_closePort
 			// 
@@ -232,7 +232,7 @@
 			this.tab_testing.Controls.Add(this.CB_displayCOMs);
 			this.tab_testing.Controls.Add(this.groupBox1);
 			this.tab_testing.Controls.Add(this.CB_displayUSBs);
-			this.tab_testing.Controls.Add(this.listBox1);
+			this.tab_testing.Controls.Add(this.lb_test);
 			this.tab_testing.Location = new System.Drawing.Point(4, 22);
 			this.tab_testing.Name = "tab_testing";
 			this.tab_testing.Padding = new System.Windows.Forms.Padding(3);
@@ -253,10 +253,10 @@
 			// 
 			// tab_uidReading
 			// 
-			this.tab_uidReading.Controls.Add(this.textBox1);
-			this.tab_uidReading.Controls.Add(this.button3);
+			this.tab_uidReading.Controls.Add(this.tb_uidOutput);
+			this.tab_uidReading.Controls.Add(this.cB_listen);
 			this.tab_uidReading.Controls.Add(this.label4);
-			this.tab_uidReading.Controls.Add(this.CoB_coms);
+			this.tab_uidReading.Controls.Add(this.coB_coms);
 			this.tab_uidReading.Location = new System.Drawing.Point(4, 22);
 			this.tab_uidReading.Name = "tab_uidReading";
 			this.tab_uidReading.Padding = new System.Windows.Forms.Padding(3);
@@ -265,22 +265,24 @@
 			this.tab_uidReading.Text = "uid";
 			this.tab_uidReading.UseVisualStyleBackColor = true;
 			// 
-			// textBox1
+			// tb_uidOutput
 			// 
-			this.textBox1.Location = new System.Drawing.Point(6, 46);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(822, 336);
-			this.textBox1.TabIndex = 3;
+			this.tb_uidOutput.Location = new System.Drawing.Point(6, 46);
+			this.tb_uidOutput.Multiline = true;
+			this.tb_uidOutput.Name = "tb_uidOutput";
+			this.tb_uidOutput.Size = new System.Drawing.Size(822, 336);
+			this.tb_uidOutput.TabIndex = 3;
+			this.tb_uidOutput.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tb_uidOutput_MouseDoubleClick);
 			// 
-			// button3
+			// cB_listen
 			// 
-			this.button3.Location = new System.Drawing.Point(133, 17);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(123, 23);
-			this.button3.TabIndex = 2;
-			this.button3.Text = "Listen for ASCII output";
-			this.button3.UseVisualStyleBackColor = true;
+			this.cB_listen.Location = new System.Drawing.Point(133, 17);
+			this.cB_listen.Name = "cB_listen";
+			this.cB_listen.Size = new System.Drawing.Size(123, 23);
+			this.cB_listen.TabIndex = 2;
+			this.cB_listen.Text = "Listen for ASCII output";
+			this.cB_listen.UseVisualStyleBackColor = true;
+			this.cB_listen.Click += new System.EventHandler(this.cB_listen_Click);
 			// 
 			// label4
 			// 
@@ -291,13 +293,13 @@
 			this.label4.TabIndex = 1;
 			this.label4.Text = "COM-порт для слушания:";
 			// 
-			// CoB_coms
+			// coB_coms
 			// 
-			this.CoB_coms.FormattingEnabled = true;
-			this.CoB_coms.Location = new System.Drawing.Point(6, 19);
-			this.CoB_coms.Name = "CoB_coms";
-			this.CoB_coms.Size = new System.Drawing.Size(121, 21);
-			this.CoB_coms.TabIndex = 0;
+			this.coB_coms.FormattingEnabled = true;
+			this.coB_coms.Location = new System.Drawing.Point(6, 19);
+			this.coB_coms.Name = "coB_coms";
+			this.coB_coms.Size = new System.Drawing.Size(121, 21);
+			this.coB_coms.TabIndex = 0;
 			// 
 			// TestForm
 			// 
@@ -323,7 +325,7 @@
 		private System.Windows.Forms.Button CB_displayCOMs;
 		private System.Windows.Forms.Button CB_displayUSBs;
 		private System.Windows.Forms.Button CB_openPort;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox lb_test;
 		private System.Windows.Forms.Button CB_closePort;
 		private System.Windows.Forms.TextBox tB_PortToOpen;
 		private System.Windows.Forms.Button CB_writeToPort;
@@ -338,11 +340,11 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tab_testing;
 		private System.Windows.Forms.TabPage tab_uidReading;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button cB_listen;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox CoB_coms;
+		private System.Windows.Forms.ComboBox coB_coms;
         private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox tb_uidOutput;
 	}
 }
 

@@ -7,3 +7,7 @@ PCsoft/SerialPortUsing/obj/Debug/SerialPortUsing.pdb
 *.pdb
 *.suo
 *.suo
+*.exe
+*.exe
+*.exe
+PCsoft/SerialPortUsing/bin/Release/SerialPortUsing.exe

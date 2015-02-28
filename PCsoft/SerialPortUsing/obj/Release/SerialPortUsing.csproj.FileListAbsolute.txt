@@ -16,3 +16,15 @@ F:\Ivan\Projects\C#\VS\SerialPortUsing\SerialPortUsing\obj\Release\SerialPortUsi
 F:\Ivan\Projects\C#\VS\SerialPortUsing\SerialPortUsing\obj\Release\SerialPortUsing.Form1.resources
 F:\Ivan\Projects\C#\VS\SerialPortUsing\SerialPortUsing\obj\Release\SerialPortUsing.Properties.Resources.resources
 F:\Ivan\Projects\C#\VS\SerialPortUsing\SerialPortUsing\obj\Release\SerialPortUsing.csproj.GenerateResource.Cache
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Release\SerialPortUsing.exe.config
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.exe
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.pdb
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Release\SerialPortUsing.exe
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\Release\SerialPortUsing.pdb
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.AdminForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.Authorisation.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.SecurityForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.TestForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.Properties.Resources.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.csproj.GenerateResource.Cache
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Release\SerialPortUsing.csprojResolveAssemblyReference.cache
