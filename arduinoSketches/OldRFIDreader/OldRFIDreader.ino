@@ -30,7 +30,7 @@ Servo myservo; // Экземпляр Servo для управления серв�
 
 void setup() {
     Serial.begin(9600);	// Начать общение с компом по последовательному порту
-    SPI.begin();			// Инициализация SPI-шины. 
+    //SPI.begin();			// Инициализация SPI-шины. 
     myservo.attach(SERVO_PINUMBER);	// Инициализация управляющего сервоприводом объекта с указанием пина для работы
 	
 	//curKey = new byte[8];
@@ -115,7 +115,7 @@ void Checking(){
         state = open; // Открываемся, если та самая
     else{
         Serial.println("Unknown CARD.");
-        digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем красный
+        digitalWrite(RGB_LED_PINUMBERS[0], HIGH);  // зажигаем красный
         digitalWrite(RGB_LED_PINUMBERS[1], LOW);   // тушим зелёный
         digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
         digitalWrite(BUZZER_PINUMBER, HIGH);
