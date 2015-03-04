@@ -1,0 +1,12 @@
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\x86\Release\SerialPortUsing.exe.config
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\x86\Release\SerialPortUsing.exe
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\bin\x86\Release\SerialPortUsing.pdb
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.csprojResolveAssemblyReference.cache
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.AdminForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.Authorisation.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.SecurityForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.TestForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.Properties.Resources.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.csproj.GenerateResource.Cache
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.exe
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\x86\Release\SerialPortUsing.pdb
