@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.OleDb;
 using System.IO.Ports;
 using System.Windows.Forms;
 
@@ -13,7 +15,8 @@ namespace SerialPortUsing {
 		    gb_users.Location = gb_sys.Location;
 		    gb_users.Size = gb_sys.Size;
             openFileDialog1.Filter = "accdb files (*.accdb)|*.accdb|All files (*.*)|*.*";//Маска OpenFileDialog
-
+			
+			
 			MakeGroupBoxesUp();
 		}
 
@@ -30,6 +33,9 @@ namespace SerialPortUsing {
 			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.SystemUsers". При необходимости она может быть перемещена или удалена.
             this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+			
+
+			InitializeQueries();
 
             string[] ports = SerialPort.GetPortNames();
             foreach (string port in ports)
@@ -37,11 +43,14 @@ namespace SerialPortUsing {
                 cb_ComPort.Items.Add(port);
             }
             gb_users.BringToFront();
-            //// TODO: This line of code loads data into the 'aC_DataSet.Staff' table. You can move, or remove it, as needed.
-            //this.staffTableAdapter.Fill(this.aC_DataSet.Staff);
-            //// TODO: This line of code loads data into the 'aC_DataSet.SystemUsers' table. You can move, or remove it, as needed.
-            //this.systemUsersTableAdapter.Fill(this.aC_DataSet.SystemUsers);
 		}
+
+		private void InitializeQueries()
+		{
+			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
+			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("Update SystemUsers SET Uid = ?, userType = ?, login = ?, password = ? where Uid = ?;", systemUsersTableAdapter.Connection);
+		}
+
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -99,5 +108,65 @@ namespace SerialPortUsing {
             //MessageBox.Show(tv_navigation.SelectedNode.Text);
         }
 
+        private void b_addUser_Click(object sender, EventArgs e)
+        {
+			if (string.IsNullOrEmpty(tB_UID.Text) || string.IsNullOrEmpty(cB_userType.Text) 
+			|| string.IsNullOrEmpty(tB_login.Text) || string.IsNullOrEmpty(tB_password.Text))
+			{
+				MessageBox.Show("Лох, пидр, нет друзей!!!");
+				return;
+			}
+	        systemUsersTableAdapter.Insert(tB_UID.Text, cB_userType.Text, tB_login.Text, tB_password.Text);
+			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+	        //dgv_users.Rows.Add(tB_UID.Text, cB_userType.Text, tB_login.Text, tB_password.Text);
+        }
+
+		private void b_delUser_Click(object sender, EventArgs e)
+		{
+
+			var rez = MessageBox.Show(this, "Вы действительно хотите удалить " + dgv_users.SelectedRows.Count +" записей?", "Подтверждение", MessageBoxButtons.OKCancel);
+			if(rez==DialogResult.Cancel)return;
+
+			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Open();
+			foreach (DataGridViewRow r in dgv_users.SelectedRows)
+			{
+				string test = r.Cells[0].Value.ToString();
+				systemUsersTableAdapter.Adapter.DeleteCommand.Parameters.Add(new OleDbParameter("par0", test));
+				systemUsersTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+				systemUsersTableAdapter.Adapter.DeleteCommand.Parameters.Clear();
+			}
+			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Close();
+			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+		}
+
+
+
+		private void dgv_users_CellDoubleClick(object sender, DataGridViewCellEventArgs e){
+			tB_UID.Text = dgv_users.SelectedRows[0].Cells[0].Value.ToString(); 
+			cB_userType.Text = dgv_users.SelectedRows[0].Cells[1].Value.ToString();
+			tB_login.Text = dgv_users.SelectedRows[0].Cells[2].Value.ToString();
+			tB_password.Text = dgv_users.SelectedRows[0].Cells[3].Value.ToString();
+		}
+
+		private void b_editUser_Click(object sender, EventArgs e)
+		{
+			if (dgv_users.SelectedRows.Count == 0 || dgv_users.SelectedRows.Count > 1){
+				MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
+				return;
+			}
+			systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("par0", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("Uid", tB_UID.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("userType", cB_userType.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("login", tB_login.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("password", tB_password.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("old5Uid", OleDbType.Char, 5, dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters[4].SourceVersion = DataRowVersion.Original;
+
+			systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
+
+			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Close();
+		}
 	}
 }
