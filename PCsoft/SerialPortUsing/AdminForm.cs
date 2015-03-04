@@ -2,6 +2,7 @@
 using System.Data.OleDb;
 using System.IO.Ports;
 using System.Windows.Forms;
+using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 
 namespace SerialPortUsing {
 	public partial class AdminForm : Form
@@ -165,22 +166,27 @@ namespace SerialPortUsing {
 			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
 
-        private void b_addStaff_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void b_choosePhoto_Click(object sender, EventArgs e)
         {
             openFileDialog2.ShowDialog();
-            tb_dbpath.Text = openFileDialog2.FileName;
+            tB_photoPath.Text = openFileDialog2.FileName;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void b_addStaff_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dateTimePicker1.Value.ToString());
+            if (string.IsNullOrEmpty(tB_staff.Text) || string.IsNullOrEmpty(cB_profession.Text)
+            || string.IsNullOrEmpty(tB_photoPath.Text) || string.IsNullOrEmpty(tB_UID_from_gb_staff.Text)
+            || string.IsNullOrEmpty(tB_number.Text) || string.IsNullOrEmpty(tB_multiPasport.Text)
+            || string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
+            || string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
+            {
+                MessageBox.Show("Лох, пидр, нет друзей!!!");
+                return;
+            }
+            staffTableAdapter.Insert(cB_profession.Text, tB_photoPath.Text, tB_UID_from_gb_staff.Text, Convert.ToDouble(tB_number.Text), Convert.ToDouble(tB_multiPasport.Text),
+             dateTimePicker1.Value, cB_workTime.Text, Convert.ToBoolean(cB_blocked.Text), cB_subdivision.Text, cB_UID_type_from_gb_staff.Text,
+             tB_staff.Text);
+            staffTableAdapter.Fill(access_control_in_OneWire.Staff);
         }
-
-
 	}
 }

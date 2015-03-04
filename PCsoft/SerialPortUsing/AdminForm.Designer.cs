@@ -75,6 +75,8 @@
             this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
             this.gb_staff = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cB_UID_type_from_gb_staff = new System.Windows.Forms.ComboBox();
+            this.cB_subdivision = new System.Windows.Forms.ComboBox();
             this.cB_blocked = new System.Windows.Forms.CheckBox();
             this.cB_workTime = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -113,8 +115,6 @@
             this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.cB_subdivision = new System.Windows.Forms.ComboBox();
-            this.cB_UID_type_from_gb_staff = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.gb_sys.SuspendLayout();
             this.gb_users.SuspendLayout();
@@ -572,6 +572,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "gB_staffEdit";
             // 
+            // cB_UID_type_from_gb_staff
+            // 
+            this.cB_UID_type_from_gb_staff.FormattingEnabled = true;
+            this.cB_UID_type_from_gb_staff.Items.AddRange(new object[] {
+            "Недельная",
+            "Годовая",
+            "2х годовая"});
+            this.cB_UID_type_from_gb_staff.Location = new System.Drawing.Point(411, 85);
+            this.cB_UID_type_from_gb_staff.Name = "cB_UID_type_from_gb_staff";
+            this.cB_UID_type_from_gb_staff.Size = new System.Drawing.Size(121, 21);
+            this.cB_UID_type_from_gb_staff.TabIndex = 36;
+            // 
+            // cB_subdivision
+            // 
+            this.cB_subdivision.FormattingEnabled = true;
+            this.cB_subdivision.Items.AddRange(new object[] {
+            "Начальника",
+            "Уборщики",
+            "Технический персонал",
+            "Научный персонал"});
+            this.cB_subdivision.Location = new System.Drawing.Point(272, 87);
+            this.cB_subdivision.Name = "cB_subdivision";
+            this.cB_subdivision.Size = new System.Drawing.Size(121, 21);
+            this.cB_subdivision.TabIndex = 35;
+            // 
             // cB_blocked
             // 
             this.cB_blocked.AutoSize = true;
@@ -783,6 +808,7 @@
             this.b_addStaff.TabIndex = 10;
             this.b_addStaff.Text = "Добавить";
             this.b_addStaff.UseVisualStyleBackColor = true;
+            this.b_addStaff.Click += new System.EventHandler(this.b_addStaff_Click);
             // 
             // dataGridView2
             // 
@@ -911,31 +937,6 @@
             // staffTableAdapter
             // 
             this.staffTableAdapter.ClearBeforeFill = true;
-            // 
-            // cB_subdivision
-            // 
-            this.cB_subdivision.FormattingEnabled = true;
-            this.cB_subdivision.Items.AddRange(new object[] {
-            "Начальника",
-            "Уборщики",
-            "Технический персонал",
-            "Научный персонал"});
-            this.cB_subdivision.Location = new System.Drawing.Point(272, 87);
-            this.cB_subdivision.Name = "cB_subdivision";
-            this.cB_subdivision.Size = new System.Drawing.Size(121, 21);
-            this.cB_subdivision.TabIndex = 35;
-            // 
-            // cB_UID_type_from_gb_staff
-            // 
-            this.cB_UID_type_from_gb_staff.FormattingEnabled = true;
-            this.cB_UID_type_from_gb_staff.Items.AddRange(new object[] {
-            "Недельная",
-            "Годовая",
-            "2х годовая"});
-            this.cB_UID_type_from_gb_staff.Location = new System.Drawing.Point(411, 85);
-            this.cB_UID_type_from_gb_staff.Name = "cB_UID_type_from_gb_staff";
-            this.cB_UID_type_from_gb_staff.Size = new System.Drawing.Size(121, 21);
-            this.cB_UID_type_from_gb_staff.TabIndex = 36;
             // 
             // AdminForm
             // 
