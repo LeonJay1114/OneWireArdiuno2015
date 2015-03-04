@@ -37,9 +37,7 @@ namespace SerialPortUsing {
 
 			InitializeQueries();
 
-            string[] ports = SerialPort.GetPortNames();
-            foreach (string port in ports)
-            {
+            foreach (string port in SerialPort.GetPortNames()){
                 cb_ComPort.Items.Add(port);
             }
             gb_users.BringToFront();
@@ -48,7 +46,7 @@ namespace SerialPortUsing {
 		private void InitializeQueries()
 		{
 			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
-			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("Update SystemUsers SET Uid = ?, userType = ?, login = ?, password = ? where Uid = ?;", systemUsersTableAdapter.Connection);
+			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 		}
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,18 +153,16 @@ namespace SerialPortUsing {
 				return;
 			}
 			systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("par0", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("Uid", tB_UID.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("userType", cB_userType.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("login", tB_login.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("password", tB_password.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("old5Uid", OleDbType.Char, 5, dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters[4].SourceVersion = DataRowVersion.Original;
-
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
 			systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
-
 			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Close();
+
+			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
 	}
 }
