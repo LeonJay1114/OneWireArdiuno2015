@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Data.OleDb;
 using System.IO.Ports;
 using System.Windows.Forms;
@@ -15,8 +14,9 @@ namespace SerialPortUsing {
 		    gb_users.Location = gb_sys.Location;
 		    gb_users.Size = gb_sys.Size;
             openFileDialog1.Filter = "accdb files (*.accdb)|*.accdb|All files (*.*)|*.*";//Маска OpenFileDialog
-			
-			
+		    openFileDialog2.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+
+
 			MakeGroupBoxesUp();
 		}
 
@@ -169,5 +169,18 @@ namespace SerialPortUsing {
         {
 
         }
+
+        private void b_choosePhoto_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+            tb_dbpath.Text = openFileDialog2.FileName;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(dateTimePicker1.Value.ToString());
+        }
+
+
 	}
 }
