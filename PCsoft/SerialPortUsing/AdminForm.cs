@@ -40,7 +40,7 @@ namespace SerialPortUsing {
             foreach (string port in SerialPort.GetPortNames()){
                 cb_ComPort.Items.Add(port);
             }
-            gb_staff.BringToFront();
+            gb_users.BringToFront();
 		}
 
 		private void InitializeQueries()
@@ -164,10 +164,5 @@ namespace SerialPortUsing {
 
 			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
-
-        private void b_addStaff_Click(object sender, EventArgs e)
-        {
-
-        }
 	}
 }
