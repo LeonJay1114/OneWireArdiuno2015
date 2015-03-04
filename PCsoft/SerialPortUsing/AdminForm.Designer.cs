@@ -25,13 +25,13 @@
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Настройки");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Пользователи");
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("Сотрудники");
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode49,
-            treeNode50,
-            treeNode51});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Настройки");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Пользователи");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Сотрудники");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,8 +75,10 @@
             this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
             this.gb_staff = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cB_blocked = new System.Windows.Forms.CheckBox();
+            this.cB_workTime = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.b_choosePhoto = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -87,9 +89,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tB_number = new System.Windows.Forms.TextBox();
+            this.tB_UID_from_gb_staff = new System.Windows.Forms.TextBox();
+            this.tB_multiPasport = new System.Windows.Forms.TextBox();
             this.tB_photoPath = new System.Windows.Forms.TextBox();
             this.tB_staff = new System.Windows.Forms.TextBox();
             this.cB_profession = new System.Windows.Forms.ComboBox();
@@ -111,10 +113,8 @@
             this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cB_subdivision = new System.Windows.Forms.ComboBox();
+            this.cB_UID_type_from_gb_staff = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.gb_sys.SuspendLayout();
             this.gb_users.SuspendLayout();
@@ -504,17 +504,17 @@
             // 
             this.tv_navigation.Location = new System.Drawing.Point(12, 27);
             this.tv_navigation.Name = "tv_navigation";
-            treeNode49.Name = "Option";
-            treeNode49.Text = "Настройки";
-            treeNode50.Name = "addUser";
-            treeNode50.Text = "Пользователи";
-            treeNode51.Name = "staff";
-            treeNode51.Text = "Сотрудники";
-            treeNode52.BackColor = System.Drawing.Color.Transparent;
-            treeNode52.Name = "Узел0";
-            treeNode52.Text = "Администрирование";
+            treeNode1.Name = "Option";
+            treeNode1.Text = "Настройки";
+            treeNode2.Name = "addUser";
+            treeNode2.Text = "Пользователи";
+            treeNode3.Name = "staff";
+            treeNode3.Text = "Сотрудники";
+            treeNode4.BackColor = System.Drawing.Color.Transparent;
+            treeNode4.Name = "Узел0";
+            treeNode4.Text = "Администрирование";
             this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode52});
+            treeNode4});
             this.tv_navigation.Size = new System.Drawing.Size(132, 547);
             this.tv_navigation.TabIndex = 3;
             this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -540,12 +540,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.cB_UID_type_from_gb_staff);
+            this.groupBox2.Controls.Add(this.cB_subdivision);
+            this.groupBox2.Controls.Add(this.cB_blocked);
+            this.groupBox2.Controls.Add(this.cB_workTime);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.b_choosePhoto);
-            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
@@ -556,9 +556,9 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.tB_number);
+            this.groupBox2.Controls.Add(this.tB_UID_from_gb_staff);
+            this.groupBox2.Controls.Add(this.tB_multiPasport);
             this.groupBox2.Controls.Add(this.tB_photoPath);
             this.groupBox2.Controls.Add(this.tB_staff);
             this.groupBox2.Controls.Add(this.cB_profession);
@@ -572,6 +572,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "gB_staffEdit";
             // 
+            // cB_blocked
+            // 
+            this.cB_blocked.AutoSize = true;
+            this.cB_blocked.Location = new System.Drawing.Point(167, 87);
+            this.cB_blocked.Name = "cB_blocked";
+            this.cB_blocked.Size = new System.Drawing.Size(99, 17);
+            this.cB_blocked.TabIndex = 34;
+            this.cB_blocked.Text = "Заблокирован";
+            this.cB_blocked.UseVisualStyleBackColor = true;
+            // 
+            // cB_workTime
+            // 
+            this.cB_workTime.FormattingEnabled = true;
+            this.cB_workTime.Items.AddRange(new object[] {
+            "8.00-18.00",
+            "9.00-19.00",
+            "13.00-16.00"});
+            this.cB_workTime.Location = new System.Drawing.Point(19, 87);
+            this.cB_workTime.Name = "cB_workTime";
+            this.cB_workTime.Size = new System.Drawing.Size(121, 21);
+            this.cB_workTime.TabIndex = 33;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(726, 34);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(98, 20);
+            this.dateTimePicker1.TabIndex = 31;
+            this.dateTimePicker1.Value = new System.DateTime(2015, 3, 4, 0, 0, 0, 0);
+            // 
             // b_choosePhoto
             // 
             this.b_choosePhoto.Location = new System.Drawing.Point(357, 30);
@@ -582,23 +613,14 @@
             this.b_choosePhoto.UseVisualStyleBackColor = true;
             this.b_choosePhoto.Click += new System.EventHandler(this.b_choosePhoto_Click);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(495, 87);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 13);
-            this.label18.TabIndex = 29;
-            this.label18.Text = "label18";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(387, 77);
+            this.label17.Location = new System.Drawing.Point(441, 69);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 13);
+            this.label17.Size = new System.Drawing.Size(49, 13);
             this.label17.TabIndex = 28;
-            this.label17.Text = "label17";
+            this.label17.Text = "UID type";
             // 
             // label16
             // 
@@ -612,11 +634,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(295, 71);
+            this.label15.Location = new System.Drawing.Point(278, 71);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.Size = new System.Drawing.Size(87, 13);
             this.label15.TabIndex = 26;
-            this.label15.Text = "label15";
+            this.label15.Text = "Подразделение";
             // 
             // label14
             // 
@@ -681,26 +703,26 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Сотрудник";
             // 
-            // textBox5
+            // tB_number
             // 
-            this.textBox5.Location = new System.Drawing.Point(505, 34);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 18;
+            this.tB_number.Location = new System.Drawing.Point(505, 34);
+            this.tB_number.Name = "tB_number";
+            this.tB_number.Size = new System.Drawing.Size(100, 20);
+            this.tB_number.TabIndex = 18;
             // 
-            // textBox4
+            // tB_UID_from_gb_staff
             // 
-            this.textBox4.Location = new System.Drawing.Point(390, 33);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 17;
+            this.tB_UID_from_gb_staff.Location = new System.Drawing.Point(390, 33);
+            this.tB_UID_from_gb_staff.Name = "tB_UID_from_gb_staff";
+            this.tB_UID_from_gb_staff.Size = new System.Drawing.Size(100, 20);
+            this.tB_UID_from_gb_staff.TabIndex = 17;
             // 
-            // textBox3
+            // tB_multiPasport
             // 
-            this.textBox3.Location = new System.Drawing.Point(611, 34);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 16;
+            this.tB_multiPasport.Location = new System.Drawing.Point(611, 34);
+            this.tB_multiPasport.Name = "tB_multiPasport";
+            this.tB_multiPasport.Size = new System.Drawing.Size(100, 20);
+            this.tB_multiPasport.TabIndex = 16;
             // 
             // tB_photoPath
             // 
@@ -890,46 +912,30 @@
             // 
             this.staffTableAdapter.ClearBeforeFill = true;
             // 
-            // dateTimePicker1
+            // cB_subdivision
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(726, 34);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePicker1.TabIndex = 31;
-            this.dateTimePicker1.Value = new System.DateTime(2015, 3, 4, 0, 0, 0, 0);
+            this.cB_subdivision.FormattingEnabled = true;
+            this.cB_subdivision.Items.AddRange(new object[] {
+            "Начальника",
+            "Уборщики",
+            "Технический персонал",
+            "Научный персонал"});
+            this.cB_subdivision.Location = new System.Drawing.Point(272, 87);
+            this.cB_subdivision.Name = "cB_subdivision";
+            this.cB_subdivision.Size = new System.Drawing.Size(121, 21);
+            this.cB_subdivision.TabIndex = 35;
             // 
-            // button1
+            // cB_UID_type_from_gb_staff
             // 
-            this.button1.Location = new System.Drawing.Point(514, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 28);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Show date value";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "8.00-18.00",
-            "9.00-19.00",
-            "13.00-16.00"});
-            this.comboBox1.Location = new System.Drawing.Point(19, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 33;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(167, 87);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(99, 17);
-            this.checkBox1.TabIndex = 34;
-            this.checkBox1.Text = "Заблокирован";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cB_UID_type_from_gb_staff.FormattingEnabled = true;
+            this.cB_UID_type_from_gb_staff.Items.AddRange(new object[] {
+            "Недельная",
+            "Годовая",
+            "2х годовая"});
+            this.cB_UID_type_from_gb_staff.Location = new System.Drawing.Point(411, 85);
+            this.cB_UID_type_from_gb_staff.Name = "cB_UID_type_from_gb_staff";
+            this.cB_UID_type_from_gb_staff.Size = new System.Drawing.Size(121, 21);
+            this.cB_UID_type_from_gb_staff.TabIndex = 36;
             // 
             // AdminForm
             // 
@@ -1027,7 +1033,6 @@
         private System.Windows.Forms.Button b_delStaff;
         private System.Windows.Forms.Button b_addStaff;
         private System.Windows.Forms.Button b_choosePhoto;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -1038,9 +1043,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tB_number;
+        private System.Windows.Forms.TextBox tB_UID_from_gb_staff;
+        private System.Windows.Forms.TextBox tB_multiPasport;
         private System.Windows.Forms.TextBox tB_photoPath;
         private System.Windows.Forms.TextBox tB_staff;
         private System.Windows.Forms.DataGridViewTextBoxColumn сотрудникDataGridViewTextBoxColumn;
@@ -1056,8 +1061,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn типUIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox cB_workTime;
+        private System.Windows.Forms.CheckBox cB_blocked;
+        private System.Windows.Forms.ComboBox cB_UID_type_from_gb_staff;
+        private System.Windows.Forms.ComboBox cB_subdivision;
 	}
 }
