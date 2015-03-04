@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.GB_Login = new System.Windows.Forms.GroupBox();
 			this.Btn_Enter = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tB_username = new System.Windows.Forms.TextBox();
 			this.tB_password = new System.Windows.Forms.TextBox();
 			this.CheckConnection = new System.Windows.Forms.Label();
-			this.GB_Login = new System.Windows.Forms.GroupBox();
 			this.GB_Login.SuspendLayout();
 			this.SuspendLayout();
 			// 
+			// GB_Login
+			// 
+			this.GB_Login.Controls.Add(this.CheckConnection);
+			this.GB_Login.Controls.Add(this.tB_password);
+			this.GB_Login.Controls.Add(this.tB_username);
+			this.GB_Login.Controls.Add(this.label2);
+			this.GB_Login.Controls.Add(this.label1);
+			this.GB_Login.Controls.Add(this.Btn_Enter);
+			this.GB_Login.Location = new System.Drawing.Point(14, 2);
+			this.GB_Login.Name = "GB_Login";
+			this.GB_Login.Size = new System.Drawing.Size(144, 166);
+			this.GB_Login.TabIndex = 6;
+			this.GB_Login.TabStop = false;
+			// 
 			// Btn_Enter
 			// 
-			this.Btn_Enter.Location = new System.Drawing.Point(37, 134);
+			this.Btn_Enter.Location = new System.Drawing.Point(37, 135);
 			this.Btn_Enter.Name = "Btn_Enter";
 			this.Btn_Enter.Size = new System.Drawing.Size(75, 23);
 			this.Btn_Enter.TabIndex = 0;
@@ -51,7 +65,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(45, 7);
+			this.label1.Location = new System.Drawing.Point(43, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(55, 13);
 			this.label1.TabIndex = 1;
@@ -90,21 +104,6 @@
 			this.CheckConnection.Size = new System.Drawing.Size(0, 13);
 			this.CheckConnection.TabIndex = 5;
 			// 
-			// GB_Login
-			// 
-			this.GB_Login.Controls.Add(this.CheckConnection);
-			this.GB_Login.Controls.Add(this.tB_password);
-			this.GB_Login.Controls.Add(this.tB_username);
-			this.GB_Login.Controls.Add(this.label2);
-			this.GB_Login.Controls.Add(this.label1);
-			this.GB_Login.Controls.Add(this.Btn_Enter);
-			this.GB_Login.Location = new System.Drawing.Point(14, 2);
-			this.GB_Login.Name = "GB_Login";
-			this.GB_Login.Size = new System.Drawing.Size(144, 166);
-			this.GB_Login.TabIndex = 6;
-			this.GB_Login.TabStop = false;
-			this.GB_Login.Text = "Login";
-			// 
 			// Authorisation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,7 +113,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Authorisation";
-			this.Text = "Authorisation";
+			this.Text = "Authentication";
 			this.Load += new System.EventHandler(this.Autorization_Load);
 			this.GB_Login.ResumeLayout(false);
 			this.GB_Login.PerformLayout();
@@ -124,12 +123,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Btn_Enter;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tB_username;
-        private System.Windows.Forms.TextBox tB_password;
-        private System.Windows.Forms.Label CheckConnection;
-        private System.Windows.Forms.GroupBox GB_Login;
-    }
+		private System.Windows.Forms.GroupBox GB_Login;
+		private System.Windows.Forms.Label CheckConnection;
+		private System.Windows.Forms.TextBox tB_password;
+		private System.Windows.Forms.TextBox tB_username;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button Btn_Enter;
+
+	}
 }

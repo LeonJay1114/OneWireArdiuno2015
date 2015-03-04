@@ -78,6 +78,8 @@
 			this.Controls.Add(this.pic_face);
 			this.Name = "SecurityForm";
 			this.Text = "SecurityForm";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
+			this.Load += new System.EventHandler(this.SecurityForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

@@ -21,7 +21,7 @@ namespace SerialPortUsing {
 			_sysUsersTableAdapter = new SystemUsersTableAdapter(); // Инициализируем адаптер таблицы
 			_sysUsersTableAdapter.ClearBeforeFill = true; // Говорим нашему адаптеру таблицы, чтобы очищал таблицу перед заполнением
 
-			_sysUsersTableAdapter.Fill(_table); // Дастаём таблицу из базы и кладём к в свой адаптер базы
+			_sysUsersTableAdapter.Fill(_table); // Дастаём таблицу из базы и кладём в свой адаптер базы
 		}
 
 		#region TestDB connection
@@ -49,7 +49,7 @@ namespace SerialPortUsing {
 				Login(searchResult[0][1].ToString());
 			}
 			else if (count > 1) {
-				MessageBox.Show(this, "Дубликаты логина и пароля, блядь!", "ОХУЕЛ?!");//проверка БД на наличие у разных пользователей одинаковой пары логин пароль
+				MessageBox.Show(this, "Дубликаты логина и пароля, блядь!", "ОХУЕЛ?!");//проверка БД на наличие у разных пользователей одинаковой пары логин-пароль
 			}
 			else {
 				MessageBox.Show(this, "Введенная пара логин-пароль отсутствует в базе данных. Обратитесь к системному администратору.", "Ошибка");
@@ -59,19 +59,25 @@ namespace SerialPortUsing {
 		private void Login(string uDuty) {
 			Form form;
 			Hide();
-			switch(uDuty) {
-				case "Admin":
-					form = new AdminForm();
-					form.ShowDialog();
-					break;
-				case "Boss":
-					form = new BossForm();
-					form.ShowDialog();
-					break;
-				case "Security":
-					form = new SecurityForm();
-					form.ShowDialog();
-					break;
+
+			try{
+				switch(uDuty) {
+					case "Admin":
+						form = new AdminForm();
+						form.ShowDialog();
+						break;
+					case "Boss":
+						form = new BossForm();
+						form.ShowDialog();
+						break;
+					case "Security":
+						form = new SecurityForm();
+						form.ShowDialog();
+						break;
+				}
+			}
+			catch(Exception){
+				MessageBox.Show(this, "Имела место серьёзная ошибка. Необходимо участие администратора.", "Ошибка");
 			}
 			Show();
 		}
