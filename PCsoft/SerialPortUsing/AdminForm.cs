@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlTypes;
 using System.IO.Ports;
 using System.Windows.Forms;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
+using SerialPortUsing.Properties;
 
 namespace SerialPortUsing {
 	public partial class AdminForm : Form
@@ -48,6 +51,7 @@ namespace SerialPortUsing {
 		{
 			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
 			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
+			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 		}
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,7 +165,7 @@ namespace SerialPortUsing {
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
 			systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
-			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Close();
+			systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
 
 			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
@@ -183,10 +187,57 @@ namespace SerialPortUsing {
                 MessageBox.Show("Лох, пидр, нет друзей!!!");
                 return;
             }
-            staffTableAdapter.Insert(cB_profession.Text, tB_photoPath.Text, tB_UID_from_gb_staff.Text, Convert.ToDouble(tB_number.Text), Convert.ToDouble(tB_multiPasport.Text),
-             dateTimePicker1.Value, cB_workTime.Text, Convert.ToBoolean(cB_blocked.Text), cB_subdivision.Text, cB_UID_type_from_gb_staff.Text,
-             tB_staff.Text);
+			////staffTableAdapter.Insert(
+			//cB_profession.Text, 
+			//tB_photoPath.Text, 
+			//tB_UID_from_gb_staff.Text, 
+			//Convert.ToDouble(tB_number.Text), 
+			//Convert.ToDouble(tB_multiPasport.Text),
+			// DateTime.Parse(dateTimePicker1.Value.ToString("yy-mm-dd")), 
+			//cB_workTime.Text, 
+			//Convert.ToChar(cB_blocked.Checked), 
+			//cB_subdivision.Text, 
+			//cB_UID_type_from_gb_staff.Text,
+			//// tB_staff.Text);
+			////System.Data.SqlTypes.SqlDateTime
+			staffTableAdapter.Adapter.InsertCommand.Connection.Open();
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Clear();
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Сотр", tB_staff.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Долж", cB_profession.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Юид", tB_UID_from_gb_staff.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Фотка", tB_photoPath.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Табель", tB_number.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("НомерПасп", tB_multiPasport.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("ДатаН", dateTimePicker1.Value.ToString("yy-MM-dd")));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Графк", cB_workTime.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Забл", cB_blocked.Checked?"1":"0"));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Подразд", cB_subdivision.Text));
+			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("ТипЮид", cB_UID_type_from_gb_staff.Text));
+			//(Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)
+			staffTableAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+			staffTableAdapter.Adapter.InsertCommand.Connection.Close();
+
             staffTableAdapter.Fill(access_control_in_OneWire.Staff);
+        }
+
+        private void b_saveConfig_Click_1(object sender, EventArgs e){
+            Settings.Default.COMName = cb_ComPort.Text;
+            Settings.Default.BaudRate = Convert.ToInt32(cb_speed.Text);
+            Settings.Default.Save();
+        }
+
+        private void dgv_staff_CellDoubleClick(object sender, DataGridViewCellEventArgs e){
+            tB_staff.Text =						dgv_staff.SelectedRows[0].Cells[0].Value.ToString(); 
+			cB_profession.Text =				dgv_staff.SelectedRows[0].Cells[1].Value.ToString();
+			tB_photoPath.Text =					dgv_staff.SelectedRows[0].Cells[2].Value.ToString();
+			tB_UID_from_gb_staff.Text =			dgv_staff.SelectedRows[0].Cells[3].Value.ToString();
+            tB_number.Text =					dgv_staff.SelectedRows[0].Cells[4].Value.ToString();
+            tB_multiPasport.Text =				dgv_staff.SelectedRows[0].Cells[5].Value.ToString();
+            dateTimePicker1.Text =				dgv_staff.SelectedRows[0].Cells[6].Value.ToString();
+            cB_workTime.Text =					dgv_staff.SelectedRows[0].Cells[7].Value.ToString();
+			cB_blocked.Checked =				Convert.ToBoolean(dgv_staff.SelectedRows[0].Cells[8].Value);
+            cB_subdivision.Text =				dgv_staff.SelectedRows[0].Cells[9].Value.ToString();
+			cB_UID_type_from_gb_staff.Text =	dgv_staff.SelectedRows[0].Cells[10].Value.ToString();
         }
 	}
 }

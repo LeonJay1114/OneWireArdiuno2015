@@ -84,6 +84,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Access_control_in_OneWire.cs">
+      <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Access_control_in_OneWire.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

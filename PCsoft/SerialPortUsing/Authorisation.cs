@@ -60,7 +60,7 @@ namespace SerialPortUsing {
 			Form form;
 			Hide();
 
-			try{
+			//try{
 				switch(uDuty) {
 					case "Admin":
 						form = new AdminForm();
@@ -75,10 +75,10 @@ namespace SerialPortUsing {
 						form.ShowDialog();
 						break;
 				}
-			}
-			catch(Exception){
-				MessageBox.Show(this, "Имела место серьёзная ошибка. Необходимо участие администратора.", "Ошибка");
-			}
+			//}
+			//catch(Exception){
+			//	MessageBox.Show(this, "Имела место серьёзная ошибка. Необходимо участие администратора.", "Ошибка");
+			//}
 			Show();
 		}
 
