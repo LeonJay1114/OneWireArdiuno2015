@@ -25,15 +25,15 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Настройки");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Пользователи");
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Сотрудники");
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Журнал пропуска");
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Настройки");
+			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Пользователи");
+			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Сотрудники");
+			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Журнал пропуска");
+			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14});
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -221,7 +221,7 @@
 			this.gb_sys.Controls.Add(this.label2);
 			this.gb_sys.Controls.Add(this.label1);
 			this.gb_sys.Controls.Add(this.cb_speed);
-			this.gb_sys.Location = new System.Drawing.Point(162, 518);
+			this.gb_sys.Location = new System.Drawing.Point(150, 383);
 			this.gb_sys.Name = "gb_sys";
 			this.gb_sys.Size = new System.Drawing.Size(573, 190);
 			this.gb_sys.TabIndex = 2;
@@ -507,7 +507,7 @@
 			// 
 			this.gb_staff.Controls.Add(this.dgv_staff);
 			this.gb_staff.Controls.Add(this.groupBox2);
-			this.gb_staff.Location = new System.Drawing.Point(150, 30);
+			this.gb_staff.Location = new System.Drawing.Point(150, 27);
 			this.gb_staff.Name = "gb_staff";
 			this.gb_staff.Size = new System.Drawing.Size(1050, 482);
 			this.gb_staff.TabIndex = 4;
@@ -675,6 +675,7 @@
 			// 
 			// cB_UID_type_from_gb_staff
 			// 
+			this.cB_UID_type_from_gb_staff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cB_UID_type_from_gb_staff.FormattingEnabled = true;
 			this.cB_UID_type_from_gb_staff.Items.AddRange(new object[] {
             "Недельная",
@@ -687,6 +688,7 @@
 			// 
 			// cB_subdivision
 			// 
+			this.cB_subdivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cB_subdivision.FormattingEnabled = true;
 			this.cB_subdivision.Items.AddRange(new object[] {
             "Начальника",
@@ -710,6 +712,7 @@
 			// 
 			// cB_workTime
 			// 
+			this.cB_workTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cB_workTime.FormattingEnabled = true;
 			this.cB_workTime.Items.AddRange(new object[] {
             "8.00-18.00",
@@ -915,19 +918,19 @@
 			// 
 			this.tv_navigation.Location = new System.Drawing.Point(12, 27);
 			this.tv_navigation.Name = "tv_navigation";
-			treeNode1.Name = "Option";
-			treeNode1.Text = "Настройки";
-			treeNode2.Name = "addUser";
-			treeNode2.Text = "Пользователи";
-			treeNode3.Name = "staff";
-			treeNode3.Text = "Сотрудники";
-			treeNode4.Name = "Узел0";
-			treeNode4.Text = "Журнал пропуска";
-			treeNode5.BackColor = System.Drawing.Color.Transparent;
-			treeNode5.Name = "Узел0";
-			treeNode5.Text = "Администрирование";
+			treeNode11.Name = "Option";
+			treeNode11.Text = "Настройки";
+			treeNode12.Name = "addUser";
+			treeNode12.Text = "Пользователи";
+			treeNode13.Name = "staff";
+			treeNode13.Text = "Сотрудники";
+			treeNode14.Name = "Узел0";
+			treeNode14.Text = "Журнал пропуска";
+			treeNode15.BackColor = System.Drawing.Color.Transparent;
+			treeNode15.Name = "Узел0";
+			treeNode15.Text = "Администрирование";
 			this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode15});
 			this.tv_navigation.Size = new System.Drawing.Size(132, 547);
 			this.tv_navigation.TabIndex = 3;
 			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
