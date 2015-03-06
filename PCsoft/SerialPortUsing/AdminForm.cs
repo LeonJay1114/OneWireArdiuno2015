@@ -10,8 +10,10 @@ using SerialPortUsing.Properties;
 namespace SerialPortUsing {
 	public partial class AdminForm : Form
 	{
-	    private const int GROUP_BOXES_PADDING = 10;
-		private const int GROUP_BOXES_TOP = 21;
+	    private const int GROUP_BOXES_PADDING = 5;
+		private const int GROUP_BOXES_TOP = 25;
+		private const int NAVIGATION_PANEL_WIDTH = 132;
+		private const int NAVIGATION_PANEL_LEFT = 12;
 
 		public AdminForm() {
 			InitializeComponent();
@@ -25,9 +27,9 @@ namespace SerialPortUsing {
 		}
 
 		private void MakeGroupBoxesUp() {
-			gb_staff.Left = gb_sys.Left = gb_users.Left = tv_navigation.Width + GROUP_BOXES_PADDING + tv_navigation.Left;
+			gb_staff.Left = gb_sys.Left = tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
 			gb_staff.Top = gb_sys.Top = gb_users.Top = GROUP_BOXES_TOP;
-			gb_staff.Width = gb_sys.Width = gb_users.Width = this.Width - gb_staff.Left - GROUP_BOXES_PADDING*2;
+			gb_staff.Width = gb_sys.Width = this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
 			gb_staff.Height = gb_sys.Height = gb_users.Height = this.Height - 72;
 		}
 
@@ -67,18 +69,20 @@ namespace SerialPortUsing {
 	    {
 	        if (open)
 	        {
-                tv_navigation.Width = tv_navigation.Width;
+                tv_navigation.Width = NAVIGATION_PANEL_WIDTH;
+				tv_navigation.Left = NAVIGATION_PANEL_LEFT;
 	        }
 	        else
 	        {
+				tv_navigation.Left = 0;
                 tv_navigation.Width = 0;
 	        }
 
             // TODO: do this for all groupboxes!
-            gb_sys.Left = tv_navigation.Width + GROUP_BOXES_PADDING;
+			 gb_staff.Left = gb_sys.Left = gb_users.Left = tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
 
             // TODO: do this for all groupboxes!
-            gb_sys.Width = this.Width - tv_navigation.Width - GROUP_BOXES_PADDING*2 - tv_navigation.Left;
+			 gb_staff.Width = gb_sys.Width = gb_users.Width = this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
 
 	    }
 

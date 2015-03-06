@@ -509,7 +509,7 @@
 			this.gb_staff.Controls.Add(this.groupBox2);
 			this.gb_staff.Location = new System.Drawing.Point(150, 30);
 			this.gb_staff.Name = "gb_staff";
-			this.gb_staff.Size = new System.Drawing.Size(968, 482);
+			this.gb_staff.Size = new System.Drawing.Size(1050, 482);
 			this.gb_staff.TabIndex = 4;
 			this.gb_staff.TabStop = false;
 			this.gb_staff.Text = "gb_staff";
@@ -542,7 +542,7 @@
 			this.dgv_staff.Name = "dgv_staff";
 			this.dgv_staff.ReadOnly = true;
 			this.dgv_staff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgv_staff.Size = new System.Drawing.Size(952, 243);
+			this.dgv_staff.Size = new System.Drawing.Size(1032, 243);
 			this.dgv_staff.TabIndex = 0;
 			this.dgv_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_staff_CellDoubleClick);
 			// 
