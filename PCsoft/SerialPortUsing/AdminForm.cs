@@ -54,6 +54,7 @@ namespace SerialPortUsing {
 			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
 			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
+			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 		}
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -243,5 +244,59 @@ namespace SerialPortUsing {
             cB_subdivision.Text =				dgv_staff.SelectedRows[0].Cells[9].Value.ToString();
 			cB_UID_type_from_gb_staff.Text =	dgv_staff.SelectedRows[0].Cells[10].Value.ToString();
         }
+
+		private void b_delStaff_Click(object sender, EventArgs e)
+		{
+			var rez = MessageBox.Show(this, "Вы действительно хотите удалить " + dgv_staff.SelectedRows.Count + " записей?", "Подтверждение", MessageBoxButtons.OKCancel);
+			if (rez == DialogResult.Cancel) return;
+
+			staffTableAdapter.Adapter.DeleteCommand.Connection.Open();
+			foreach (DataGridViewRow m in dgv_staff.SelectedRows)
+			{
+				string test = m.Cells[4].Value.ToString();
+				staffTableAdapter.Adapter.DeleteCommand.Parameters.Add(new OleDbParameter("par1", test));
+				staffTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+				staffTableAdapter.Adapter.DeleteCommand.Parameters.Clear();
+			}
+			staffTableAdapter.Adapter.DeleteCommand.Connection.Close();
+			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
+		}
+
+		private void b_edditStaff_Click(object sender, EventArgs e)
+		{
+		if (dgv_staff.SelectedRows.Count == 0 || dgv_staff.SelectedRows.Count > 1)
+		{
+			MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
+			return;
+		}
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
+
+			//this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+
+			//if (dgv_users.SelectedRows.Count == 0 || dgv_users.SelectedRows.Count > 1)
+			//{
+			//	MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
+			//	return;
+			//}
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
+			//systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
+			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
+
+			//this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+		}
 	}
 }

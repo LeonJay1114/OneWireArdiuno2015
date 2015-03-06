@@ -25,15 +25,15 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Настройки");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Пользователи");
-			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Сотрудники");
-			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Журнал пропуска");
-			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Настройки");
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Пользователи");
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Сотрудники");
+			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Журнал пропуска");
+			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -894,6 +894,7 @@
 			this.b_edditStaff.TabIndex = 12;
 			this.b_edditStaff.Text = "Редактировать";
 			this.b_edditStaff.UseVisualStyleBackColor = true;
+			this.b_edditStaff.Click += new System.EventHandler(this.b_edditStaff_Click);
 			// 
 			// b_delStaff
 			// 
@@ -903,6 +904,7 @@
 			this.b_delStaff.TabIndex = 11;
 			this.b_delStaff.Text = "Удалить";
 			this.b_delStaff.UseVisualStyleBackColor = true;
+			this.b_delStaff.Click += new System.EventHandler(this.b_delStaff_Click);
 			// 
 			// b_addStaff
 			// 
@@ -918,19 +920,19 @@
 			// 
 			this.tv_navigation.Location = new System.Drawing.Point(12, 27);
 			this.tv_navigation.Name = "tv_navigation";
-			treeNode11.Name = "Option";
-			treeNode11.Text = "Настройки";
-			treeNode12.Name = "addUser";
-			treeNode12.Text = "Пользователи";
-			treeNode13.Name = "staff";
-			treeNode13.Text = "Сотрудники";
-			treeNode14.Name = "Узел0";
-			treeNode14.Text = "Журнал пропуска";
-			treeNode15.BackColor = System.Drawing.Color.Transparent;
-			treeNode15.Name = "Узел0";
-			treeNode15.Text = "Администрирование";
+			treeNode6.Name = "Option";
+			treeNode6.Text = "Настройки";
+			treeNode7.Name = "addUser";
+			treeNode7.Text = "Пользователи";
+			treeNode8.Name = "staff";
+			treeNode8.Text = "Сотрудники";
+			treeNode9.Name = "Узел0";
+			treeNode9.Text = "Журнал пропуска";
+			treeNode10.BackColor = System.Drawing.Color.Transparent;
+			treeNode10.Name = "Узел0";
+			treeNode10.Text = "Администрирование";
 			this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15});
+            treeNode10});
 			this.tv_navigation.Size = new System.Drawing.Size(132, 547);
 			this.tv_navigation.TabIndex = 3;
 			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
