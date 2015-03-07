@@ -117,6 +117,26 @@
 			this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
 			this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
 			this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
+			this.gB_event = new System.Windows.Forms.GroupBox();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.сотрудникDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.должностьDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.uIDDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.фотоDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.enterTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.exitTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.табельныйНомерDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.номерПаспортаDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.графикDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.подразделениеDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.типUIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.eventLogBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+			this.eventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.eventLogBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.eventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.EventLogAdapter();
+			this.eventLogBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+			this.b_readUIDStaff = new System.Windows.Forms.Button();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.gb_sys.SuspendLayout();
 			this.gb_users.SuspendLayout();
@@ -128,6 +148,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgv_staff)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
 			this.groupBox2.SuspendLayout();
+			this.gB_event.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -223,7 +249,7 @@
 			this.gb_sys.Controls.Add(this.cb_speed);
 			this.gb_sys.Location = new System.Drawing.Point(150, 383);
 			this.gb_sys.Name = "gb_sys";
-			this.gb_sys.Size = new System.Drawing.Size(573, 190);
+			this.gb_sys.Size = new System.Drawing.Size(260, 158);
 			this.gb_sys.TabIndex = 2;
 			this.gb_sys.TabStop = false;
 			this.gb_sys.Text = "gb_sys";
@@ -312,9 +338,9 @@
 			// 
 			this.gb_users.Controls.Add(this.groupBox1);
 			this.gb_users.Controls.Add(this.dgv_users);
-			this.gb_users.Location = new System.Drawing.Point(965, 531);
+			this.gb_users.Location = new System.Drawing.Point(729, 396);
 			this.gb_users.Name = "gb_users";
-			this.gb_users.Size = new System.Drawing.Size(294, 291);
+			this.gb_users.Size = new System.Drawing.Size(372, 291);
 			this.gb_users.TabIndex = 3;
 			this.gb_users.TabStop = false;
 			this.gb_users.Text = "gb_users";
@@ -407,6 +433,7 @@
 			// 
 			// cB_userType
 			// 
+			this.cB_userType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cB_userType.FormattingEnabled = true;
 			this.cB_userType.Items.AddRange(new object[] {
             "Boss",
@@ -507,7 +534,7 @@
 			// 
 			this.gb_staff.Controls.Add(this.dgv_staff);
 			this.gb_staff.Controls.Add(this.groupBox2);
-			this.gb_staff.Location = new System.Drawing.Point(150, 27);
+			this.gb_staff.Location = new System.Drawing.Point(156, 36);
 			this.gb_staff.Name = "gb_staff";
 			this.gb_staff.Size = new System.Drawing.Size(1050, 482);
 			this.gb_staff.TabIndex = 4;
@@ -641,6 +668,7 @@
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.b_readUIDStaff);
 			this.groupBox2.Controls.Add(this.cB_UID_type_from_gb_staff);
 			this.groupBox2.Controls.Add(this.cB_subdivision);
 			this.groupBox2.Controls.Add(this.cB_blocked);
@@ -949,11 +977,161 @@
 			// 
 			this.staffTableAdapter.ClearBeforeFill = true;
 			// 
+			// gB_event
+			// 
+			this.gB_event.Controls.Add(this.dataGridView1);
+			this.gB_event.Location = new System.Drawing.Point(977, 123);
+			this.gB_event.Name = "gB_event";
+			this.gB_event.Size = new System.Drawing.Size(394, 221);
+			this.gB_event.TabIndex = 5;
+			this.gB_event.TabStop = false;
+			this.gB_event.Text = "gb_event";
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AutoGenerateColumns = false;
+			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.сотрудникDataGridViewTextBoxColumn1,
+            this.должностьDataGridViewTextBoxColumn1,
+            this.uIDDataGridViewTextBoxColumn3,
+            this.фотоDataGridViewTextBoxColumn1,
+            this.enterTimeDataGridViewTextBoxColumn,
+            this.exitTimeDataGridViewTextBoxColumn,
+            this.табельныйНомерDataGridViewTextBoxColumn1,
+            this.номерПаспортаDataGridViewTextBoxColumn1,
+            this.графикDataGridViewTextBoxColumn1,
+            this.подразделениеDataGridViewTextBoxColumn1,
+            this.типUIDDataGridViewTextBoxColumn1});
+			this.dataGridView1.DataSource = this.eventLogBindingSource3;
+			this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveBorder;
+			this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.Size = new System.Drawing.Size(1044, 325);
+			this.dataGridView1.TabIndex = 0;
+			// 
+			// сотрудникDataGridViewTextBoxColumn1
+			// 
+			this.сотрудникDataGridViewTextBoxColumn1.DataPropertyName = "Сотрудник";
+			this.сотрудникDataGridViewTextBoxColumn1.HeaderText = "Сотрудник";
+			this.сотрудникDataGridViewTextBoxColumn1.Name = "сотрудникDataGridViewTextBoxColumn1";
+			this.сотрудникDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// должностьDataGridViewTextBoxColumn1
+			// 
+			this.должностьDataGridViewTextBoxColumn1.DataPropertyName = "Должность";
+			this.должностьDataGridViewTextBoxColumn1.HeaderText = "Должность";
+			this.должностьDataGridViewTextBoxColumn1.Name = "должностьDataGridViewTextBoxColumn1";
+			this.должностьDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// uIDDataGridViewTextBoxColumn3
+			// 
+			this.uIDDataGridViewTextBoxColumn3.DataPropertyName = "UID";
+			this.uIDDataGridViewTextBoxColumn3.HeaderText = "UID";
+			this.uIDDataGridViewTextBoxColumn3.Name = "uIDDataGridViewTextBoxColumn3";
+			this.uIDDataGridViewTextBoxColumn3.ReadOnly = true;
+			// 
+			// фотоDataGridViewTextBoxColumn1
+			// 
+			this.фотоDataGridViewTextBoxColumn1.DataPropertyName = "Фото";
+			this.фотоDataGridViewTextBoxColumn1.HeaderText = "Фото";
+			this.фотоDataGridViewTextBoxColumn1.Name = "фотоDataGridViewTextBoxColumn1";
+			this.фотоDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// enterTimeDataGridViewTextBoxColumn
+			// 
+			this.enterTimeDataGridViewTextBoxColumn.DataPropertyName = "EnterTime";
+			this.enterTimeDataGridViewTextBoxColumn.HeaderText = "EnterTime";
+			this.enterTimeDataGridViewTextBoxColumn.Name = "enterTimeDataGridViewTextBoxColumn";
+			this.enterTimeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// exitTimeDataGridViewTextBoxColumn
+			// 
+			this.exitTimeDataGridViewTextBoxColumn.DataPropertyName = "ExitTime";
+			this.exitTimeDataGridViewTextBoxColumn.HeaderText = "ExitTime";
+			this.exitTimeDataGridViewTextBoxColumn.Name = "exitTimeDataGridViewTextBoxColumn";
+			this.exitTimeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// табельныйНомерDataGridViewTextBoxColumn1
+			// 
+			this.табельныйНомерDataGridViewTextBoxColumn1.DataPropertyName = "Табельный номер";
+			this.табельныйНомерDataGridViewTextBoxColumn1.HeaderText = "Табельный номер";
+			this.табельныйНомерDataGridViewTextBoxColumn1.Name = "табельныйНомерDataGridViewTextBoxColumn1";
+			this.табельныйНомерDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// номерПаспортаDataGridViewTextBoxColumn1
+			// 
+			this.номерПаспортаDataGridViewTextBoxColumn1.DataPropertyName = "Номер паспорта";
+			this.номерПаспортаDataGridViewTextBoxColumn1.HeaderText = "Номер паспорта";
+			this.номерПаспортаDataGridViewTextBoxColumn1.Name = "номерПаспортаDataGridViewTextBoxColumn1";
+			this.номерПаспортаDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// графикDataGridViewTextBoxColumn1
+			// 
+			this.графикDataGridViewTextBoxColumn1.DataPropertyName = "График";
+			this.графикDataGridViewTextBoxColumn1.HeaderText = "График";
+			this.графикDataGridViewTextBoxColumn1.Name = "графикDataGridViewTextBoxColumn1";
+			this.графикDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// подразделениеDataGridViewTextBoxColumn1
+			// 
+			this.подразделениеDataGridViewTextBoxColumn1.DataPropertyName = "Подразделение";
+			this.подразделениеDataGridViewTextBoxColumn1.HeaderText = "Подразделение";
+			this.подразделениеDataGridViewTextBoxColumn1.Name = "подразделениеDataGridViewTextBoxColumn1";
+			this.подразделениеDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// типUIDDataGridViewTextBoxColumn1
+			// 
+			this.типUIDDataGridViewTextBoxColumn1.DataPropertyName = "Тип UID";
+			this.типUIDDataGridViewTextBoxColumn1.HeaderText = "Тип UID";
+			this.типUIDDataGridViewTextBoxColumn1.Name = "типUIDDataGridViewTextBoxColumn1";
+			this.типUIDDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// eventLogBindingSource3
+			// 
+			this.eventLogBindingSource3.DataMember = "EventLog";
+			this.eventLogBindingSource3.DataSource = this.access_control_in_OneWire;
+			// 
+			// eventLogBindingSource
+			// 
+			this.eventLogBindingSource.DataMember = "EventLog";
+			this.eventLogBindingSource.DataSource = this.access_control_in_OneWire;
+			// 
+			// eventLogBindingSource1
+			// 
+			this.eventLogBindingSource1.DataMember = "EventLog";
+			this.eventLogBindingSource1.DataSource = this.access_control_in_OneWire;
+			// 
+			// eventLogAdapter
+			// 
+			this.eventLogAdapter.ClearBeforeFill = true;
+			// 
+			// eventLogBindingSource2
+			// 
+			this.eventLogBindingSource2.DataMember = "EventLog";
+			this.eventLogBindingSource2.DataSource = this.access_control_in_OneWire;
+			// 
+			// b_readUIDStaff
+			// 
+			this.b_readUIDStaff.Location = new System.Drawing.Point(484, 33);
+			this.b_readUIDStaff.Name = "b_readUIDStaff";
+			this.b_readUIDStaff.Size = new System.Drawing.Size(15, 21);
+			this.b_readUIDStaff.TabIndex = 37;
+			this.b_readUIDStaff.Text = "<";
+			this.toolTip1.SetToolTip(this.b_readUIDStaff, "Прочитать UID");
+			this.b_readUIDStaff.UseVisualStyleBackColor = true;
+			this.b_readUIDStaff.Click += new System.EventHandler(this.b_readUIDStaff_Click);
+			// 
 			// AdminForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1212, 586);
+			this.Controls.Add(this.gB_event);
 			this.Controls.Add(this.gb_staff);
 			this.Controls.Add(this.tv_navigation);
 			this.Controls.Add(this.gb_sys);
@@ -982,6 +1160,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			this.gB_event.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1077,5 +1261,26 @@
         private System.Windows.Forms.CheckBox cB_blocked;
         private System.Windows.Forms.ComboBox cB_UID_type_from_gb_staff;
         private System.Windows.Forms.ComboBox cB_subdivision;
+		private System.Windows.Forms.GroupBox gB_event;
+		private System.Windows.Forms.BindingSource eventLogBindingSource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn uidDataGridViewTextBoxColumn2;
+		private System.Windows.Forms.BindingSource eventLogBindingSource1;
+		private Access_control_in_OneWireTableAdapters.EventLogAdapter eventLogAdapter;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn сотрудникDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn должностьDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn uIDDataGridViewTextBoxColumn3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn фотоDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn enterTimeDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn табельныйНомерDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn номерПаспортаDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn графикDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn подразделениеDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn типUIDDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.BindingSource eventLogBindingSource3;
+		private System.Windows.Forms.BindingSource eventLogBindingSource2;
+		private System.Windows.Forms.Button b_readUIDStaff;
+		private System.Windows.Forms.ToolTip toolTip1;
 	}
 }

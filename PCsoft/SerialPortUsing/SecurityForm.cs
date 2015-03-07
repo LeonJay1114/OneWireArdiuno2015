@@ -25,7 +25,9 @@ namespace SerialPortUsing {
 			try{
 				_listener = new UIDCOMListener(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
 			}
-			catch(Exception) {
+			catch(Exception)
+			{
+				MessageBox.Show(this, "Не удалось получить доступ к COM-порту.", "Ошибка");
 				this.Close();
 				return;
 			}
@@ -49,11 +51,11 @@ namespace SerialPortUsing {
 			searchResult = _table.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
 
 			if(searchResult.Length == 1){
-				ShowFace(searchResult[0][3].ToString(), searchResult[0][10].ToString(), 0);
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), 0);
 				return;
 			}if(searchResult.Length > 1) {
 				MessageBox.Show(this, "Дубликаты UID!","АААА!!!");
-				ShowFace(searchResult[0][3].ToString(), searchResult[0][10].ToString(), 0);
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), 0);
 				return;
 			}
 			MessageBox.Show(null, "Предъявлен неизвестный UID!\n"+uid, "ВНИМАНИЕ");

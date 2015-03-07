@@ -7,3 +7,11 @@
 		}
 	}
 }
+
+namespace SerialPortUsing.Access_control_in_OneWireTableAdapters {
+
+
+	public partial class EventLogAdapter
+	{
+    }
+}

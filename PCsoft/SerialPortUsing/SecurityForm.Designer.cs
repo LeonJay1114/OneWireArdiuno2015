@@ -23,66 +23,67 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-            this.pic_face = new System.Windows.Forms.PictureBox();
-            this.l1 = new System.Windows.Forms.Label();
-            this.l_fio = new System.Windows.Forms.Label();
-            this.cB_testButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_face)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pic_face
-            // 
-            this.pic_face.Location = new System.Drawing.Point(353, 12);
-            this.pic_face.Name = "pic_face";
-            this.pic_face.Size = new System.Drawing.Size(300, 400);
-            this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_face.TabIndex = 0;
-            this.pic_face.TabStop = false;
-            // 
-            // l1
-            // 
-            this.l1.AutoSize = true;
-            this.l1.Location = new System.Drawing.Point(78, 415);
-            this.l1.Name = "l1";
-            this.l1.Size = new System.Drawing.Size(34, 13);
-            this.l1.TabIndex = 1;
-            this.l1.Text = "ФИО";
-            // 
-            // l_fio
-            // 
-            this.l_fio.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.l_fio.Location = new System.Drawing.Point(118, 415);
-            this.l_fio.Name = "l_fio";
-            this.l_fio.Size = new System.Drawing.Size(610, 53);
-            this.l_fio.TabIndex = 2;
-            this.l_fio.Text = "ФИО";
-            // 
-            // cB_testButton
-            // 
-            this.cB_testButton.Location = new System.Drawing.Point(12, 12);
-            this.cB_testButton.Name = "cB_testButton";
-            this.cB_testButton.Size = new System.Drawing.Size(75, 23);
-            this.cB_testButton.TabIndex = 3;
-            this.cB_testButton.Text = "Test";
-            this.cB_testButton.UseVisualStyleBackColor = true;
-            this.cB_testButton.Click += new System.EventHandler(this.cB_testButton_Click);
-            // 
-            // SecurityForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 488);
-            this.Controls.Add(this.cB_testButton);
-            this.Controls.Add(this.l_fio);
-            this.Controls.Add(this.l1);
-            this.Controls.Add(this.pic_face);
-            this.Name = "SecurityForm";
-            this.Text = "SecurityForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
-            this.Load += new System.EventHandler(this.SecurityForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_face)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.pic_face = new System.Windows.Forms.PictureBox();
+			this.l1 = new System.Windows.Forms.Label();
+			this.l_fio = new System.Windows.Forms.Label();
+			this.cB_testButton = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.pic_face)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// pic_face
+			// 
+			this.pic_face.Location = new System.Drawing.Point(353, 12);
+			this.pic_face.Name = "pic_face";
+			this.pic_face.Size = new System.Drawing.Size(300, 400);
+			this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pic_face.TabIndex = 0;
+			this.pic_face.TabStop = false;
+			// 
+			// l1
+			// 
+			this.l1.AutoSize = true;
+			this.l1.Location = new System.Drawing.Point(78, 415);
+			this.l1.Name = "l1";
+			this.l1.Size = new System.Drawing.Size(34, 13);
+			this.l1.TabIndex = 1;
+			this.l1.Text = "ФИО";
+			// 
+			// l_fio
+			// 
+			this.l_fio.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_fio.Location = new System.Drawing.Point(118, 415);
+			this.l_fio.Name = "l_fio";
+			this.l_fio.Size = new System.Drawing.Size(610, 53);
+			this.l_fio.TabIndex = 2;
+			this.l_fio.Text = "ФИО";
+			// 
+			// cB_testButton
+			// 
+			this.cB_testButton.Location = new System.Drawing.Point(12, 453);
+			this.cB_testButton.Name = "cB_testButton";
+			this.cB_testButton.Size = new System.Drawing.Size(75, 23);
+			this.cB_testButton.TabIndex = 3;
+			this.cB_testButton.Text = "Test";
+			this.cB_testButton.UseVisualStyleBackColor = true;
+			this.cB_testButton.Visible = false;
+			this.cB_testButton.Click += new System.EventHandler(this.cB_testButton_Click);
+			// 
+			// SecurityForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(740, 488);
+			this.Controls.Add(this.cB_testButton);
+			this.Controls.Add(this.l_fio);
+			this.Controls.Add(this.l1);
+			this.Controls.Add(this.pic_face);
+			this.Name = "SecurityForm";
+			this.Text = "SecurityForm";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
+			this.Load += new System.EventHandler(this.SecurityForm_Load);
+			((System.ComponentModel.ISupportInitialize)(this.pic_face)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 

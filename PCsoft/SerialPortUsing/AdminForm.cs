@@ -20,7 +20,7 @@ namespace SerialPortUsing {
 		    gb_users.Location = gb_sys.Location;
 		    gb_users.Size = gb_sys.Size;
             openFileDialog1.Filter = "accdb files (*.accdb)|*.accdb|All files (*.*)|*.*";//Маска OpenFileDialog
-		    openFileDialog2.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+		    openFileDialog2.Filter = "jpg files (*.jpg)|*.jpg||*.png|All files (*.*)|*.*";
 
 
 			MakeGroupBoxesUp();
@@ -35,6 +35,10 @@ namespace SerialPortUsing {
 
 		private void AdminForm_Load(object sender, EventArgs e)
 		{
+			// TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.EventLog". При необходимости она может быть перемещена или удалена.
+			this.eventLogAdapter.Fill(this.access_control_in_OneWire.EventLog);
+			// TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.EventLog". При необходимости она может быть перемещена или удалена.
+			//this.eventLogTableAdapter.Fill(this.access_control_in_OneWire.EventLog);
 			// TODO: This line of code loads data into the 'access_control_in_OneWire.Staff' table. You can move, or remove it, as needed.
 			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.SystemUsers". При необходимости она может быть перемещена или удалена.
@@ -55,6 +59,7 @@ namespace SerialPortUsing {
 			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
+			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
 		}
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,6 +117,9 @@ namespace SerialPortUsing {
 				case "Сотрудники":
 					gb_staff.BringToFront();
 					break;
+				case "Журнал пропуска":
+					gB_event.BringToFront();
+		            break;
             }
             //MessageBox.Show(tv_navigation.SelectedNode.Text);
         }
@@ -262,24 +270,48 @@ namespace SerialPortUsing {
 			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
 		}
 
-		private void b_edditStaff_Click(object sender, EventArgs e)
-		{
-		if (dgv_staff.SelectedRows.Count == 0 || dgv_staff.SelectedRows.Count > 1)
-		{
+		private void b_edditStaff_Click(object sender, EventArgs e){
+			if (string.IsNullOrEmpty(tB_staff.Text) || string.IsNullOrEmpty(cB_profession.Text)
+				|| string.IsNullOrEmpty(tB_photoPath.Text) || string.IsNullOrEmpty(tB_UID_from_gb_staff.Text)
+				|| string.IsNullOrEmpty(tB_number.Text) || string.IsNullOrEmpty(tB_multiPasport.Text)
+				|| string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
+				|| string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
+			{
+				MessageBox.Show("Лох, пидр, нет друзей!!!");
+				return;
+			}
+		if (dgv_staff.SelectedRows.Count == 0 || dgv_staff.SelectedRows.Count > 1){
 			MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
 			return;
 		}
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
+			staffTableAdapter.Adapter.UpdateCommand.Connection.Open();
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@staffnames", tB_staff.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@profession", cB_profession.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@StaffUID", tB_UID_from_gb_staff.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@Photo", tB_photoPath.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@newNumber", tB_number.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@multiPasport", tB_multiPasport.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@empdate", dateTimePicker1.Value.ToString("yy-MM-dd")));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@workTime", cB_workTime.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@blocked", cB_blocked.Checked?"1":"0"));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@subdivision", cB_subdivision.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@TypeUID", cB_UID_type_from_gb_staff.Text));
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@oldNumber", dgv_staff.SelectedRows[0].Cells[4].Value.ToString()));
+			//UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, 
+			//Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, 
+			//Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, 
+			/////////////////////Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.Сотрудник = @staffnames
+			staffTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+			staffTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
+			staffTableAdapter.Adapter.UpdateCommand.Connection.Close();
 
-			//this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
+
+			//staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Сотрудник = staff, Должность = profession, 
+			//UID = StaffUID, Фото = Photo, [Табельный номер] = newNumber, [Номер паспорта] = multiPasport, [Дата найма] = date, 
+			//График = workTime, Заблокирован = blocked, Подразделение = subdivision, [Тип UID] = TypeUID WHERE [Табельный номер] = oldNumber", staffTableAdapter.Connection);
+
 
 			//if (dgv_users.SelectedRows.Count == 0 || dgv_users.SelectedRows.Count > 1)
 			//{
@@ -298,5 +330,13 @@ namespace SerialPortUsing {
 
 			//this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
+
+		private void b_readUIDStaff_Click(object sender, EventArgs e){
+			UIDReadingForm	uidReadingForm = new UIDReadingForm();
+			DialogResult rez = uidReadingForm.ShowDialog();
+			if(rez == DialogResult.OK)
+				tB_UID_from_gb_staff.Text = uidReadingForm.ResultingUID;
+		}
+
 	}
 }

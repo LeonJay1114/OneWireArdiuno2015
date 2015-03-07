@@ -126,6 +126,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIDCOMListener.cs" />
+    <Compile Include="UIDReadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIDReadingForm.Designer.cs">
+      <DependentUpon>UIDReadingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +154,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UIDReadingForm.resx">
+      <DependentUpon>UIDReadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Access_control_in_OneWire.xsc">
       <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>
     </None>
