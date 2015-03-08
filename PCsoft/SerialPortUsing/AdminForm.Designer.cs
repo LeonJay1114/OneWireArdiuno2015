@@ -25,15 +25,16 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Настройки");
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Пользователи");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Сотрудники");
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Журнал пропуска");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Администрирование", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9});
+			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Основное");
+			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Система", new System.Windows.Forms.TreeNode[] {
+            treeNode13});
+			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Пользователи");
+			System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Сотрудники");
+			System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Журнал пропуска");
+			System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("База", new System.Windows.Forms.TreeNode[] {
+            treeNode15,
+            treeNode16,
+            treeNode17});
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,11 @@
 			this.панельНавигатораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.разделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.администрированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.основноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.базаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.журналПропускаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.кАКToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gb_sys = new System.Windows.Forms.GroupBox();
@@ -53,7 +59,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.cb_speed = new System.Windows.Forms.ComboBox();
 			this.gb_users = new System.Windows.Forms.GroupBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.gb_usersEdit = new System.Windows.Forms.GroupBox();
 			this.b_delUser = new System.Windows.Forms.Button();
 			this.b_editUser = new System.Windows.Forms.Button();
 			this.b_addUser = new System.Windows.Forms.Button();
@@ -87,6 +93,7 @@
 			this.типUIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.b_readUIDStaff = new System.Windows.Forms.Button();
 			this.cB_UID_type_from_gb_staff = new System.Windows.Forms.ComboBox();
 			this.cB_subdivision = new System.Windows.Forms.ComboBox();
 			this.cB_blocked = new System.Windows.Forms.CheckBox();
@@ -135,12 +142,11 @@
 			this.eventLogBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
 			this.eventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.EventLogAdapter();
 			this.eventLogBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-			this.b_readUIDStaff = new System.Windows.Forms.Button();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.gb_sys.SuspendLayout();
 			this.gb_users.SuspendLayout();
-			this.groupBox1.SuspendLayout();
+			this.gb_usersEdit.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_users)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).BeginInit();
@@ -209,16 +215,61 @@
 			// разделыToolStripMenuItem
 			// 
 			this.разделыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.администрированиеToolStripMenuItem});
+            this.администрированиеToolStripMenuItem,
+            this.базаToolStripMenuItem});
 			this.разделыToolStripMenuItem.Name = "разделыToolStripMenuItem";
 			this.разделыToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
 			this.разделыToolStripMenuItem.Text = "Разделы";
 			// 
 			// администрированиеToolStripMenuItem
 			// 
+			this.администрированиеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.основноеToolStripMenuItem});
 			this.администрированиеToolStripMenuItem.Name = "администрированиеToolStripMenuItem";
-			this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-			this.администрированиеToolStripMenuItem.Text = "Администрирование";
+			this.администрированиеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.администрированиеToolStripMenuItem.Text = "Система";
+			// 
+			// основноеToolStripMenuItem
+			// 
+			this.основноеToolStripMenuItem.Name = "основноеToolStripMenuItem";
+			this.основноеToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.B)));
+			this.основноеToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+			this.основноеToolStripMenuItem.Text = "Основное";
+			this.основноеToolStripMenuItem.Click += new System.EventHandler(this.NavigationMenuClick);
+			// 
+			// базаToolStripMenuItem
+			// 
+			this.базаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.пользователиToolStripMenuItem,
+            this.сотрудникиToolStripMenuItem,
+            this.журналПропускаToolStripMenuItem});
+			this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
+			this.базаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.базаToolStripMenuItem.Text = "База";
+			// 
+			// пользователиToolStripMenuItem
+			// 
+			this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+			this.пользователиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.U)));
+			this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+			this.пользователиToolStripMenuItem.Text = "Пользователи";
+			this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.NavigationMenuClick);
+			// 
+			// сотрудникиToolStripMenuItem
+			// 
+			this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
+			this.сотрудникиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+			this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+			this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
+			this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.NavigationMenuClick);
+			// 
+			// журналПропускаToolStripMenuItem
+			// 
+			this.журналПропускаToolStripMenuItem.Name = "журналПропускаToolStripMenuItem";
+			this.журналПропускаToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
+			this.журналПропускаToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+			this.журналПропускаToolStripMenuItem.Text = "Журнал пропуска";
+			this.журналПропускаToolStripMenuItem.Click += new System.EventHandler(this.NavigationMenuClick);
 			// 
 			// справкаToolStripMenuItem
 			// 
@@ -247,9 +298,9 @@
 			this.gb_sys.Controls.Add(this.label2);
 			this.gb_sys.Controls.Add(this.label1);
 			this.gb_sys.Controls.Add(this.cb_speed);
-			this.gb_sys.Location = new System.Drawing.Point(150, 383);
+			this.gb_sys.Location = new System.Drawing.Point(156, 549);
 			this.gb_sys.Name = "gb_sys";
-			this.gb_sys.Size = new System.Drawing.Size(260, 158);
+			this.gb_sys.Size = new System.Drawing.Size(69, 158);
 			this.gb_sys.TabIndex = 2;
 			this.gb_sys.TabStop = false;
 			this.gb_sys.Text = "gb_sys";
@@ -262,7 +313,7 @@
 			this.b_DBPath.TabIndex = 15;
 			this.b_DBPath.Text = "...";
 			this.b_DBPath.UseVisualStyleBackColor = true;
-			this.b_DBPath.Click += new System.EventHandler(this.button1_Click);
+			this.b_DBPath.Click += new System.EventHandler(this.b_DBPath_Click);
 			// 
 			// b_saveConfig
 			// 
@@ -336,34 +387,34 @@
 			// 
 			// gb_users
 			// 
-			this.gb_users.Controls.Add(this.groupBox1);
+			this.gb_users.Controls.Add(this.gb_usersEdit);
 			this.gb_users.Controls.Add(this.dgv_users);
-			this.gb_users.Location = new System.Drawing.Point(729, 396);
+			this.gb_users.Location = new System.Drawing.Point(576, 552);
 			this.gb_users.Name = "gb_users";
-			this.gb_users.Size = new System.Drawing.Size(372, 291);
+			this.gb_users.Size = new System.Drawing.Size(122, 374);
 			this.gb_users.TabIndex = 3;
 			this.gb_users.TabStop = false;
 			this.gb_users.Text = "gb_users";
 			// 
-			// groupBox1
+			// gb_usersEdit
 			// 
-			this.groupBox1.Controls.Add(this.b_delUser);
-			this.groupBox1.Controls.Add(this.b_editUser);
-			this.groupBox1.Controls.Add(this.b_addUser);
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.cB_userType);
-			this.groupBox1.Controls.Add(this.tB_password);
-			this.groupBox1.Controls.Add(this.tB_login);
-			this.groupBox1.Controls.Add(this.tB_UID);
-			this.groupBox1.Location = new System.Drawing.Point(8, 186);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(455, 170);
-			this.groupBox1.TabIndex = 1;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "groupBox1";
+			this.gb_usersEdit.Controls.Add(this.b_delUser);
+			this.gb_usersEdit.Controls.Add(this.b_editUser);
+			this.gb_usersEdit.Controls.Add(this.b_addUser);
+			this.gb_usersEdit.Controls.Add(this.label7);
+			this.gb_usersEdit.Controls.Add(this.label6);
+			this.gb_usersEdit.Controls.Add(this.label5);
+			this.gb_usersEdit.Controls.Add(this.label4);
+			this.gb_usersEdit.Controls.Add(this.cB_userType);
+			this.gb_usersEdit.Controls.Add(this.tB_password);
+			this.gb_usersEdit.Controls.Add(this.tB_login);
+			this.gb_usersEdit.Controls.Add(this.tB_UID);
+			this.gb_usersEdit.Location = new System.Drawing.Point(8, 186);
+			this.gb_usersEdit.Name = "gb_usersEdit";
+			this.gb_usersEdit.Size = new System.Drawing.Size(455, 170);
+			this.gb_usersEdit.TabIndex = 1;
+			this.gb_usersEdit.TabStop = false;
+			this.gb_usersEdit.Text = "gb_usersEdit";
 			// 
 			// b_delUser
 			// 
@@ -534,9 +585,9 @@
 			// 
 			this.gb_staff.Controls.Add(this.dgv_staff);
 			this.gb_staff.Controls.Add(this.groupBox2);
-			this.gb_staff.Location = new System.Drawing.Point(156, 36);
+			this.gb_staff.Location = new System.Drawing.Point(439, 549);
 			this.gb_staff.Name = "gb_staff";
-			this.gb_staff.Size = new System.Drawing.Size(1050, 482);
+			this.gb_staff.Size = new System.Drawing.Size(81, 498);
 			this.gb_staff.TabIndex = 4;
 			this.gb_staff.TabStop = false;
 			this.gb_staff.Text = "gb_staff";
@@ -700,6 +751,17 @@
 			this.groupBox2.TabIndex = 7;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "gB_staffEdit";
+			// 
+			// b_readUIDStaff
+			// 
+			this.b_readUIDStaff.Location = new System.Drawing.Point(484, 33);
+			this.b_readUIDStaff.Name = "b_readUIDStaff";
+			this.b_readUIDStaff.Size = new System.Drawing.Size(15, 21);
+			this.b_readUIDStaff.TabIndex = 37;
+			this.b_readUIDStaff.Text = "<";
+			this.toolTip1.SetToolTip(this.b_readUIDStaff, "Прочитать UID");
+			this.b_readUIDStaff.UseVisualStyleBackColor = true;
+			this.b_readUIDStaff.Click += new System.EventHandler(this.b_readUIDStaff_Click);
 			// 
 			// cB_UID_type_from_gb_staff
 			// 
@@ -946,24 +1008,28 @@
 			// 
 			// tv_navigation
 			// 
+			this.tv_navigation.ItemHeight = 20;
 			this.tv_navigation.Location = new System.Drawing.Point(12, 27);
 			this.tv_navigation.Name = "tv_navigation";
-			treeNode6.Name = "Option";
-			treeNode6.Text = "Настройки";
-			treeNode7.Name = "addUser";
-			treeNode7.Text = "Пользователи";
-			treeNode8.Name = "staff";
-			treeNode8.Text = "Сотрудники";
-			treeNode9.Name = "Узел0";
-			treeNode9.Text = "Журнал пропуска";
-			treeNode10.BackColor = System.Drawing.Color.Transparent;
-			treeNode10.Name = "Узел0";
-			treeNode10.Text = "Администрирование";
+			treeNode13.Name = "Option";
+			treeNode13.Text = "Основное";
+			treeNode14.BackColor = System.Drawing.Color.Transparent;
+			treeNode14.Name = "Узел0";
+			treeNode14.Text = "Система";
+			treeNode15.Name = "addUser";
+			treeNode15.Text = "Пользователи";
+			treeNode16.Name = "staff";
+			treeNode16.Text = "Сотрудники";
+			treeNode17.Name = "Узел0";
+			treeNode17.Text = "Журнал пропуска";
+			treeNode18.Name = "Node1";
+			treeNode18.Text = "База";
 			this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10});
-			this.tv_navigation.Size = new System.Drawing.Size(132, 547);
+            treeNode14,
+            treeNode18});
+			this.tv_navigation.Size = new System.Drawing.Size(144, 547);
 			this.tv_navigation.TabIndex = 3;
-			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_navigation_AfterSelect);
 			// 
 			// openFileDialog1
 			// 
@@ -980,9 +1046,9 @@
 			// gB_event
 			// 
 			this.gB_event.Controls.Add(this.dataGridView1);
-			this.gB_event.Location = new System.Drawing.Point(977, 123);
+			this.gB_event.Location = new System.Drawing.Point(341, 549);
 			this.gB_event.Name = "gB_event";
-			this.gB_event.Size = new System.Drawing.Size(394, 221);
+			this.gB_event.Size = new System.Drawing.Size(80, 228);
 			this.gB_event.TabIndex = 5;
 			this.gB_event.TabStop = false;
 			this.gB_event.Text = "gb_event";
@@ -1115,17 +1181,6 @@
 			this.eventLogBindingSource2.DataMember = "EventLog";
 			this.eventLogBindingSource2.DataSource = this.access_control_in_OneWire;
 			// 
-			// b_readUIDStaff
-			// 
-			this.b_readUIDStaff.Location = new System.Drawing.Point(484, 33);
-			this.b_readUIDStaff.Name = "b_readUIDStaff";
-			this.b_readUIDStaff.Size = new System.Drawing.Size(15, 21);
-			this.b_readUIDStaff.TabIndex = 37;
-			this.b_readUIDStaff.Text = "<";
-			this.toolTip1.SetToolTip(this.b_readUIDStaff, "Прочитать UID");
-			this.b_readUIDStaff.UseVisualStyleBackColor = true;
-			this.b_readUIDStaff.Click += new System.EventHandler(this.b_readUIDStaff_Click);
-			// 
 			// AdminForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1150,8 +1205,8 @@
 			this.gb_sys.ResumeLayout(false);
 			this.gb_sys.PerformLayout();
 			this.gb_users.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
+			this.gb_usersEdit.ResumeLayout(false);
+			this.gb_usersEdit.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_users)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).EndInit();
@@ -1209,7 +1264,7 @@
 		private System.Windows.Forms.DataGridView dgv_staff;
 		private System.Windows.Forms.BindingSource staffBindingSource;
         private Access_control_in_OneWireTableAdapters.StaffTableAdapter staffTableAdapter;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gb_usersEdit;
         private System.Windows.Forms.TextBox tB_password;
         private System.Windows.Forms.TextBox tB_login;
         private System.Windows.Forms.TextBox tB_UID;
@@ -1282,5 +1337,10 @@
 		private System.Windows.Forms.BindingSource eventLogBindingSource2;
 		private System.Windows.Forms.Button b_readUIDStaff;
 		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.ToolStripMenuItem основноеToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem базаToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem журналПропускаToolStripMenuItem;
 	}
 }
