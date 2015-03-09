@@ -50,24 +50,26 @@ namespace SerialPortUsing {
 
 		private void _listener_UIDReceived(object sender, string uid) {
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
-			searchResult = _table.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
+			searchResult = _table.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре
 
-			if(searchResult.Length == 1){
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), 0);
-				return;
-			}if(searchResult.Length > 1) {
-				MessageBox.Show(this, "Дубликаты UID!","АААА!!!");
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), 0);
-				return;
+			if(searchResult.Length != 0){
+				if (searchResult.Length > 0)
+					MessageBox.Show(this, "Дубликаты UID!", "АААА!!!");
+				ShowFace(	searchResult[0][1].ToString(), searchResult[0][10].ToString(), 
+							searchResult[0][3].ToString(), searchResult[0][8].ToString(), 
+							searchResult[0][6].ToString(), searchResult[0][0].ToString(),
+							searchResult[0][9].ToString(), 0);
 			}
-			MessageBox.Show(null, "Предъявлен неизвестный UID!\n"+uid, "ВНИМАНИЕ");
+			else
+				MessageBox.Show(null, "Предъявлен неизвестный UID!\n"+uid, "ВНИМАНИЕ");
+				ShowFace("", "", "", "", "", "", "", 0);
 		}
 
-		delegate void ShowFaceCallBack(string picturePath, string fio, int ttl);
-		public void ShowFace(string picturePath, string fio, int ttl) {
+		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl);
+		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl) {
 			if(pic_face.InvokeRequired) {
 				ShowFaceCallBack cb = ShowFace;
-				this.Invoke(cb, picturePath, fio, ttl);
+				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl);
 				return;
 			}
 			
