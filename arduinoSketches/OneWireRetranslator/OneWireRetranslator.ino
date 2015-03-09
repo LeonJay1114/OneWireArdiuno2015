@@ -3,7 +3,7 @@
 #define touchPIN 10
 
 const int BUZZER_PINUMBER = 8; // номер пина управления пищалкой
-const int NEW_KEY_CHECK_DELAY = 500; // задержка между проверками поднесённости карты в миллисекундах
+const int NEW_KEY_CHECK_DELAY = 1500; // задержка между проверками поднесённости карты в миллисекундах
 
 OneWire ds(touchPIN); // использующийся пин отправляется инициализатору класса OneWire
 byte curKey[8];
