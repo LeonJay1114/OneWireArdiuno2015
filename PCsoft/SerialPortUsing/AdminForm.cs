@@ -322,6 +322,7 @@ namespace SerialPortUsing {
 			{
 				
 			}
+			eventLogAdapter.Fill(access_control_in_OneWire.EventLog);
 		}
 	}
 }
