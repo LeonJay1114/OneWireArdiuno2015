@@ -10,11 +10,15 @@ using SerialPortUsing.Properties;
 namespace SerialPortUsing {
 	public partial class AdminForm : Form
 	{
+		#region Constants
 	    private const int GROUP_BOXES_PADDING = 5;
 		private const int GROUP_BOXES_TOP = 25;
+		private const int GROUP_BOXES_VERTICAL_MARGIN = 72;
 		private const int NAVIGATION_PANEL_WIDTH = 132;
 		private const int NAVIGATION_PANEL_LEFT = 12;
+		#endregion
 
+		#region Structing
 		public AdminForm() {
 			InitializeComponent();
 		    gb_users.Location = gb_sys.Location;
@@ -26,11 +30,15 @@ namespace SerialPortUsing {
 			MakeGroupBoxesUp();
 		}
 
-		private void MakeGroupBoxesUp() {
-			gb_staff.Left = gb_sys.Left = tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
-			gb_staff.Top = gb_sys.Top = gb_users.Top = GROUP_BOXES_TOP;
-			gb_staff.Width = gb_sys.Width = this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
-			gb_staff.Height = gb_sys.Height = gb_users.Height = this.Height - 72;
+		private void MakeGroupBoxesUp() { // TODO: do this for all groupboxes!
+			gB_event.Left =		gb_users.Left =		gb_staff.Left =		gb_sys.Left =		
+					tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
+			gB_event.Top =		gb_users.Top =		gb_staff.Top =		gb_sys.Top =		
+					gb_users.Top = GROUP_BOXES_TOP;
+			gB_event.Width =	gb_users.Width =	gb_staff.Width =	gb_sys.Width =		
+					this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
+			gB_event.Height =	gb_users.Height =	gb_staff.Height =	gb_sys.Height =
+					this.Height - GROUP_BOXES_VERTICAL_MARGIN;
 		}
 
 		private void AdminForm_Load(object sender, EventArgs e)
@@ -61,17 +69,15 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
 		}
+		#endregion
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		#region Navigation panel switching
         private void панельНавигатораToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switchNavigationPanel(панельНавигатораToolStripMenuItem.Checked);
+            SetNavigationPanelState(панельНавигатораToolStripMenuItem.Checked);
         }
 
-	    private void switchNavigationPanel(bool open)
+	    private void SetNavigationPanelState(bool open)
 	    {
 	        if (open)
 	        {
@@ -85,51 +91,34 @@ namespace SerialPortUsing {
 	        }
 
             // TODO: do this for all groupboxes!
-			 gb_staff.Left = gb_sys.Left = gb_users.Left = tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
-
-            // TODO: do this for all groupboxes!
-			 gb_staff.Width = gb_sys.Width = gb_users.Width = this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
+			 gB_event.Left = gb_staff.Left = gb_sys.Left = gb_users.Left = 
+					tv_navigation.Left + tv_navigation.Width + GROUP_BOXES_PADDING;
+			 gB_event.Width = gb_staff.Width = gb_sys.Width = gb_users.Width = 
+					this.Width - GROUP_BOXES_PADDING * 6 - tv_navigation.Width - tv_navigation.Left;
 
 	    }
+		#endregion
 
-        private void b_saveConfig_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+		#region GeneralSettings groupbox controls events
+        private void b_DBPath_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
             tb_dbpath.Text = openFileDialog1.FileName;
         }
+		private void b_saveConfig_Click_1(object sender, EventArgs e) {
+			Settings.Default.COMName = cb_ComPort.Text;
+			Settings.Default.BaudRate = Convert.ToInt32(cb_speed.Text);
+			Settings.Default.Save();
+		}
+		#endregion
 
-
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            switch (tv_navigation.SelectedNode.Text){
-                case "Настройки":
-					gb_sys.BringToFront();
-                    break;
-				case "Пользователи":
-					gb_users.BringToFront();
-					break;
-				case "Сотрудники":
-					gb_staff.BringToFront();
-					break;
-				case "Журнал пропуска":
-					gB_event.BringToFront();
-		            break;
-            }
-            //MessageBox.Show(tv_navigation.SelectedNode.Text);
-        }
-
+		#region Users groupbox controls events
         private void b_addUser_Click(object sender, EventArgs e)
         {
 			if (string.IsNullOrEmpty(tB_UID.Text) || string.IsNullOrEmpty(cB_userType.Text) 
 			|| string.IsNullOrEmpty(tB_login.Text) || string.IsNullOrEmpty(tB_password.Text))
 			{
-				MessageBox.Show("Лох, пидр, нет друзей!!!");
+				MessageBox.Show(this, "Нельзя внести пустое значение параметра." + Environment.NewLine + "Пожалуйста, введите все параметры.", "Ошибка");
 				return;
 			}
 	        systemUsersTableAdapter.Insert(tB_UID.Text, cB_userType.Text, tB_login.Text, tB_password.Text);
@@ -182,9 +171,10 @@ namespace SerialPortUsing {
 
 			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
+		#endregion
 
-        private void b_choosePhoto_Click(object sender, EventArgs e)
-        {
+		#region Staff groupbox controls events
+        private void b_choosePhoto_Click(object sender, EventArgs e){
             openFileDialog2.ShowDialog();
             tB_photoPath.Text = openFileDialog2.FileName;
         }
@@ -197,22 +187,9 @@ namespace SerialPortUsing {
             || string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
             || string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
             {
-                MessageBox.Show("Лох, пидр, нет друзей!!!");
+                MessageBox.Show(this, "Нельзя внести пустое значение параметра."+Environment.NewLine+"Пожалуйста, введите все параметры.", "Ошибка");
                 return;
             }
-			////staffTableAdapter.Insert(
-			//cB_profession.Text, 
-			//tB_photoPath.Text, 
-			//tB_UID_from_gb_staff.Text, 
-			//Convert.ToDouble(tB_number.Text), 
-			//Convert.ToDouble(tB_multiPasport.Text),
-			// DateTime.Parse(dateTimePicker1.Value.ToString("yy-mm-dd")), 
-			//cB_workTime.Text, 
-			//Convert.ToChar(cB_blocked.Checked), 
-			//cB_subdivision.Text, 
-			//cB_UID_type_from_gb_staff.Text,
-			//// tB_staff.Text);
-			////System.Data.SqlTypes.SqlDateTime
 			staffTableAdapter.Adapter.InsertCommand.Connection.Open();
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Clear();
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Сотр", tB_staff.Text));
@@ -231,12 +208,6 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.InsertCommand.Connection.Close();
 
             staffTableAdapter.Fill(access_control_in_OneWire.Staff);
-        }
-
-        private void b_saveConfig_Click_1(object sender, EventArgs e){
-            Settings.Default.COMName = cb_ComPort.Text;
-            Settings.Default.BaudRate = Convert.ToInt32(cb_speed.Text);
-            Settings.Default.Save();
         }
 
         private void dgv_staff_CellDoubleClick(object sender, DataGridViewCellEventArgs e){
@@ -277,13 +248,13 @@ namespace SerialPortUsing {
 				|| string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
 				|| string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
 			{
-				MessageBox.Show("Лох, пидр, нет друзей!!!");
+				MessageBox.Show(this, "Нельзя внести пустое значение параметра." + Environment.NewLine + "Пожалуйста, введите все параметры.", "Ошибка");
 				return;
 			}
-		if (dgv_staff.SelectedRows.Count == 0 || dgv_staff.SelectedRows.Count > 1){
-			MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
-			return;
-		}
+			if (dgv_staff.SelectedRows.Count == 0 || dgv_staff.SelectedRows.Count > 1){
+				MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
+				return;
+			}
 			staffTableAdapter.Adapter.UpdateCommand.Connection.Open();
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@staffnames", tB_staff.Text));
@@ -298,37 +269,11 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@subdivision", cB_subdivision.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@TypeUID", cB_UID_type_from_gb_staff.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@oldNumber", dgv_staff.SelectedRows[0].Cells[4].Value.ToString()));
-			//UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, 
-			//Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, 
-			//Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, 
-			/////////////////////Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.Сотрудник = @staffnames
 			staffTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
 			staffTableAdapter.Adapter.UpdateCommand.Connection.Close();
 
 			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
-
-			//staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Сотрудник = staff, Должность = profession, 
-			//UID = StaffUID, Фото = Photo, [Табельный номер] = newNumber, [Номер паспорта] = multiPasport, [Дата найма] = date, 
-			//График = workTime, Заблокирован = blocked, Подразделение = subdivision, [Тип UID] = TypeUID WHERE [Табельный номер] = oldNumber", staffTableAdapter.Connection);
-
-
-			//if (dgv_users.SelectedRows.Count == 0 || dgv_users.SelectedRows.Count > 1)
-			//{
-			//	MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
-			//	return;
-			//}
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
-			//systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
-			//systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
-
-			//this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 		}
 
 		private void b_readUIDStaff_Click(object sender, EventArgs e){
@@ -337,6 +282,38 @@ namespace SerialPortUsing {
 			if(rez == DialogResult.OK)
 				tB_UID_from_gb_staff.Text = uidReadingForm.ResultingUID;
 		}
+		#endregion
 
+		#region Navigation Actions
+		private void tv_navigation_AfterSelect(object sender, TreeViewEventArgs e) {
+			SwitchSection(tv_navigation.SelectedNode.Text);
+		}
+
+		private void NavigationMenuClick(object sender, EventArgs e) {
+			SwitchSection(((ToolStripMenuItem)sender).Text);
+		}
+		private void SwitchSection(string sectionName) {
+			switch (sectionName) {
+				case "Система":
+				case "Основное":
+					gb_sys.BringToFront();
+					break;
+				case "Пользователи":
+					gb_users.BringToFront();
+					break;
+				case "Сотрудники":
+					gb_staff.BringToFront();
+					break;
+				case "Журнал пропуска":
+					gB_event.BringToFront();
+					break;
+			}
+		}
+		#endregion
+
+
+		private void выходToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Close();
+		}
 	}
 }

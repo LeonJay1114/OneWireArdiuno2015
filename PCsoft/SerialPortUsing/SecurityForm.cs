@@ -16,6 +16,7 @@ namespace SerialPortUsing {
 		private StaffTableAdapter _staffTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
 		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
 
+		#region Structing
 		public SecurityForm() {
 			_table = new Access_control_in_OneWire.StaffDataTable();
 			_staffTableAdapter = new StaffTableAdapter();
@@ -45,6 +46,7 @@ namespace SerialPortUsing {
 				this.Close();
 			}
 		}
+		#endregion
 
 		private void _listener_UIDReceived(object sender, string uid) {
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
