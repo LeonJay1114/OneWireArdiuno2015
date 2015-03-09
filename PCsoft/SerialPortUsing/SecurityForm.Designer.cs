@@ -133,45 +133,50 @@
 			// l_number
 			// 
 			this.l_number.AutoSize = true;
-			this.l_number.Location = new System.Drawing.Point(13, 64);
+			this.l_number.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_number.Location = new System.Drawing.Point(13, 46);
 			this.l_number.Name = "l_number";
-			this.l_number.Size = new System.Drawing.Size(10, 14);
+			this.l_number.Size = new System.Drawing.Size(11, 17);
 			this.l_number.TabIndex = 9;
 			this.l_number.Text = "l";
 			// 
 			// l_division
 			// 
 			this.l_division.AutoSize = true;
-			this.l_division.Location = new System.Drawing.Point(13, 141);
+			this.l_division.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_division.Location = new System.Drawing.Point(13, 119);
 			this.l_division.Name = "l_division";
-			this.l_division.Size = new System.Drawing.Size(10, 14);
+			this.l_division.Size = new System.Drawing.Size(11, 17);
 			this.l_division.TabIndex = 10;
 			this.l_division.Text = "l";
 			// 
 			// l_shedule
 			// 
 			this.l_shedule.AutoSize = true;
-			this.l_shedule.Location = new System.Drawing.Point(13, 220);
+			this.l_shedule.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_shedule.Location = new System.Drawing.Point(13, 191);
 			this.l_shedule.Name = "l_shedule";
-			this.l_shedule.Size = new System.Drawing.Size(10, 14);
+			this.l_shedule.Size = new System.Drawing.Size(11, 17);
 			this.l_shedule.TabIndex = 11;
 			this.l_shedule.Text = "l";
 			// 
 			// l_profession
 			// 
 			this.l_profession.AutoSize = true;
-			this.l_profession.Location = new System.Drawing.Point(13, 299);
+			this.l_profession.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_profession.Location = new System.Drawing.Point(13, 272);
 			this.l_profession.Name = "l_profession";
-			this.l_profession.Size = new System.Drawing.Size(10, 14);
+			this.l_profession.Size = new System.Drawing.Size(11, 17);
 			this.l_profession.TabIndex = 12;
 			this.l_profession.Text = "l";
 			// 
 			// l_uidType
 			// 
 			this.l_uidType.AutoSize = true;
-			this.l_uidType.Location = new System.Drawing.Point(13, 378);
+			this.l_uidType.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_uidType.Location = new System.Drawing.Point(13, 357);
 			this.l_uidType.Name = "l_uidType";
-			this.l_uidType.Size = new System.Drawing.Size(10, 14);
+			this.l_uidType.Size = new System.Drawing.Size(11, 17);
 			this.l_uidType.TabIndex = 13;
 			this.l_uidType.Text = "l";
 			// 
