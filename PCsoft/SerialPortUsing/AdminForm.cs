@@ -315,5 +315,13 @@ namespace SerialPortUsing {
 		private void выходToolStripMenuItem_Click(object sender, EventArgs e) {
 			this.Close();
 		}
+
+		private void b_showEvent_Click(object sender, EventArgs e)
+		{
+			if (rB_yesterday.Checked)
+			{
+				
+			}
+		}
 	}
 }
