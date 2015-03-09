@@ -86,5 +86,23 @@ namespace SerialPortUsing {
 			if(e.KeyCode == Keys.Enter)
 				Btn_Enter_Click(null, null);
 		}
+
+		private void b_admin_Click(object sender, EventArgs e)
+		{
+			tB_username.Text = "Admin";
+			tB_password.Text = "Admin";
+		}
+
+		private void b_security_Click(object sender, EventArgs e)
+		{
+			tB_username.Text = "Security";
+			tB_password.Text = "Security";
+		}
+
+		private void b_boss_Click(object sender, EventArgs e)
+		{
+			tB_username.Text = "Boss";
+			tB_password.Text = "Boss";
+		}
 	}
 }

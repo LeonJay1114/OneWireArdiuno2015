@@ -36,11 +36,17 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.Btn_Enter = new System.Windows.Forms.Button();
+			this.b_admin = new System.Windows.Forms.Button();
+			this.b_security = new System.Windows.Forms.Button();
+			this.b_boss = new System.Windows.Forms.Button();
 			this.GB_Login.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// GB_Login
 			// 
+			this.GB_Login.Controls.Add(this.b_boss);
+			this.GB_Login.Controls.Add(this.b_security);
+			this.GB_Login.Controls.Add(this.b_admin);
 			this.GB_Login.Controls.Add(this.CheckConnection);
 			this.GB_Login.Controls.Add(this.tB_password);
 			this.GB_Login.Controls.Add(this.tB_username);
@@ -107,6 +113,36 @@
 			this.Btn_Enter.UseVisualStyleBackColor = true;
 			this.Btn_Enter.Click += new System.EventHandler(this.Btn_Enter_Click);
 			// 
+			// b_admin
+			// 
+			this.b_admin.Location = new System.Drawing.Point(0, 12);
+			this.b_admin.Name = "b_admin";
+			this.b_admin.Size = new System.Drawing.Size(26, 20);
+			this.b_admin.TabIndex = 6;
+			this.b_admin.Text = "A";
+			this.b_admin.UseVisualStyleBackColor = true;
+			this.b_admin.Click += new System.EventHandler(this.b_admin_Click);
+			// 
+			// b_security
+			// 
+			this.b_security.Location = new System.Drawing.Point(0, 42);
+			this.b_security.Name = "b_security";
+			this.b_security.Size = new System.Drawing.Size(26, 20);
+			this.b_security.TabIndex = 7;
+			this.b_security.Text = "S";
+			this.b_security.UseVisualStyleBackColor = true;
+			this.b_security.Click += new System.EventHandler(this.b_security_Click);
+			// 
+			// b_boss
+			// 
+			this.b_boss.Location = new System.Drawing.Point(0, 71);
+			this.b_boss.Name = "b_boss";
+			this.b_boss.Size = new System.Drawing.Size(26, 20);
+			this.b_boss.TabIndex = 8;
+			this.b_boss.Text = "B";
+			this.b_boss.UseVisualStyleBackColor = true;
+			this.b_boss.Click += new System.EventHandler(this.b_boss_Click);
+			// 
 			// Authorisation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +170,9 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button Btn_Enter;
+		private System.Windows.Forms.Button b_boss;
+		private System.Windows.Forms.Button b_security;
+		private System.Windows.Forms.Button b_admin;
 
 	}
 }
