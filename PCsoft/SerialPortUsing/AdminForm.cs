@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlTypes;
-using System.Diagnostics;
 using System.IO.Ports;
 using System.Windows.Forms;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
@@ -69,7 +68,6 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
-			//EventLogAdapter.Adapter.
 		}
 		#endregion
 
@@ -322,18 +320,7 @@ namespace SerialPortUsing {
 		{
 			if (rB_yesterday.Checked)
 			{
-				eventLogAdapter.Adapter.SelectCommand = new OleDbCommand("Select * from EventLog", eventLogAdapter.Connection);
-				eventLogAdapter.Adapter.SelectCommand.Connection.Open();
 				
-
-				//systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
-				//systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
-				//staffTableAdapter.Adapter.InsertCommand = new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
-				//staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
-				//staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
-
-				eventLogAdapter.Adapter.Fill(access_control_in_OneWire.EventLog);
-				eventLogAdapter.Adapter.SelectCommand.Connection.Close();
 			}
 		}
 	}
