@@ -14,7 +14,6 @@ namespace SerialPortUsing
 		private UIDCOMListener _listener;
 		public string ResultingUID;
 		public UIDReadingForm(){
-			_listener = new UIDCOMListener(Settings.Default.COMName, Settings.Default.BaudRate, 8, ReceivingHandler);
 			InitializeComponent();
 		}
 
@@ -45,6 +44,19 @@ namespace SerialPortUsing
 			_listener.Close();
 			DialogResult = DialogResult.Cancel;
 			this.Close();
+		}
+
+		private void UIDReadingForm_Load(object sender, EventArgs e)
+		{
+			try
+			{
+				_listener = new UIDCOMListener(Settings.Default.COMName, Settings.Default.BaudRate, 8, ReceivingHandler);
+			}
+			catch (Exception)
+			{
+				DialogResult = DialogResult.Cancel;
+				this.Close();
+			}
 		}
 	}
 }

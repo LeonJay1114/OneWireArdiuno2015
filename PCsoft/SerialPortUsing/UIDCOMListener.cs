@@ -82,9 +82,10 @@ namespace SerialPortUsing {
 
 		#region Commands
 		public void Close() {
-			if(_port.IsOpen && CheckPortExistance(_port.PortName))
+			if (_port.IsOpen && CheckPortExistance(_port.PortName)){
 				_port.Close();
 				_port.Dispose();
+			}
 		}
 
 		public void Pause() {

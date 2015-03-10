@@ -61,6 +61,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "UIDReadingForm";
 			this.Text = "Чтение UID через COM-port";
+			this.Load += new System.EventHandler(this.UIDReadingForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

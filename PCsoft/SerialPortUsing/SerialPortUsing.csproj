@@ -138,6 +138,9 @@
     <EmbeddedResource Include="Authorisation.resx">
       <DependentUpon>Authorisation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BossForm.resx">
+      <DependentUpon>BossForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SecurityForm.resx">
       <DependentUpon>SecurityForm.cs</DependentUpon>
     </EmbeddedResource>
