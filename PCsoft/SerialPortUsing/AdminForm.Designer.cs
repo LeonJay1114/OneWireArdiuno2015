@@ -122,28 +122,19 @@
 			this.tv_navigation = new System.Windows.Forms.TreeView();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-			this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
-			this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
 			this.gB_event = new System.Windows.Forms.GroupBox();
-			this.b_showEvent = new System.Windows.Forms.Button();
-			this.tB_staffFromEvent = new System.Windows.Forms.TextBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.label21 = new System.Windows.Forms.Label();
-			this.cB_subdivisionFromEvent = new System.Windows.Forms.ComboBox();
-			this.label20 = new System.Windows.Forms.Label();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.label19 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
 			this.gB_period = new System.Windows.Forms.GroupBox();
-			this.rB_selectedPeriod = new System.Windows.Forms.RadioButton();
-			this.rB_lastMonth = new System.Windows.Forms.RadioButton();
-			this.rB_thisMonth = new System.Windows.Forms.RadioButton();
-			this.rB_last10Days = new System.Windows.Forms.RadioButton();
-			this.rB_thisWeek = new System.Windows.Forms.RadioButton();
-			this.rB_yesterday = new System.Windows.Forms.RadioButton();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.b_setPeriod_PastMonth = new System.Windows.Forms.Button();
+			this.b_setPeriod_ThisMonth = new System.Windows.Forms.Button();
+			this.b_setPeriod_Last10Days = new System.Windows.Forms.Button();
+			this.b_setPeriod_PastWeek = new System.Windows.Forms.Button();
+			this.b_setPeriod_PastDay = new System.Windows.Forms.Button();
+			this.b_showEvent = new System.Windows.Forms.Button();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+			this.dgv_event = new System.Windows.Forms.DataGridView();
 			this.сотрудникDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.должностьDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.uIDDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -155,9 +146,11 @@
 			this.графикDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.подразделениеDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.типUIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.eventLogBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-			this.eventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.EventLogAdapter();
+			this.joinedEventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.systemUsersTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.SystemUsersTableAdapter();
+			this.staffTableAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.StaffTableAdapter();
+			this.joinedEventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.JoinedEventLogAdapter();
 			this.menuStrip1.SuspendLayout();
 			this.gb_sys.SuspendLayout();
 			this.gb_users.SuspendLayout();
@@ -171,8 +164,8 @@
 			this.groupBox2.SuspendLayout();
 			this.gB_event.SuspendLayout();
 			this.gB_period.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_event)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -311,9 +304,9 @@
 			this.gb_sys.Controls.Add(this.label2);
 			this.gb_sys.Controls.Add(this.label1);
 			this.gb_sys.Controls.Add(this.cb_speed);
-			this.gb_sys.Location = new System.Drawing.Point(156, 549);
+			this.gb_sys.Location = new System.Drawing.Point(194, 565);
 			this.gb_sys.Name = "gb_sys";
-			this.gb_sys.Size = new System.Drawing.Size(69, 158);
+			this.gb_sys.Size = new System.Drawing.Size(63, 158);
 			this.gb_sys.TabIndex = 2;
 			this.gb_sys.TabStop = false;
 			this.gb_sys.Text = "gb_sys";
@@ -598,9 +591,9 @@
 			// 
 			this.gb_staff.Controls.Add(this.dgv_staff);
 			this.gb_staff.Controls.Add(this.groupBox2);
-			this.gb_staff.Location = new System.Drawing.Point(439, 549);
+			this.gb_staff.Location = new System.Drawing.Point(458, 565);
 			this.gb_staff.Name = "gb_staff";
-			this.gb_staff.Size = new System.Drawing.Size(81, 498);
+			this.gb_staff.Size = new System.Drawing.Size(59, 498);
 			this.gb_staff.TabIndex = 4;
 			this.gb_staff.TabStop = false;
 			this.gb_staff.Text = "gb_staff";
@@ -1044,238 +1037,140 @@
 			this.tv_navigation.TabIndex = 3;
 			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_navigation_AfterSelect);
 			// 
-			// openFileDialog1
-			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
-			// 
-			// systemUsersTableAdapter
-			// 
-			this.systemUsersTableAdapter.ClearBeforeFill = true;
-			// 
-			// staffTableAdapter
-			// 
-			this.staffTableAdapter.ClearBeforeFill = true;
-			// 
 			// gB_event
 			// 
-			this.gB_event.Controls.Add(this.b_showEvent);
-			this.gB_event.Controls.Add(this.tB_staffFromEvent);
-			this.gB_event.Controls.Add(this.label22);
-			this.gB_event.Controls.Add(this.comboBox1);
-			this.gB_event.Controls.Add(this.label21);
-			this.gB_event.Controls.Add(this.cB_subdivisionFromEvent);
-			this.gB_event.Controls.Add(this.label20);
-			this.gB_event.Controls.Add(this.dateTimePicker3);
-			this.gB_event.Controls.Add(this.dateTimePicker2);
-			this.gB_event.Controls.Add(this.label19);
-			this.gB_event.Controls.Add(this.label18);
 			this.gB_event.Controls.Add(this.gB_period);
-			this.gB_event.Controls.Add(this.dataGridView1);
-			this.gB_event.Location = new System.Drawing.Point(165, 27);
+			this.gB_event.Controls.Add(this.dgv_event);
+			this.gB_event.Location = new System.Drawing.Point(306, 552);
 			this.gB_event.Name = "gB_event";
-			this.gB_event.Size = new System.Drawing.Size(1035, 409);
+			this.gB_event.Size = new System.Drawing.Size(72, 374);
 			this.gB_event.TabIndex = 5;
 			this.gB_event.TabStop = false;
 			this.gB_event.Text = "gb_event";
 			// 
+			// gB_period
+			// 
+			this.gB_period.Controls.Add(this.b_setPeriod_PastMonth);
+			this.gB_period.Controls.Add(this.b_setPeriod_ThisMonth);
+			this.gB_period.Controls.Add(this.b_setPeriod_Last10Days);
+			this.gB_period.Controls.Add(this.b_setPeriod_PastWeek);
+			this.gB_period.Controls.Add(this.b_setPeriod_PastDay);
+			this.gB_period.Controls.Add(this.b_showEvent);
+			this.gB_period.Controls.Add(this.dateTimePicker2);
+			this.gB_period.Controls.Add(this.label18);
+			this.gB_period.Controls.Add(this.label19);
+			this.gB_period.Controls.Add(this.dateTimePicker3);
+			this.gB_period.Location = new System.Drawing.Point(852, 19);
+			this.gB_period.Name = "gB_period";
+			this.gB_period.Size = new System.Drawing.Size(189, 328);
+			this.gB_period.TabIndex = 1;
+			this.gB_period.TabStop = false;
+			this.gB_period.Text = "gB_period";
+			// 
+			// b_setPeriod_PastMonth
+			// 
+			this.b_setPeriod_PastMonth.Location = new System.Drawing.Point(13, 135);
+			this.b_setPeriod_PastMonth.Name = "b_setPeriod_PastMonth";
+			this.b_setPeriod_PastMonth.Size = new System.Drawing.Size(170, 23);
+			this.b_setPeriod_PastMonth.TabIndex = 17;
+			this.b_setPeriod_PastMonth.Text = "Прошлый месяц";
+			this.b_setPeriod_PastMonth.UseVisualStyleBackColor = true;
+			this.b_setPeriod_PastMonth.Click += new System.EventHandler(this.b_setPeriod_Click);
+			// 
+			// b_setPeriod_ThisMonth
+			// 
+			this.b_setPeriod_ThisMonth.Location = new System.Drawing.Point(14, 106);
+			this.b_setPeriod_ThisMonth.Name = "b_setPeriod_ThisMonth";
+			this.b_setPeriod_ThisMonth.Size = new System.Drawing.Size(170, 23);
+			this.b_setPeriod_ThisMonth.TabIndex = 16;
+			this.b_setPeriod_ThisMonth.Text = "С начала месяца";
+			this.b_setPeriod_ThisMonth.UseVisualStyleBackColor = true;
+			this.b_setPeriod_ThisMonth.Click += new System.EventHandler(this.b_setPeriod_Click);
+			// 
+			// b_setPeriod_Last10Days
+			// 
+			this.b_setPeriod_Last10Days.Location = new System.Drawing.Point(13, 77);
+			this.b_setPeriod_Last10Days.Name = "b_setPeriod_Last10Days";
+			this.b_setPeriod_Last10Days.Size = new System.Drawing.Size(170, 23);
+			this.b_setPeriod_Last10Days.TabIndex = 15;
+			this.b_setPeriod_Last10Days.Text = "Последние 10 дней";
+			this.b_setPeriod_Last10Days.UseVisualStyleBackColor = true;
+			this.b_setPeriod_Last10Days.Click += new System.EventHandler(this.b_setPeriod_Click);
+			// 
+			// b_setPeriod_PastWeek
+			// 
+			this.b_setPeriod_PastWeek.Location = new System.Drawing.Point(13, 48);
+			this.b_setPeriod_PastWeek.Name = "b_setPeriod_PastWeek";
+			this.b_setPeriod_PastWeek.Size = new System.Drawing.Size(170, 23);
+			this.b_setPeriod_PastWeek.TabIndex = 14;
+			this.b_setPeriod_PastWeek.Text = "Последняя неделя";
+			this.b_setPeriod_PastWeek.UseVisualStyleBackColor = true;
+			this.b_setPeriod_PastWeek.Click += new System.EventHandler(this.b_setPeriod_Click);
+			// 
+			// b_setPeriod_PastDay
+			// 
+			this.b_setPeriod_PastDay.Location = new System.Drawing.Point(13, 19);
+			this.b_setPeriod_PastDay.Name = "b_setPeriod_PastDay";
+			this.b_setPeriod_PastDay.Size = new System.Drawing.Size(170, 23);
+			this.b_setPeriod_PastDay.TabIndex = 13;
+			this.b_setPeriod_PastDay.Text = "Последние сутки";
+			this.b_setPeriod_PastDay.UseVisualStyleBackColor = true;
+			this.b_setPeriod_PastDay.Click += new System.EventHandler(this.b_setPeriod_Click);
+			// 
 			// b_showEvent
 			// 
-			this.b_showEvent.Location = new System.Drawing.Point(889, 380);
+			this.b_showEvent.Location = new System.Drawing.Point(14, 238);
 			this.b_showEvent.Name = "b_showEvent";
-			this.b_showEvent.Size = new System.Drawing.Size(108, 23);
+			this.b_showEvent.Size = new System.Drawing.Size(169, 35);
 			this.b_showEvent.TabIndex = 12;
-			this.b_showEvent.Text = "Показать журнал";
+			this.b_showEvent.Text = "Показать данные за промежуток";
 			this.b_showEvent.UseVisualStyleBackColor = true;
-			this.b_showEvent.Click += new System.EventHandler(this.b_showEvent_Click);
-			// 
-			// tB_staffFromEvent
-			// 
-			this.tB_staffFromEvent.Location = new System.Drawing.Point(852, 353);
-			this.tB_staffFromEvent.Name = "tB_staffFromEvent";
-			this.tB_staffFromEvent.Size = new System.Drawing.Size(177, 20);
-			this.tB_staffFromEvent.TabIndex = 11;
-			// 
-			// label22
-			// 
-			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(855, 337);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(60, 13);
-			this.label22.TabIndex = 10;
-			this.label22.Text = "Сотрудник";
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
-            "Директор",
-            "Старший помошник младшего дворника",
-            "Ведущий инженер-программист",
-            "Старший научный сотрудник",
-            "Программист",
-            "Физик-ядерщик",
-            "Младший научный сотрудник",
-            "Помощник программиста",
-            "Старший менеджер",
-            "Помошник старшего научного сотрудника",
-            "Дворник"});
-			this.comboBox1.Location = new System.Drawing.Point(852, 313);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(177, 21);
-			this.comboBox1.TabIndex = 9;
-			// 
-			// label21
-			// 
-			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(855, 297);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(65, 13);
-			this.label21.TabIndex = 8;
-			this.label21.Text = "Профессия";
-			// 
-			// cB_subdivisionFromEvent
-			// 
-			this.cB_subdivisionFromEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cB_subdivisionFromEvent.FormattingEnabled = true;
-			this.cB_subdivisionFromEvent.Items.AddRange(new object[] {
-            "Технический персонал",
-            "Научный персонал",
-            "Уборщики",
-            "Начальник"});
-			this.cB_subdivisionFromEvent.Location = new System.Drawing.Point(852, 273);
-			this.cB_subdivisionFromEvent.Name = "cB_subdivisionFromEvent";
-			this.cB_subdivisionFromEvent.Size = new System.Drawing.Size(177, 21);
-			this.cB_subdivisionFromEvent.TabIndex = 7;
-			// 
-			// label20
-			// 
-			this.label20.AutoSize = true;
-			this.label20.Location = new System.Drawing.Point(855, 257);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(87, 13);
-			this.label20.TabIndex = 6;
-			this.label20.Text = "Подразделение";
-			// 
-			// dateTimePicker3
-			// 
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker3.Location = new System.Drawing.Point(852, 234);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.Size = new System.Drawing.Size(177, 20);
-			this.dateTimePicker3.TabIndex = 5;
+			this.b_showEvent.Click += new System.EventHandler(this.b_setPeriod_Click);
 			// 
 			// dateTimePicker2
 			// 
 			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker2.Location = new System.Drawing.Point(852, 195);
+			this.dateTimePicker2.Location = new System.Drawing.Point(44, 276);
 			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(177, 20);
+			this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
 			this.dateTimePicker2.TabIndex = 4;
-			// 
-			// label19
-			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(852, 218);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(19, 13);
-			this.label19.TabIndex = 3;
-			this.label19.Text = "по";
 			// 
 			// label18
 			// 
 			this.label18.AutoSize = true;
-			this.label18.Location = new System.Drawing.Point(855, 179);
+			this.label18.Location = new System.Drawing.Point(26, 276);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(13, 13);
 			this.label18.TabIndex = 2;
 			this.label18.Text = "с";
 			// 
-			// gB_period
+			// label19
 			// 
-			this.gB_period.Controls.Add(this.rB_selectedPeriod);
-			this.gB_period.Controls.Add(this.rB_lastMonth);
-			this.gB_period.Controls.Add(this.rB_thisMonth);
-			this.gB_period.Controls.Add(this.rB_last10Days);
-			this.gB_period.Controls.Add(this.rB_thisWeek);
-			this.gB_period.Controls.Add(this.rB_yesterday);
-			this.gB_period.Location = new System.Drawing.Point(852, 19);
-			this.gB_period.Name = "gB_period";
-			this.gB_period.Size = new System.Drawing.Size(177, 157);
-			this.gB_period.TabIndex = 1;
-			this.gB_period.TabStop = false;
-			this.gB_period.Text = "gB_period";
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(20, 302);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(19, 13);
+			this.label19.TabIndex = 3;
+			this.label19.Text = "по";
 			// 
-			// rB_selectedPeriod
+			// dateTimePicker3
 			// 
-			this.rB_selectedPeriod.AutoSize = true;
-			this.rB_selectedPeriod.Location = new System.Drawing.Point(6, 134);
-			this.rB_selectedPeriod.Name = "rB_selectedPeriod";
-			this.rB_selectedPeriod.Size = new System.Drawing.Size(149, 17);
-			this.rB_selectedPeriod.TabIndex = 5;
-			this.rB_selectedPeriod.Text = "Выбранный промежуток";
-			this.rB_selectedPeriod.UseVisualStyleBackColor = true;
+			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker3.Location = new System.Drawing.Point(44, 302);
+			this.dateTimePicker3.Name = "dateTimePicker3";
+			this.dateTimePicker3.Size = new System.Drawing.Size(140, 20);
+			this.dateTimePicker3.TabIndex = 5;
 			// 
-			// rB_lastMonth
+			// dgv_event
 			// 
-			this.rB_lastMonth.AutoSize = true;
-			this.rB_lastMonth.Location = new System.Drawing.Point(6, 111);
-			this.rB_lastMonth.Name = "rB_lastMonth";
-			this.rB_lastMonth.Size = new System.Drawing.Size(122, 17);
-			this.rB_lastMonth.TabIndex = 4;
-			this.rB_lastMonth.Text = "За прошлый месяц";
-			this.rB_lastMonth.UseVisualStyleBackColor = true;
-			// 
-			// rB_thisMonth
-			// 
-			this.rB_thisMonth.AutoSize = true;
-			this.rB_thisMonth.Location = new System.Drawing.Point(6, 88);
-			this.rB_thisMonth.Name = "rB_thisMonth";
-			this.rB_thisMonth.Size = new System.Drawing.Size(111, 17);
-			this.rB_thisMonth.TabIndex = 3;
-			this.rB_thisMonth.Text = "С начала месяца";
-			this.rB_thisMonth.UseVisualStyleBackColor = true;
-			// 
-			// rB_last10Days
-			// 
-			this.rB_last10Days.AutoSize = true;
-			this.rB_last10Days.Location = new System.Drawing.Point(6, 65);
-			this.rB_last10Days.Name = "rB_last10Days";
-			this.rB_last10Days.Size = new System.Drawing.Size(137, 17);
-			this.rB_last10Days.TabIndex = 2;
-			this.rB_last10Days.Text = "За последние 10 дней";
-			this.rB_last10Days.UseVisualStyleBackColor = true;
-			// 
-			// rB_thisWeek
-			// 
-			this.rB_thisWeek.AutoSize = true;
-			this.rB_thisWeek.Location = new System.Drawing.Point(6, 42);
-			this.rB_thisWeek.Name = "rB_thisWeek";
-			this.rB_thisWeek.Size = new System.Drawing.Size(98, 17);
-			this.rB_thisWeek.TabIndex = 1;
-			this.rB_thisWeek.Text = "За эту неделю";
-			this.rB_thisWeek.UseVisualStyleBackColor = true;
-			// 
-			// rB_yesterday
-			// 
-			this.rB_yesterday.AutoSize = true;
-			this.rB_yesterday.Checked = true;
-			this.rB_yesterday.Location = new System.Drawing.Point(6, 19);
-			this.rB_yesterday.Name = "rB_yesterday";
-			this.rB_yesterday.Size = new System.Drawing.Size(118, 17);
-			this.rB_yesterday.TabIndex = 0;
-			this.rB_yesterday.TabStop = true;
-			this.rB_yesterday.Text = "За прошлые сутки";
-			this.rB_yesterday.UseVisualStyleBackColor = true;
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AutoGenerateColumns = false;
-			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dgv_event.AllowUserToAddRows = false;
+			this.dgv_event.AllowUserToDeleteRows = false;
+			this.dgv_event.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.dgv_event.AutoGenerateColumns = false;
+			this.dgv_event.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dgv_event.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_event.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.сотрудникDataGridViewTextBoxColumn1,
             this.должностьDataGridViewTextBoxColumn1,
             this.uIDDataGridViewTextBoxColumn3,
@@ -1287,13 +1182,13 @@
             this.графикDataGridViewTextBoxColumn1,
             this.подразделениеDataGridViewTextBoxColumn1,
             this.типUIDDataGridViewTextBoxColumn1});
-			this.dataGridView1.DataSource = this.eventLogBindingSource3;
-			this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveBorder;
-			this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.Size = new System.Drawing.Size(840, 354);
-			this.dataGridView1.TabIndex = 0;
+			this.dgv_event.DataSource = this.joinedEventLogBindingSource;
+			this.dgv_event.GridColor = System.Drawing.SystemColors.ActiveBorder;
+			this.dgv_event.Location = new System.Drawing.Point(6, 19);
+			this.dgv_event.Name = "dgv_event";
+			this.dgv_event.ReadOnly = true;
+			this.dgv_event.Size = new System.Drawing.Size(840, 349);
+			this.dgv_event.TabIndex = 0;
 			// 
 			// сотрудникDataGridViewTextBoxColumn1
 			// 
@@ -1372,14 +1267,22 @@
 			this.типUIDDataGridViewTextBoxColumn1.Name = "типUIDDataGridViewTextBoxColumn1";
 			this.типUIDDataGridViewTextBoxColumn1.ReadOnly = true;
 			// 
-			// eventLogBindingSource3
+			// joinedEventLogBindingSource
 			// 
-			this.eventLogBindingSource3.DataMember = "EventLog";
-			this.eventLogBindingSource3.DataSource = this.access_control_in_OneWire;
+			this.joinedEventLogBindingSource.DataMember = "JoinedEventLog";
+			this.joinedEventLogBindingSource.DataSource = this.access_control_in_OneWire;
 			// 
-			// eventLogAdapter
+			// systemUsersTableAdapter
 			// 
-			this.eventLogAdapter.ClearBeforeFill = true;
+			this.systemUsersTableAdapter.ClearBeforeFill = true;
+			// 
+			// staffTableAdapter
+			// 
+			this.staffTableAdapter.ClearBeforeFill = true;
+			// 
+			// joinedEventLogAdapter
+			// 
+			this.joinedEventLogAdapter.ClearBeforeFill = true;
 			// 
 			// AdminForm
 			// 
@@ -1416,11 +1319,10 @@
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.gB_event.ResumeLayout(false);
-			this.gB_event.PerformLayout();
 			this.gB_period.ResumeLayout(false);
 			this.gB_period.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.eventLogBindingSource3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_event)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1518,8 +1420,8 @@
         private System.Windows.Forms.ComboBox cB_subdivision;
 		private System.Windows.Forms.GroupBox gB_event;
 		private System.Windows.Forms.DataGridViewTextBoxColumn uidDataGridViewTextBoxColumn2;
-		private Access_control_in_OneWireTableAdapters.EventLogAdapter eventLogAdapter;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private Access_control_in_OneWireTableAdapters.JoinedEventLogAdapter joinedEventLogAdapter;
+		private System.Windows.Forms.DataGridView dgv_event;
 		private System.Windows.Forms.DataGridViewTextBoxColumn сотрудникDataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn должностьDataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn uIDDataGridViewTextBoxColumn3;
@@ -1531,7 +1433,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn графикDataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn подразделениеDataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn типUIDDataGridViewTextBoxColumn1;
-		private System.Windows.Forms.BindingSource eventLogBindingSource3;
 		private System.Windows.Forms.Button b_readUIDStaff;
 		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.ToolStripMenuItem основноеToolStripMenuItem;
@@ -1539,23 +1440,17 @@
 		private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem журналПропускаToolStripMenuItem;
-		private System.Windows.Forms.ComboBox cB_subdivisionFromEvent;
-		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.DateTimePicker dateTimePicker3;
 		private System.Windows.Forms.DateTimePicker dateTimePicker2;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.GroupBox gB_period;
-		private System.Windows.Forms.RadioButton rB_selectedPeriod;
-		private System.Windows.Forms.RadioButton rB_lastMonth;
-		private System.Windows.Forms.RadioButton rB_thisMonth;
-		private System.Windows.Forms.RadioButton rB_last10Days;
-		private System.Windows.Forms.RadioButton rB_thisWeek;
-		private System.Windows.Forms.RadioButton rB_yesterday;
 		private System.Windows.Forms.Button b_showEvent;
-		private System.Windows.Forms.TextBox tB_staffFromEvent;
-		private System.Windows.Forms.Label label22;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.BindingSource joinedEventLogBindingSource;
+		private System.Windows.Forms.Button b_setPeriod_PastMonth;
+		private System.Windows.Forms.Button b_setPeriod_ThisMonth;
+		private System.Windows.Forms.Button b_setPeriod_Last10Days;
+		private System.Windows.Forms.Button b_setPeriod_PastWeek;
+		private System.Windows.Forms.Button b_setPeriod_PastDay;
 	}
 }

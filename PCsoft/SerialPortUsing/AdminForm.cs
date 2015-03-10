@@ -44,9 +44,7 @@ namespace SerialPortUsing {
 		private void AdminForm_Load(object sender, EventArgs e)
 		{
 			// TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.EventLog". При необходимости она может быть перемещена или удалена.
-			this.eventLogAdapter.Fill(this.access_control_in_OneWire.EventLog);
-			// TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.EventLog". При необходимости она может быть перемещена или удалена.
-			//this.eventLogTableAdapter.Fill(this.access_control_in_OneWire.EventLog);
+			//this.joinedEventLogAdapter.Fill(this.access_control_in_OneWire.JoinedEventLog);
 			// TODO: This line of code loads data into the 'access_control_in_OneWire.Staff' table. You can move, or remove it, as needed.
 			this.staffTableAdapter.Fill(this.access_control_in_OneWire.Staff);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.SystemUsers". При необходимости она может быть перемещена или удалена.
@@ -318,11 +316,60 @@ namespace SerialPortUsing {
 
 		private void b_showEvent_Click(object sender, EventArgs e)
 		{
-			if (rB_yesterday.Checked)
-			{
-				
+			
+			//joinedEventLogAdapter.ClearBeforeFill = true;
+			
+			////joinedEventLogAdapter.Adapter.SelectCommand = new OleDbCommand("SELECT Staff.Сотрудник, Staff.Должность, Staff.UID, Staff.Фото, EventLog.EnterTime, " +
+			////														 "EventLog.ExitTime, Staff.[Табельный номер], Staff.[Номер паспорта], Staff.График, " +
+			////														 "Staff.Подразделение, Staff.[Тип UID] FROM  (EventLog INNER JOIN Staff ON EventLog.Uid = Staff.UID) " +
+			////														 "WHERE EnterTime > DateSerial(Year(NOW()), Month(NOW()), Day(NOW())-7)ORDER BY ENTERTIME", joinedEventLogAdapter.Connection);
+			//joinedEventLogAdapter.Adapter.SelectCommand = new OleDbCommand("SELECT * from (EventLog INNER JOIN Staff ON EventLog.Uid = Staff.UID) ORDER BY ENTERTIME DESC", joinedEventLogAdapter.Connection);
+			//joinedEventLogAdapter.Adapter.SelectCommand.Connection.Open();
+			//var reader = joinedEventLogAdapter.Adapter.SelectCommand.ExecuteReader();
+			//joinedEventLogAdapter.Adapter.SelectCommand.Connection.Close();
+			
+			//eventLogAdapter.Adapter.SelectCommand = new OleDbCommand("SELECT Staff.Сотрудник, Staff.Должность, Staff.UID, Staff.Фото, " +
+			//"EventLog.EnterTime, EventLog.ExitTime, Staff.[Табельный номер], Staff.[Номер паспорта], Staff.График, Staff.Подразделение, " +
+			//"Staff.[Тип UID] FROM  (EventLog INNER JOIN Staff ON EventLog.Uid = Staff.UID) " +
+			//"WHERE EnterTime > DateSerial(Year(NOW()), Month(NOW()), Day(NOW())-7)", eventLogAdapter.Connection);
+
+			
+			//systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
+			//systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
+			//staffTableAdapter.Adapter.InsertCommand = new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
+			//staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
+			//WHERE EnterTime > DateSerial(Year(NOW()), Month(NOW()), Day(NOW()-7))
+			
+			//access_control_in_OneWire.JoinedEventLog.Clear();
+			//joinedEventLogAdapter.FillLastWeek(access_control_in_OneWire.JoinedEventLog);
+		}
+
+		private void b_setPeriod_Click(object sender, EventArgs e)
+		{
+			DateTime today = DateTime.Now;
+			today = today.AddHours(-today.Hour);
+			today = today.AddMinutes(-today.Minute);
+			today = today.AddSeconds(-today.Second);
+			switch (((Button)sender).Text){
+				case "Последние сутки":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-1), today);
+					break;
+				case "Последняя неделя":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-7), today);
+					break;
+				case "Последние 10 дней":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-10), today);
+					break;
+				case "С начала месяца":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-today.Day), today);
+					break;
+				case "Прошлый месяц":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-today.Day).AddMonths(-1), today.AddDays(-today.Day));
+					break;
+				case "Показать данные за промежуток"://dateTimePicker1.Value.ToString("yy-MM-dd")
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, dateTimePicker2.Value, dateTimePicker3.Value);
+					break;
 			}
-			eventLogAdapter.Fill(access_control_in_OneWire.EventLog);
 		}
 	}
 }
