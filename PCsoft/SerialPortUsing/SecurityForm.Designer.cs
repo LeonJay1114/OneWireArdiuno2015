@@ -53,7 +53,6 @@
 			this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pic_face.TabIndex = 0;
 			this.pic_face.TabStop = false;
-			this.pic_face.Click += new System.EventHandler(this.pic_face_Click);
 			// 
 			// l1
 			// 

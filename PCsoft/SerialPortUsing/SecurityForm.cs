@@ -147,10 +147,6 @@ namespace SerialPortUsing {
 		private void SecurityForm_FormClosing(object sender, FormClosingEventArgs e) {
 			_listener.Close();
 		}
-
-		private void pic_face_Click(object sender, EventArgs e) {
-			l_photoPlaceHolder.Visible = false;
-		}
 	}
 }
 
