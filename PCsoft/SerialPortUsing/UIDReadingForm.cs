@@ -17,7 +17,7 @@ namespace SerialPortUsing
 			InitializeComponent();
 		}
 
-		private void ReceivingHandler(object sender, string uid)
+		private void ReceivingHandler(object sender, string uid, bool enterExit)
 		{
 			_listener.Close();
 			ReturnUID(uid);

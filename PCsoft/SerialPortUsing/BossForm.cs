@@ -45,7 +45,13 @@ namespace SerialPortUsing {
 		{
 			// TODO: данная строка кода позволяет загрузить данные в таблицу "access_control_in_OneWire.JoinedEventLog". При необходимости она может быть перемещена или удалена.
 			this.joinedEventLogAdapter.Fill(this.access_control_in_OneWire.JoinedEventLog);
+			dateTimePicker2.Format = DateTimePickerFormat.Custom;
+			dateTimePicker2.CustomFormat = "MMM dd, yyyy";
 
+			dateTimePicker3.Format = DateTimePickerFormat.Custom;
+			dateTimePicker3.CustomFormat = "MMMM dd, yyyy";
+			string datetime = dateTimePicker2.Text;
+			MessageBox.Show(datetime);
 		}
 	}
 }

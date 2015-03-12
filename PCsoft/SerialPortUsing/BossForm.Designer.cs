@@ -37,9 +37,6 @@
 			this.label19 = new System.Windows.Forms.Label();
 			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
 			this.dgv_event = new System.Windows.Forms.DataGridView();
-			this.access_control_in_OneWire = new SerialPortUsing.Access_control_in_OneWire();
-			this.joinedEventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.joinedEventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.JoinedEventLogAdapter();
 			this.сотрудникDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.должностьDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.uIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +48,14 @@
 			this.графикDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.подразделениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.типUIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.joinedEventLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.access_control_in_OneWire = new SerialPortUsing.Access_control_in_OneWire();
+			this.joinedEventLogAdapter = new SerialPortUsing.Access_control_in_OneWireTableAdapters.JoinedEventLogAdapter();
 			this.gB_event.SuspendLayout();
 			this.gB_period.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_event)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// gB_event
@@ -152,7 +152,7 @@
 			// 
 			// dateTimePicker2
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePicker2.Location = new System.Drawing.Point(44, 276);
 			this.dateTimePicker2.Name = "dateTimePicker2";
 			this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
@@ -178,7 +178,7 @@
 			// 
 			// dateTimePicker3
 			// 
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePicker3.Location = new System.Drawing.Point(44, 302);
 			this.dateTimePicker3.Name = "dateTimePicker3";
 			this.dateTimePicker3.Size = new System.Drawing.Size(140, 20);
@@ -212,20 +212,6 @@
 			this.dgv_event.ReadOnly = true;
 			this.dgv_event.Size = new System.Drawing.Size(840, 481);
 			this.dgv_event.TabIndex = 0;
-			// 
-			// access_control_in_OneWire
-			// 
-			this.access_control_in_OneWire.DataSetName = "Access_control_in_OneWire";
-			this.access_control_in_OneWire.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// joinedEventLogBindingSource
-			// 
-			this.joinedEventLogBindingSource.DataMember = "JoinedEventLog";
-			this.joinedEventLogBindingSource.DataSource = this.access_control_in_OneWire;
-			// 
-			// joinedEventLogAdapter
-			// 
-			this.joinedEventLogAdapter.ClearBeforeFill = true;
 			// 
 			// сотрудникDataGridViewTextBoxColumn
 			// 
@@ -304,6 +290,20 @@
 			this.типUIDDataGridViewTextBoxColumn.Name = "типUIDDataGridViewTextBoxColumn";
 			this.типUIDDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
+			// joinedEventLogBindingSource
+			// 
+			this.joinedEventLogBindingSource.DataMember = "JoinedEventLog";
+			this.joinedEventLogBindingSource.DataSource = this.access_control_in_OneWire;
+			// 
+			// access_control_in_OneWire
+			// 
+			this.access_control_in_OneWire.DataSetName = "Access_control_in_OneWire";
+			this.access_control_in_OneWire.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// joinedEventLogAdapter
+			// 
+			this.joinedEventLogAdapter.ClearBeforeFill = true;
+			// 
 			// BossForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,8 +317,8 @@
 			this.gB_period.ResumeLayout(false);
 			this.gB_period.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_event)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).EndInit();
 			this.ResumeLayout(false);
 
 		}

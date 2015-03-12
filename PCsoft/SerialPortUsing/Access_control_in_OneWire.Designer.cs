@@ -8372,6 +8372,12 @@ ORDER BY EventLog.EnterTime";
             this._adapter.InsertCommand.CommandText = "INSERT INTO EventLog ( Uid, EnterTime )\r\nVALUES (uidpar, NOW ( ));\r\n";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("uidpar", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE (SELECT TOP 1 UID, EnterTime, ExitTime FROM EventLog\r\nWHERE EventLog.UID =" +
+                " uidpar\r\nORDER BY EnterTime DESC)\r\nSET ExitTime=NOW()";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("uidpar", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

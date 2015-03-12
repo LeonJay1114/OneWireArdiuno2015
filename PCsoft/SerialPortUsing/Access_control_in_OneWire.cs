@@ -9,6 +9,9 @@
 }
 
 namespace SerialPortUsing.Access_control_in_OneWireTableAdapters {
+	partial class JoinedEventLogAdapter
+	{
+	}
 
 
 	public partial class EventLogAdapter

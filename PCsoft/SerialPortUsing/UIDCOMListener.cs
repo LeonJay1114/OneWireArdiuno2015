@@ -6,16 +6,14 @@ using System.IO.Ports;
 using System.Windows.Forms;
 
 namespace SerialPortUsing {
-	public delegate void UIDReceivingHandler(object sender, string uid);
+	public delegate void UIDReceivingHandler(object sender, string uid, bool enterExit);
 	class UIDCOMListener {
 		#region serving objects
-		private readonly SerialPort _port;
+		private readonly COMByteSequenceReceiver _receiver;
 		#endregion
 
 		#region parameters
 		private readonly int _uidLength;
-		private int _accumulatedBytesCount= 0;
-		private readonly byte[] _accumulatedBytes;
 		private bool _paused = false;
 		#endregion
 
@@ -25,16 +23,74 @@ namespace SerialPortUsing {
 
 		#region Structing
 		public UIDCOMListener(string portName, int baudRate, int uIDLength, UIDReceivingHandler receivingHandler) {
+			_uidLength = uIDLength;
+
+			OnUIDReceived += receivingHandler;
+
+			_receiver = new COMByteSequenceReceiver(portName, baudRate, uIDLength + 1, receiver_DataReceived);
+		}
+		#endregion
+
+		#region Handling data reception
+		private void receiver_DataReceived(object sender, byte[] bytes){
+			OnUIDReceived(this, Convert.ToBase64String(bytes, 0, 8), Convert.ToBoolean(bytes[8]));
+		}
+		#endregion
+
+		#region gettings
+		public bool IsOpen(){
+			return _receiver.IsOpen();
+		}
+		public bool IsPaused() {
+			return _receiver.IsPaused();
+		}
+		#endregion
+
+		#region Commands
+		public void Close() {
+			_receiver.Close();
+		}
+
+		public void Pause() {
+			_receiver.Pause();
+		}
+		public void Resume() {
+			_receiver.Resume();
+		}
+		#endregion
+	}
+
+
+	public delegate void ByteSequenceReceivingHandler(object sender, byte[] bytes);
+	class COMByteSequenceReceiver {
+		#region serving objects
+		private readonly SerialPort _port;
+		#endregion
+
+		#region parameters
+		private readonly int _seqLength;
+		private int _accumulatedBytesCount= 0;
+		private readonly byte[] _accumulatedBytes;
+		private bool _paused = false;
+		#endregion
+
+		#region events
+		event ByteSequenceReceivingHandler OnBytesReceived;
+		#endregion
+
+		#region Structing
+		public COMByteSequenceReceiver(string portName, int baudRate, int seqLength, ByteSequenceReceivingHandler receivingHandler)
+		{
 			_port = new SerialPort(portName, baudRate);
 			_port.Parity = Parity.None;
 			_port.StopBits = StopBits.One;
 			_port.DataBits = 8;
 			_port.Handshake = Handshake.None;
 
-			_uidLength = uIDLength;
-			_accumulatedBytes = new byte[_uidLength];
+			_seqLength = seqLength;
+			_accumulatedBytes = new byte[_seqLength];
 
-			OnUIDReceived += receivingHandler;
+			OnBytesReceived += receivingHandler;
 
 			try {
 				_port.Open();
@@ -53,9 +109,9 @@ namespace SerialPortUsing {
 			foreach(byte b in bytes) {
 				_accumulatedBytes[_accumulatedBytesCount] = b;
 				_accumulatedBytesCount++;
-				if(_accumulatedBytesCount==_uidLength) {
+				if(_accumulatedBytesCount==_seqLength) {
 					_accumulatedBytesCount = 0;
-					OnUIDReceived(this, Convert.ToBase64String(_accumulatedBytes));
+					OnBytesReceived(this, _accumulatedBytes);
 				}
 			}
 		}
@@ -106,4 +162,5 @@ namespace SerialPortUsing {
 		#endregion
 
 	}
+
 }

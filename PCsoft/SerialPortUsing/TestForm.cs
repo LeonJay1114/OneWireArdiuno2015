@@ -151,7 +151,7 @@ namespace SerialPortUsing {
 			_listener = new UIDCOMListener(coB_coms.Text, 9600, 8, OnUIDReceived);
 		}
 
-		private void OnUIDReceived(object sender, string uid) {
+		private void OnUIDReceived(object sender, string uid, bool enterExit) {
 			string uidstr = BitConverter.ToString(Convert.FromBase64String(uid));
 			OutputToUIDOutput(uid + Environment.NewLine + uidstr + Environment.NewLine+Environment.NewLine);
 		}

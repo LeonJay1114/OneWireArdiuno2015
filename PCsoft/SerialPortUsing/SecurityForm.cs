@@ -29,15 +29,15 @@ namespace SerialPortUsing {
 			_eventLogAdapter.ClearBeforeFill = true;
 			_eventLogAdapter.Adapter.InsertCommand.Connection = _eventLogAdapter.Connection;
 			
-			try{
+			//try{
 				_listener = new UIDCOMListener(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
-			}
-			catch(Exception)
-			{
-				MessageBox.Show(this, "Не удалось получить доступ к COM-порту.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				this.Close();
-				return;
-			}
+			//}
+			//catch(Exception)
+			//{
+			//	MessageBox.Show(this, "Не удалось получить доступ к COM-порту.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//	this.Close();
+			///	return;
+			//}
 			
 			InitializeComponent();
 			this.CenterToScreen();
@@ -54,7 +54,9 @@ namespace SerialPortUsing {
 		}
 		#endregion
 
-		private void _listener_UIDReceived(object sender, string uid) {
+		private void _listener_UIDReceived(object sender, string uid, bool enterExit)
+		{
+			//MessageBox.Show(enterExit.ToString());
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _staffTable.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре
 			
@@ -63,7 +65,7 @@ namespace SerialPortUsing {
 				if (searchResult.Length > 1)
 					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!");
 				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), searchResult[0][0].ToString(),searchResult[0][9].ToString(), 0);
-				WriteEventToLog(uid);
+				WriteEventToLog(uid, enterExit);
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -71,11 +73,19 @@ namespace SerialPortUsing {
 			}
 		}
 
-		private void WriteEventToLog(string uid) {
-			_eventLogAdapter.Adapter.InsertCommand.Parameters["uidpar"].Value = uid;
-			_eventLogAdapter.Adapter.InsertCommand.Connection.Open();
-			_eventLogAdapter.Adapter.InsertCommand.ExecuteNonQuery();
-			_eventLogAdapter.Adapter.InsertCommand.Connection.Close();
+		private void WriteEventToLog(string uid, bool enterExit) {
+			if (enterExit){
+				_eventLogAdapter.Adapter.UpdateCommand.Parameters["uidpar"].Value = uid;
+				_eventLogAdapter.Adapter.InsertCommand.Connection.Open();
+				_eventLogAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+				_eventLogAdapter.Adapter.InsertCommand.Connection.Close();
+			}
+			else{
+				_eventLogAdapter.Adapter.InsertCommand.Parameters["uidpar"].Value = uid;
+				_eventLogAdapter.Adapter.InsertCommand.Connection.Open();
+				_eventLogAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+				_eventLogAdapter.Adapter.InsertCommand.Connection.Close();
+			}
 		}
 
 		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl);
