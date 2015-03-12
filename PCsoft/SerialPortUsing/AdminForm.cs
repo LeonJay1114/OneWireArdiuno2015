@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlTypes;
+using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
@@ -282,6 +283,58 @@ namespace SerialPortUsing {
 		}
 		#endregion
 
+		#region Events groupbox controls events
+		private void выходToolStripMenuItem_Click(object sender, EventArgs e) {
+			this.Close();
+		}
+
+		private void b_setPeriod_Click(object sender, EventArgs e) {
+			DateTime todayStart = DateTime.Now; // Датовремя, указывающая на ПЕРВУЮ секунду текущих суток.
+			todayStart = todayStart.AddHours(-todayStart.Hour);
+			todayStart = todayStart.AddMinutes(-todayStart.Minute);
+			todayStart = todayStart.AddSeconds(-todayStart.Second);
+			DateTime todayEnd = DateTime.Now; // Датовремя, указывающая на ПОСЛЕДНЮЮ секунду текущих суток. Да, немного в будущее.
+			todayEnd = todayEnd.AddHours(23 - todayEnd.Hour);
+			todayEnd = todayEnd.AddMinutes(59 - todayEnd.Minute);
+			todayEnd = todayEnd.AddSeconds(59 - todayEnd.Second);
+			switch (((Button)sender).Text) {
+				case "Сегодня":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart, todayEnd);
+					break;
+				case "Последняя неделя":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-7), todayEnd);
+					break;
+				case "Последние 10 дней":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-10), todayEnd);
+					break;
+				case "С начала месяца":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day), todayEnd);
+					break;
+				case "Прошлый месяц":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day).AddMonths(-1), todayEnd.AddDays(-todayEnd.Day));
+					break;
+				case "Показать данные за промежуток"://dateTimePicker1.Value.ToString("yy-MM-dd")
+					DateTime periodStart = dtp_eventStart.Value.AddHours(-dtp_eventStart.Value.Hour).AddMinutes(-dtp_eventStart.Value.Minute).AddSeconds(-dtp_eventStart.Value.Second);
+					DateTime periodEnd = dtp_eventEnd.Value.AddHours(23 - dtp_eventEnd.Value.Hour).AddMinutes(59 - dtp_eventEnd.Value.Minute).AddSeconds(59 - dtp_eventEnd.Value.Second);
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, periodStart, periodEnd);
+					break;
+			}
+		}
+		private void dgv_event_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+			Application.DoEvents();
+			if (e.RowIndex < 0) return;
+			string path = dgv_event.Rows[e.RowIndex].Cells[3].Value.ToString();
+			if (!string.IsNullOrEmpty(path)) {
+				try {
+					pic_event_photo.Image = new Bitmap(path);
+				}
+				catch (Exception) {
+					MessageBox.Show(this, "Не удалось подгрузить фотографию по пути \n" + path, "Пичаль :\\");
+				}
+			}
+		}
+		#endregion
+
 		#region Navigation Actions
 		private void tv_navigation_AfterSelect(object sender, TreeViewEventArgs e) {
 			SwitchSection(tv_navigation.SelectedNode.Text);
@@ -309,16 +362,14 @@ namespace SerialPortUsing {
 		}
 		#endregion
 
+		
 
-		private void выходToolStripMenuItem_Click(object sender, EventArgs e) {
-			this.Close();
-		}
+		#region Some old shit
 
-		private void b_showEvent_Click(object sender, EventArgs e)
-		{
-			
+		private void b_showEvent_Click(object sender, EventArgs e) {
+
 			//joinedEventLogAdapter.ClearBeforeFill = true;
-			
+
 			////joinedEventLogAdapter.Adapter.SelectCommand = new OleDbCommand("SELECT Staff.Сотрудник, Staff.Должность, Staff.UID, Staff.Фото, EventLog.EnterTime, " +
 			////														 "EventLog.ExitTime, Staff.[Табельный номер], Staff.[Номер паспорта], Staff.График, " +
 			////														 "Staff.Подразделение, Staff.[Тип UID] FROM  (EventLog INNER JOIN Staff ON EventLog.Uid = Staff.UID) " +
@@ -327,55 +378,26 @@ namespace SerialPortUsing {
 			//joinedEventLogAdapter.Adapter.SelectCommand.Connection.Open();
 			//var reader = joinedEventLogAdapter.Adapter.SelectCommand.ExecuteReader();
 			//joinedEventLogAdapter.Adapter.SelectCommand.Connection.Close();
-			
+
 			//eventLogAdapter.Adapter.SelectCommand = new OleDbCommand("SELECT Staff.Сотрудник, Staff.Должность, Staff.UID, Staff.Фото, " +
 			//"EventLog.EnterTime, EventLog.ExitTime, Staff.[Табельный номер], Staff.[Номер паспорта], Staff.График, Staff.Подразделение, " +
 			//"Staff.[Тип UID] FROM  (EventLog INNER JOIN Staff ON EventLog.Uid = Staff.UID) " +
 			//"WHERE EnterTime > DateSerial(Year(NOW()), Month(NOW()), Day(NOW())-7)", eventLogAdapter.Connection);
 
-			
+
 			//systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
 			//systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 			//staffTableAdapter.Adapter.InsertCommand = new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			//staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 			//WHERE EnterTime > DateSerial(Year(NOW()), Month(NOW()), Day(NOW()-7))
-			
+
 			//access_control_in_OneWire.JoinedEventLog.Clear();
 			//joinedEventLogAdapter.FillLastWeek(access_control_in_OneWire.JoinedEventLog);
 		}
 
-		private void b_setPeriod_Click(object sender, EventArgs e)
-		{
-			DateTime todayStart = DateTime.Now; // Датовремя, указывающая на ПЕРВУЮ секунду текущих суток.
-			todayStart = todayStart.AddHours( - todayStart.Hour);
-			todayStart = todayStart.AddMinutes( - todayStart.Minute);
-			todayStart = todayStart.AddSeconds( - todayStart.Second);
-			DateTime todayEnd = DateTime.Now; // Датовремя, указывающая на ПОСЛЕДНЮЮ секунду текущих суток. Да, немного в будущее.
-			todayEnd = todayEnd.AddHours(23-todayEnd.Hour);
-			todayEnd = todayEnd.AddMinutes(59-todayEnd.Minute);
-			todayEnd = todayEnd.AddSeconds(59-todayEnd.Second);
-			switch (((Button)sender).Text){
-				case "Сегодня":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart, todayEnd);
-					break;
-				case "Последняя неделя":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-7), todayEnd);
-					break;
-				case "Последние 10 дней":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-10), todayEnd);
-					break;
-				case "С начала месяца":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day), todayEnd);
-					break;
-				case "Прошлый месяц":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day).AddMonths(-1), todayEnd.AddDays(-todayEnd.Day));
-					break;
-				case "Показать данные за промежуток"://dateTimePicker1.Value.ToString("yy-MM-dd")
-					DateTime periodStart	= dtp_eventStart.Value.AddHours(-dtp_eventStart.Value.Hour).AddMinutes(-dtp_eventStart.Value.Minute).AddSeconds(-dtp_eventStart.Value.Second);
-					DateTime periodEnd		= dtp_eventEnd.Value.AddHours(23-dtp_eventEnd.Value.Hour).AddMinutes(59-dtp_eventEnd.Value.Minute).AddSeconds(59-dtp_eventEnd.Value.Second);
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, periodStart, periodEnd);
-					break;
-			}
-		}
+		#endregion
+
+		
+
 	}
 }
