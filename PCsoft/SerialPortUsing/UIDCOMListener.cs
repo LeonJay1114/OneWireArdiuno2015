@@ -6,6 +6,15 @@ using System.IO.Ports;
 using System.Windows.Forms;
 
 namespace SerialPortUsing {
+	/// <summary>
+	/// Специально для этого проекта. Переиспользование маловероятно. А вот оборачиваемый класс может быть полезен.
+	/// Ивент получения последовательности из 9 байт.
+	/// Последовательность разбита на BASE64-стрингу, пихнутую в uid, 
+	/// и enterExit логическую переменную, принимаемую в последнем байте.
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="uid">Восемь байт UID, представленные в BASE64String</param>
+	/// <param name="enterExit">False - ВХОД. True - ВЫХОД.</param>
 	public delegate void UIDReceivingHandler(object sender, string uid, bool enterExit);
 	class UIDCOMListener {
 		#region serving objects
@@ -13,7 +22,6 @@ namespace SerialPortUsing {
 		#endregion
 
 		#region parameters
-		private readonly int _uidLength;
 		private bool _paused = false;
 		#endregion
 
@@ -23,10 +31,7 @@ namespace SerialPortUsing {
 
 		#region Structing
 		public UIDCOMListener(string portName, int baudRate, int uIDLength, UIDReceivingHandler receivingHandler) {
-			_uidLength = uIDLength;
-
 			OnUIDReceived += receivingHandler;
-
 			_receiver = new COMByteSequenceReceiver(portName, baudRate, uIDLength + 1, receiver_DataReceived);
 		}
 		#endregion
@@ -60,7 +65,13 @@ namespace SerialPortUsing {
 		#endregion
 	}
 
-
+	/// <summary>
+	///	Ивент получения байтовой последовательности на COM-порт.
+	/// Полученная информация представляется в BASE64String. Потому что мне так захотелось.
+	/// На самом деле, просто так было проще сразу пихать результат в базу данных.
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="bytes"></param>
 	public delegate void ByteSequenceReceivingHandler(object sender, byte[] bytes);
 	class COMByteSequenceReceiver {
 		#region serving objects

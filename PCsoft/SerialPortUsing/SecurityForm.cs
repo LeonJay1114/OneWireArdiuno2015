@@ -64,21 +64,21 @@ namespace SerialPortUsing {
 			if(searchResult.Length != 0){
 				if (searchResult.Length > 1)
 					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!");
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), searchResult[0][0].ToString(),searchResult[0][9].ToString(), 0);
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				ShowFace("", "", "", "", "", "", "", 0);
+				ShowFace("", "", "", "", "", "", "", 0, enterExit);
 			}
 		}
 
 		private void WriteEventToLog(string uid, bool enterExit) {
 			if (enterExit){
 				_eventLogAdapter.Adapter.UpdateCommand.Parameters["uidpar"].Value = uid;
-				_eventLogAdapter.Adapter.InsertCommand.Connection.Open();
-				_eventLogAdapter.Adapter.InsertCommand.ExecuteNonQuery();
-				_eventLogAdapter.Adapter.InsertCommand.Connection.Close();
+				_eventLogAdapter.Adapter.UpdateCommand.Connection.Open();
+				_eventLogAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+				_eventLogAdapter.Adapter.UpdateCommand.Connection.Close();
 			}
 			else{
 				_eventLogAdapter.Adapter.InsertCommand.Parameters["uidpar"].Value = uid;
@@ -88,16 +88,16 @@ namespace SerialPortUsing {
 			}
 		}
 
-		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl);
-		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl) {
+		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit);
+		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit) {
 			if(pic_face.InvokeRequired) {
 				ShowFaceCallBack cb = ShowFace;
-				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl);
+				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl, enterExit);
 				return;
 			}
-			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl);
+			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl, enterExit);
 		}
-		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl) {
+		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit) {
 			try { pic_face.Image = new Bitmap(picturePath); }
 			catch (Exception e) {
 				//MessageBox.Show(null, e.Message, "Ошибка");
@@ -108,7 +108,17 @@ namespace SerialPortUsing {
 			l_profession.Text = profession;
 			l_shedule.Text = shedule;
 			l_uidType.Text = uidType;
-			
+			l_actionTime.Text = DateTime.Now.ToString();
+			if(enterExit) {
+				l_action.Text = "Выходит";
+			}
+			else {
+				l_action.Text = "Входит";
+			}
+
+
+			this.WindowState = FormWindowState.Minimized;
+			this.WindowState = FormWindowState.Normal;
 			this.Show();
 			this.WindowState = FormWindowState.Normal;
 			this.Focus();
@@ -136,6 +146,10 @@ namespace SerialPortUsing {
 
 		private void SecurityForm_FormClosing(object sender, FormClosingEventArgs e) {
 			_listener.Close();
+		}
+
+		private void pic_face_Click(object sender, EventArgs e) {
+			l_photoPlaceHolder.Visible = false;
 		}
 	}
 }

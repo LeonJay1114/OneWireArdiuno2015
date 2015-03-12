@@ -288,7 +288,7 @@
 			// кАКToolStripMenuItem
 			// 
 			this.кАКToolStripMenuItem.Name = "кАКToolStripMenuItem";
-			this.кАКToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.кАКToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
 			this.кАКToolStripMenuItem.Text = "КАК?!";
 			// 
 			// gb_sys
@@ -1115,7 +1115,7 @@
 			this.b_setPeriod_PastDay.Name = "b_setPeriod_PastDay";
 			this.b_setPeriod_PastDay.Size = new System.Drawing.Size(170, 23);
 			this.b_setPeriod_PastDay.TabIndex = 13;
-			this.b_setPeriod_PastDay.Text = "Последние сутки";
+			this.b_setPeriod_PastDay.Text = "Сегодня";
 			this.b_setPeriod_PastDay.UseVisualStyleBackColor = true;
 			this.b_setPeriod_PastDay.Click += new System.EventHandler(this.b_setPeriod_Click);
 			// 
