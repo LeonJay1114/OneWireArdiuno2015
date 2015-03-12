@@ -346,28 +346,34 @@ namespace SerialPortUsing {
 
 		private void b_setPeriod_Click(object sender, EventArgs e)
 		{
-			DateTime today = DateTime.Now;
-			today = today.AddHours(-today.Hour);
-			today = today.AddMinutes(-today.Minute);
-			today = today.AddSeconds(-today.Second);
+			DateTime todayStart = DateTime.Now; // Датовремя, указывающая на ПЕРВУЮ секунду текущих суток.
+			todayStart = todayStart.AddHours( - todayStart.Hour);
+			todayStart = todayStart.AddMinutes( - todayStart.Minute);
+			todayStart = todayStart.AddSeconds( - todayStart.Second);
+			DateTime todayEnd = DateTime.Now; // Датовремя, указывающая на ПОСЛЕДНЮЮ секунду текущих суток. Да, немного в будущее.
+			todayEnd = todayEnd.AddHours(23-todayEnd.Hour);
+			todayEnd = todayEnd.AddMinutes(59-todayEnd.Minute);
+			todayEnd = todayEnd.AddSeconds(59-todayEnd.Second);
 			switch (((Button)sender).Text){
-				case "Последние сутки":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-1), today);
+				case "Сегодня":
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart, todayEnd);
 					break;
 				case "Последняя неделя":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-7), today);
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-7), todayEnd);
 					break;
 				case "Последние 10 дней":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-10), today);
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-10), todayEnd);
 					break;
 				case "С начала месяца":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-today.Day), today);
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day), todayEnd);
 					break;
 				case "Прошлый месяц":
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, today.AddDays(-today.Day).AddMonths(-1), today.AddDays(-today.Day));
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, todayStart.AddDays(-todayEnd.Day).AddMonths(-1), todayEnd.AddDays(-todayEnd.Day));
 					break;
 				case "Показать данные за промежуток"://dateTimePicker1.Value.ToString("yy-MM-dd")
-					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, dateTimePicker2.Value, dateTimePicker3.Value);
+					DateTime periodStart	= dtp_eventStart.Value.AddHours(-dtp_eventStart.Value.Hour).AddMinutes(-dtp_eventStart.Value.Minute).AddSeconds(-dtp_eventStart.Value.Second);
+					DateTime periodEnd		= dtp_eventEnd.Value.AddHours(23-dtp_eventEnd.Value.Hour).AddMinutes(59-dtp_eventEnd.Value.Minute).AddSeconds(59-dtp_eventEnd.Value.Second);
+					joinedEventLogAdapter.FillByPeriod(access_control_in_OneWire.JoinedEventLog, periodStart, periodEnd);
 					break;
 			}
 		}

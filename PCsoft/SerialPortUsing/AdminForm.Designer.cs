@@ -25,16 +25,16 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Основное");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Система", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Пользователи");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Сотрудники");
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Журнал пропуска");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("База", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Основное");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Система", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Пользователи");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Сотрудники");
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Журнал пропуска");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("База", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode5});
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.насстройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,10 +130,10 @@
 			this.b_setPeriod_PastWeek = new System.Windows.Forms.Button();
 			this.b_setPeriod_PastDay = new System.Windows.Forms.Button();
 			this.b_showEvent = new System.Windows.Forms.Button();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.dtp_eventStart = new System.Windows.Forms.DateTimePicker();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+			this.dtp_eventEnd = new System.Windows.Forms.DateTimePicker();
 			this.dgv_event = new System.Windows.Forms.DataGridView();
 			this.сотрудникDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.должностьDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -177,7 +177,7 @@
             this.справкаToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1212, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1322, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -288,7 +288,7 @@
 			// кАКToolStripMenuItem
 			// 
 			this.кАКToolStripMenuItem.Name = "кАКToolStripMenuItem";
-			this.кАКToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+			this.кАКToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.кАКToolStripMenuItem.Text = "КАК?!";
 			// 
 			// gb_sys
@@ -304,9 +304,9 @@
 			this.gb_sys.Controls.Add(this.label2);
 			this.gb_sys.Controls.Add(this.label1);
 			this.gb_sys.Controls.Add(this.cb_speed);
-			this.gb_sys.Location = new System.Drawing.Point(194, 565);
+			this.gb_sys.Location = new System.Drawing.Point(174, 547);
 			this.gb_sys.Name = "gb_sys";
-			this.gb_sys.Size = new System.Drawing.Size(63, 158);
+			this.gb_sys.Size = new System.Drawing.Size(100, 158);
 			this.gb_sys.TabIndex = 2;
 			this.gb_sys.TabStop = false;
 			this.gb_sys.Text = "gb_sys";
@@ -395,7 +395,7 @@
 			// 
 			this.gb_users.Controls.Add(this.gb_usersEdit);
 			this.gb_users.Controls.Add(this.dgv_users);
-			this.gb_users.Location = new System.Drawing.Point(576, 552);
+			this.gb_users.Location = new System.Drawing.Point(417, 547);
 			this.gb_users.Name = "gb_users";
 			this.gb_users.Size = new System.Drawing.Size(122, 374);
 			this.gb_users.TabIndex = 3;
@@ -544,6 +544,7 @@
 			this.dgv_users.Location = new System.Drawing.Point(8, 20);
 			this.dgv_users.Name = "dgv_users";
 			this.dgv_users.ReadOnly = true;
+			this.dgv_users.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.dgv_users.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgv_users.Size = new System.Drawing.Size(567, 209);
 			this.dgv_users.TabIndex = 0;
@@ -591,9 +592,9 @@
 			// 
 			this.gb_staff.Controls.Add(this.dgv_staff);
 			this.gb_staff.Controls.Add(this.groupBox2);
-			this.gb_staff.Location = new System.Drawing.Point(458, 565);
+			this.gb_staff.Location = new System.Drawing.Point(575, 547);
 			this.gb_staff.Name = "gb_staff";
-			this.gb_staff.Size = new System.Drawing.Size(59, 498);
+			this.gb_staff.Size = new System.Drawing.Size(112, 461);
 			this.gb_staff.TabIndex = 4;
 			this.gb_staff.TabStop = false;
 			this.gb_staff.Text = "gb_staff";
@@ -625,8 +626,9 @@
 			this.dgv_staff.Location = new System.Drawing.Point(12, 19);
 			this.dgv_staff.Name = "dgv_staff";
 			this.dgv_staff.ReadOnly = true;
+			this.dgv_staff.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.dgv_staff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgv_staff.Size = new System.Drawing.Size(1032, 243);
+			this.dgv_staff.Size = new System.Drawing.Size(956, 273);
 			this.dgv_staff.TabIndex = 0;
 			this.dgv_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_staff_CellDoubleClick);
 			// 
@@ -751,7 +753,7 @@
 			this.groupBox2.Controls.Add(this.b_edditStaff);
 			this.groupBox2.Controls.Add(this.b_delStaff);
 			this.groupBox2.Controls.Add(this.b_addStaff);
-			this.groupBox2.Location = new System.Drawing.Point(12, 271);
+			this.groupBox2.Location = new System.Drawing.Point(12, 298);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(929, 142);
 			this.groupBox2.TabIndex = 7;
@@ -1017,22 +1019,22 @@
 			this.tv_navigation.ItemHeight = 20;
 			this.tv_navigation.Location = new System.Drawing.Point(12, 27);
 			this.tv_navigation.Name = "tv_navigation";
-			treeNode7.Name = "Option";
-			treeNode7.Text = "Основное";
-			treeNode8.BackColor = System.Drawing.Color.Transparent;
-			treeNode8.Name = "Узел0";
-			treeNode8.Text = "Система";
-			treeNode9.Name = "addUser";
-			treeNode9.Text = "Пользователи";
-			treeNode10.Name = "staff";
-			treeNode10.Text = "Сотрудники";
-			treeNode11.Name = "Узел0";
-			treeNode11.Text = "Журнал пропуска";
-			treeNode12.Name = "Node1";
-			treeNode12.Text = "База";
+			treeNode1.Name = "Option";
+			treeNode1.Text = "Основное";
+			treeNode2.BackColor = System.Drawing.Color.Transparent;
+			treeNode2.Name = "Узел0";
+			treeNode2.Text = "Система";
+			treeNode3.Name = "addUser";
+			treeNode3.Text = "Пользователи";
+			treeNode4.Name = "staff";
+			treeNode4.Text = "Сотрудники";
+			treeNode5.Name = "Узел0";
+			treeNode5.Text = "Журнал пропуска";
+			treeNode6.Name = "Node1";
+			treeNode6.Text = "База";
 			this.tv_navigation.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode12});
+            treeNode2,
+            treeNode6});
 			this.tv_navigation.Size = new System.Drawing.Size(144, 547);
 			this.tv_navigation.TabIndex = 3;
 			this.tv_navigation.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_navigation_AfterSelect);
@@ -1041,9 +1043,9 @@
 			// 
 			this.gB_event.Controls.Add(this.gB_period);
 			this.gB_event.Controls.Add(this.dgv_event);
-			this.gB_event.Location = new System.Drawing.Point(306, 552);
+			this.gB_event.Location = new System.Drawing.Point(168, 27);
 			this.gB_event.Name = "gB_event";
-			this.gB_event.Size = new System.Drawing.Size(72, 374);
+			this.gB_event.Size = new System.Drawing.Size(1142, 398);
 			this.gB_event.TabIndex = 5;
 			this.gB_event.TabStop = false;
 			this.gB_event.Text = "gb_event";
@@ -1056,13 +1058,13 @@
 			this.gB_period.Controls.Add(this.b_setPeriod_PastWeek);
 			this.gB_period.Controls.Add(this.b_setPeriod_PastDay);
 			this.gB_period.Controls.Add(this.b_showEvent);
-			this.gB_period.Controls.Add(this.dateTimePicker2);
+			this.gB_period.Controls.Add(this.dtp_eventStart);
 			this.gB_period.Controls.Add(this.label18);
 			this.gB_period.Controls.Add(this.label19);
-			this.gB_period.Controls.Add(this.dateTimePicker3);
-			this.gB_period.Location = new System.Drawing.Point(852, 19);
+			this.gB_period.Controls.Add(this.dtp_eventEnd);
+			this.gB_period.Location = new System.Drawing.Point(953, 19);
 			this.gB_period.Name = "gB_period";
-			this.gB_period.Size = new System.Drawing.Size(189, 328);
+			this.gB_period.Size = new System.Drawing.Size(189, 337);
 			this.gB_period.TabIndex = 1;
 			this.gB_period.TabStop = false;
 			this.gB_period.Text = "gB_period";
@@ -1127,13 +1129,13 @@
 			this.b_showEvent.UseVisualStyleBackColor = true;
 			this.b_showEvent.Click += new System.EventHandler(this.b_setPeriod_Click);
 			// 
-			// dateTimePicker2
+			// dtp_eventStart
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker2.Location = new System.Drawing.Point(44, 276);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
-			this.dateTimePicker2.TabIndex = 4;
+			this.dtp_eventStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtp_eventStart.Location = new System.Drawing.Point(44, 276);
+			this.dtp_eventStart.Name = "dtp_eventStart";
+			this.dtp_eventStart.Size = new System.Drawing.Size(139, 20);
+			this.dtp_eventStart.TabIndex = 4;
 			// 
 			// label18
 			// 
@@ -1153,13 +1155,13 @@
 			this.label19.TabIndex = 3;
 			this.label19.Text = "по";
 			// 
-			// dateTimePicker3
+			// dtp_eventEnd
 			// 
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker3.Location = new System.Drawing.Point(44, 302);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.Size = new System.Drawing.Size(140, 20);
-			this.dateTimePicker3.TabIndex = 5;
+			this.dtp_eventEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtp_eventEnd.Location = new System.Drawing.Point(44, 302);
+			this.dtp_eventEnd.Name = "dtp_eventEnd";
+			this.dtp_eventEnd.Size = new System.Drawing.Size(140, 20);
+			this.dtp_eventEnd.TabIndex = 5;
 			// 
 			// dgv_event
 			// 
@@ -1187,7 +1189,8 @@
 			this.dgv_event.Location = new System.Drawing.Point(6, 19);
 			this.dgv_event.Name = "dgv_event";
 			this.dgv_event.ReadOnly = true;
-			this.dgv_event.Size = new System.Drawing.Size(840, 349);
+			this.dgv_event.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv_event.Size = new System.Drawing.Size(941, 373);
 			this.dgv_event.TabIndex = 0;
 			// 
 			// сотрудникDataGridViewTextBoxColumn1
@@ -1288,7 +1291,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1212, 586);
+			this.ClientSize = new System.Drawing.Size(1322, 586);
 			this.Controls.Add(this.gB_event);
 			this.Controls.Add(this.gb_staff);
 			this.Controls.Add(this.tv_navigation);
@@ -1440,8 +1443,8 @@
 		private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem журналПропускаToolStripMenuItem;
-		private System.Windows.Forms.DateTimePicker dateTimePicker3;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker dtp_eventEnd;
+		private System.Windows.Forms.DateTimePicker dtp_eventStart;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.GroupBox gB_period;
