@@ -8158,6 +8158,18 @@ namespace SerialPortUsing.Access_control_in_OneWireTableAdapters {
             tableMapping.ColumnMappings.Add("Подразделение", "Подразделение");
             tableMapping.ColumnMappings.Add("Тип UID", "Тип UID");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO EventLog\r\n                         (Uid, EnterTime)\r\nVALUES        (?" +
+                ", NOW())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Uid", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Uid", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE       EventLog\r\nSET                ExitTime = NOW()\r\nWHERE        (Uid = ?" +
+                ")";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Uid", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Uid", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8239,6 +8251,35 @@ ORDER BY EventLog.EnterTime";
             Access_control_in_OneWire.JoinedEventLogDataTable dataTable = new Access_control_in_OneWire.JoinedEventLogDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Access_control_in_OneWire.JoinedEventLogDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Access_control_in_OneWire dataSet) {
+            return this.Adapter.Update(dataSet, "JoinedEventLog");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -8372,12 +8413,6 @@ ORDER BY EventLog.EnterTime";
             this._adapter.InsertCommand.CommandText = "INSERT INTO EventLog ( Uid, EnterTime )\r\nVALUES (uidpar, NOW ( ));\r\n";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("uidpar", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
-			this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-			this._adapter.UpdateCommand.Connection = this.Connection;
-			this._adapter.UpdateCommand.CommandText = "UPDATE (SELECT TOP 1 UID, EnterTime, ExitTime FROM EventLog\r\nWHERE EventLog.UID =" +
-				" uidpar\r\nORDER BY EnterTime DESC)\r\nSET ExitTime=NOW()";
-			this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-			this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("uidpar", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8477,6 +8512,8 @@ ORDER BY EventLog.EnterTime";
         private UserTypesTableAdapter _userTypesTableAdapter;
         
         private Тип_меткиTableAdapter _тип_меткиTableAdapter;
+        
+        private JoinedEventLogAdapter _joinedEventLogAdapter;
         
         private simpleEventLogTableAdapter _simpleEventLogTableAdapter;
         
@@ -8598,6 +8635,20 @@ ORDER BY EventLog.EnterTime";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public JoinedEventLogAdapter JoinedEventLogAdapter {
+            get {
+                return this._joinedEventLogAdapter;
+            }
+            set {
+                this._joinedEventLogAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public simpleEventLogTableAdapter simpleEventLogTableAdapter {
             get {
                 return this._simpleEventLogTableAdapter;
@@ -8654,6 +8705,10 @@ ORDER BY EventLog.EnterTime";
                             && (this._тип_меткиTableAdapter.Connection != null))) {
                     return this._тип_меткиTableAdapter.Connection;
                 }
+                if (((this._joinedEventLogAdapter != null) 
+                            && (this._joinedEventLogAdapter.Connection != null))) {
+                    return this._joinedEventLogAdapter.Connection;
+                }
                 if (((this._simpleEventLogTableAdapter != null) 
                             && (this._simpleEventLogTableAdapter.Connection != null))) {
                     return this._simpleEventLogTableAdapter.Connection;
@@ -8690,6 +8745,9 @@ ORDER BY EventLog.EnterTime";
                     count = (count + 1);
                 }
                 if ((this._тип_меткиTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._joinedEventLogAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._simpleEventLogTableAdapter != null)) {
@@ -8769,6 +8827,15 @@ ORDER BY EventLog.EnterTime";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._joinedEventLogAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.JoinedEventLog.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._joinedEventLogAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._simpleEventLogTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.simpleEventLog.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8844,6 +8911,14 @@ ORDER BY EventLog.EnterTime";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._joinedEventLogAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.JoinedEventLog.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._joinedEventLogAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._simpleEventLogTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.simpleEventLog.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8867,6 +8942,14 @@ ORDER BY EventLog.EnterTime";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._simpleEventLogTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._joinedEventLogAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.JoinedEventLog.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._joinedEventLogAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9000,6 +9083,11 @@ ORDER BY EventLog.EnterTime";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._joinedEventLogAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._joinedEventLogAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._simpleEventLogTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._simpleEventLogTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -9100,6 +9188,15 @@ ORDER BY EventLog.EnterTime";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._тип_меткиTableAdapter.Adapter);
                     }
                 }
+                if ((this._joinedEventLogAdapter != null)) {
+                    revertConnections.Add(this._joinedEventLogAdapter, this._joinedEventLogAdapter.Connection);
+                    this._joinedEventLogAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._joinedEventLogAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._joinedEventLogAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._joinedEventLogAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._joinedEventLogAdapter.Adapter);
+                    }
+                }
                 if ((this._simpleEventLogTableAdapter != null)) {
                     revertConnections.Add(this._simpleEventLogTableAdapter, this._simpleEventLogTableAdapter.Connection);
                     this._simpleEventLogTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
@@ -9194,6 +9291,10 @@ ORDER BY EventLog.EnterTime";
                 if ((this._тип_меткиTableAdapter != null)) {
                     this._тип_меткиTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._тип_меткиTableAdapter]));
                     this._тип_меткиTableAdapter.Transaction = null;
+                }
+                if ((this._joinedEventLogAdapter != null)) {
+                    this._joinedEventLogAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._joinedEventLogAdapter]));
+                    this._joinedEventLogAdapter.Transaction = null;
                 }
                 if ((this._simpleEventLogTableAdapter != null)) {
                     this._simpleEventLogTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._simpleEventLogTableAdapter]));
