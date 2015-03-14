@@ -12,7 +12,7 @@ namespace SerialPortUsing {
 		private Access_control_in_OneWire.StaffDataTable _staffTable; // Экземпляр таблички подключенного источника данных
 		private StaffTableAdapter _staffTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
 		private Access_control_in_OneWire.simpleEventLogDataTable _eventTable;
-		private simpleEventLogTableAdapter _eventLogAdapter;
+		private JoinedEventLogAdapter _eventLogAdapter;
 		
 		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
 		
@@ -25,7 +25,7 @@ namespace SerialPortUsing {
 			_staffTableAdapter.Fill(_staffTable);
 
 			_eventTable = new Access_control_in_OneWire.simpleEventLogDataTable();
-			_eventLogAdapter = new simpleEventLogTableAdapter();
+			_eventLogAdapter = new JoinedEventLogAdapter();
 			_eventLogAdapter.ClearBeforeFill = true;
 			_eventLogAdapter.Adapter.InsertCommand.Connection = _eventLogAdapter.Connection;
 			
@@ -75,13 +75,13 @@ namespace SerialPortUsing {
 
 		private void WriteEventToLog(string uid, bool enterExit) {
 			if (enterExit){
-				_eventLogAdapter.Adapter.UpdateCommand.Parameters["uidpar"].Value = uid;
+				_eventLogAdapter.Adapter.UpdateCommand.Parameters[0].Value = uid;
 				_eventLogAdapter.Adapter.UpdateCommand.Connection.Open();
 				_eventLogAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
 				_eventLogAdapter.Adapter.UpdateCommand.Connection.Close();
 			}
 			else{
-				_eventLogAdapter.Adapter.InsertCommand.Parameters["uidpar"].Value = uid;
+				_eventLogAdapter.Adapter.InsertCommand.Parameters[0].Value = uid;
 				_eventLogAdapter.Adapter.InsertCommand.Connection.Open();
 				_eventLogAdapter.Adapter.InsertCommand.ExecuteNonQuery();
 				_eventLogAdapter.Adapter.InsertCommand.Connection.Close();

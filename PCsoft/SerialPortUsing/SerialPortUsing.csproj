@@ -117,6 +117,7 @@
     <Compile Include="SecurityForm.Designer.cs">
       <DependentUpon>SecurityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SHA512.cs" />
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
