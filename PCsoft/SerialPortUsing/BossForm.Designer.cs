@@ -152,7 +152,7 @@
 			// 
 			// dateTimePicker2
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dateTimePicker2.Location = new System.Drawing.Point(44, 276);
 			this.dateTimePicker2.Name = "dateTimePicker2";
 			this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
@@ -178,7 +178,7 @@
 			// 
 			// dateTimePicker3
 			// 
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dateTimePicker3.Location = new System.Drawing.Point(44, 302);
 			this.dateTimePicker3.Name = "dateTimePicker3";
 			this.dateTimePicker3.Size = new System.Drawing.Size(140, 20);
@@ -212,7 +212,7 @@
 			this.dgv_event.ReadOnly = true;
 			this.dgv_event.Size = new System.Drawing.Size(840, 481);
 			this.dgv_event.TabIndex = 0;
-			// 
+		// 
 			// сотрудникDataGridViewTextBoxColumn
 			// 
 			this.сотрудникDataGridViewTextBoxColumn.DataPropertyName = "Сотрудник";
