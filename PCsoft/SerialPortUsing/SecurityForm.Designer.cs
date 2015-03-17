@@ -46,11 +46,10 @@
 			// pic_face
 			// 
 			this.pic_face.BackColor = System.Drawing.Color.Transparent;
-			this.pic_face.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pic_face.Location = new System.Drawing.Point(373, 61);
 			this.pic_face.Name = "pic_face";
 			this.pic_face.Size = new System.Drawing.Size(300, 431);
-			this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pic_face.TabIndex = 0;
 			this.pic_face.TabStop = false;
 			// 
