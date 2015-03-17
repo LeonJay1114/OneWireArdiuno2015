@@ -10,11 +10,14 @@ namespace SerialPortUsing {
 
 		UIDCOMListener _listener;
 		private Access_control_in_OneWire.StaffDataTable _staffTable; // Экземпляр таблички подключенного источника данных
+		private Access_control_in_OneWire.ScheduleDataTable _shTable;
 		private StaffTableAdapter _staffTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
+		private ScheduleTableAdapter _shAdapter = new ScheduleTableAdapter();
 		private Access_control_in_OneWire.simpleEventLogDataTable _eventTable;
 		private JoinedEventLogAdapter _eventLogAdapter;
 		
 		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
+
 		
 
 		#region Structing
@@ -28,7 +31,8 @@ namespace SerialPortUsing {
 			_eventLogAdapter = new JoinedEventLogAdapter();
 			_eventLogAdapter.ClearBeforeFill = true;
 			_eventLogAdapter.Adapter.InsertCommand.Connection = _eventLogAdapter.Connection;
-			
+
+			_shAdapter.ClearBeforeFill = true;
 			//try{
 				_listener = new UIDCOMListener(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
 			//}
@@ -60,16 +64,31 @@ namespace SerialPortUsing {
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _staffTable.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре
 			
+			bool notInTime = false;
+			_shTable = new Access_control_in_OneWire.ScheduleDataTable();
 
+			_shAdapter.Fill(_shTable, searchResult[0][6].ToString());
+			DateTime start;
+			DateTime fin;
+			DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
+			DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
+			if (DateTime.Now < fin & DateTime.Now > start)
+			{
+				notInTime = false;
+			}
+			else
+			{
+				notInTime = true;
+			}
 			if(searchResult.Length != 0){
 				if (searchResult.Length > 1)
-					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!");
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, enterExit);
+					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!"); // Time to shit bricks
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				ShowFace("", "", "", "", "", "", "", 0, enterExit);
+				ShowFace("", "", "", "", "", notInTime, "", "", 0, enterExit);
 			}
 		}
 
@@ -88,16 +107,20 @@ namespace SerialPortUsing {
 			}
 		}
 
-		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit);
-		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit) {
+		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit);
+		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit)
+		{
 			if(pic_face.InvokeRequired) {
 				ShowFaceCallBack cb = ShowFace;
-				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl, enterExit);
+				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule, notTimed, profession,  uidType, ttl, enterExit);
 				return;
 			}
-			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  profession,  uidType, ttl, enterExit);
+			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  notTimed, profession,  uidType, ttl, enterExit);
 		}
-		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, string profession, string uidType, int ttl, bool enterExit) {
+		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit)
+		{
+			if (fio == "") {FlushFields(); return;}
+
 			try { pic_face.Image = new Bitmap(picturePath); }
 			catch (Exception e) {
 				//MessageBox.Show(null, e.Message, "Ошибка");
@@ -128,7 +151,18 @@ namespace SerialPortUsing {
 				tmr.Start();
 				tmr.Tick += tmr_Tick;
 			}
+		}
 
+		void FlushFields(){
+			pic_face.Image = null;
+			l_fio.Text = "";
+			l_division.Text = "";
+			l_number.Text = "";
+			l_profession.Text = "";
+			l_shedule.Text = "";
+			l_uidType.Text = "";
+			l_actionTime.Text = "";
+			l_action.Text = "";
 		}
 
 		private void tmr_Tick(object sender, EventArgs e) {
@@ -137,6 +171,10 @@ namespace SerialPortUsing {
 		public void HideFace() {
 			this.Hide();
 		}
+		private void SecurityForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			_listener.Close();
+		}
 
 		#region Experimenting
 		private void cB_testButton_Click(object sender, EventArgs e) {
@@ -144,9 +182,7 @@ namespace SerialPortUsing {
 		}
 		#endregion
 
-		private void SecurityForm_FormClosing(object sender, FormClosingEventArgs e) {
-			_listener.Close();
-		}
+		
 	}
 }
 

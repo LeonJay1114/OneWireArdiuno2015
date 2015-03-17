@@ -64,7 +64,7 @@ namespace SerialPortUsing {
 		{
 			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
 			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
-			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Табельный номер], [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
+			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
 		}
@@ -195,7 +195,7 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Долж", cB_profession.Text));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Юид", tB_UID_from_gb_staff.Text));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Фотка", tB_photoPath.Text));
-			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Табель", tB_number.Text));
+			//staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Табель", tB_number.Text));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("НомерПасп", tB_multiPasport.Text));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("ДатаН", dateTimePicker1.Value.ToString("yy-MM-dd")));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Графк", cB_workTime.Text));
@@ -203,7 +203,10 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("Подразд", cB_subdivision.Text));
 			staffTableAdapter.Adapter.InsertCommand.Parameters.Add(new OleDbParameter("ТипЮид", cB_UID_type_from_gb_staff.Text));
 			//(Сотр, Долж, Юид, Фотка, Табель, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)
-			staffTableAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+	        try{
+				staffTableAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+	        }catch (Exception ex){MessageBox.Show(ex.Message);}
+			
 			staffTableAdapter.Adapter.InsertCommand.Connection.Close();
 
             staffTableAdapter.Fill(access_control_in_OneWire.Staff);
