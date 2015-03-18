@@ -46,12 +46,6 @@ namespace SerialPortUsing {
 
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _usersTable.Select(String.Format(LOGIN_PASS_FILTER, uName)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
-
-			string login = searchResult[0][0].ToString();
-			string enteredPass = tB_password.Text;
-			string hash = searchResult[0][2].ToString();
-			string salt = searchResult[0][3].ToString();
-
 			int count = searchResult.Length;
 
 			if (count == 0) {
@@ -59,8 +53,16 @@ namespace SerialPortUsing {
 				return;
 			}
 
+			string login = searchResult[0][0].ToString();
+			string enteredPass = tB_password.Text;
+			string hash = searchResult[0][2].ToString();
+			string salt = searchResult[0][3].ToString();
+
 			if (CheckPass(enteredPass, hash, salt)){
 				Login(login);
+			}
+			else {
+				MessageBox.Show(this, "Введенная пара логин-пароль отсутствует в базе данных. Обратитесь к системному администратору.", "Ошибка");
 			}
 		}
 
