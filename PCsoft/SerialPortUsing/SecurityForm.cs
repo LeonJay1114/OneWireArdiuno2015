@@ -81,12 +81,12 @@ namespace SerialPortUsing {
 				{
 					notInTime = false;
 				}
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, enterExit);
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, Convert.ToBoolean(searchResult[0][10]), enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				ShowFace("", "", "", "", "", notInTime, "", "", 0, enterExit);
+				ShowFace("", "", "", "", "", notInTime, "", "", 0, false, enterExit);
 			}
 		}
 
@@ -114,17 +114,17 @@ namespace SerialPortUsing {
 			}
 		}
 
-		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit);
-		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit)
+		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit);
+		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit)
 		{
 			if(pic_face.InvokeRequired) {
 				ShowFaceCallBack cb = ShowFace;
-				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule, notTimed, profession,  uidType, ttl, enterExit);
+				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule, notTimed, profession,  uidType, ttl, blocked, enterExit);
 				return;
 			}
-			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  notTimed, profession,  uidType, ttl, enterExit);
+			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  notTimed, profession,  uidType, ttl, blocked, enterExit);
 		}
-		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool enterExit)
+		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit)
 		{
 			if (fio == "") {FlushFields(); return;}
 
@@ -146,7 +146,7 @@ namespace SerialPortUsing {
 				l_action.Text = "Входит";
 			}
 			l_NotInTime.Visible = notTimed;
-
+			l_blocked.Visible = blocked;
 
 			this.WindowState = FormWindowState.Minimized;
 			this.WindowState = FormWindowState.Normal;

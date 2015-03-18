@@ -41,6 +41,7 @@
 			this.l_action = new System.Windows.Forms.Label();
 			this.l_actionTime = new System.Windows.Forms.Label();
 			this.l_NotInTime = new System.Windows.Forms.Label();
+			this.l_blocked = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -58,26 +59,27 @@
 			// 
 			this.l1.AutoSize = true;
 			this.l1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.l1.Location = new System.Drawing.Point(124, 483);
+			this.l1.Location = new System.Drawing.Point(18, 483);
 			this.l1.Name = "l1";
-			this.l1.Size = new System.Drawing.Size(47, 20);
+			this.l1.Size = new System.Drawing.Size(59, 20);
 			this.l1.TabIndex = 1;
-			this.l1.Text = "ФИО";
+			this.l1.Text = "Ф.И.О.";
 			// 
 			// l_fio
 			// 
 			this.l_fio.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.l_fio.Location = new System.Drawing.Point(118, 505);
+			this.l_fio.Location = new System.Drawing.Point(12, 505);
 			this.l_fio.Name = "l_fio";
-			this.l_fio.Size = new System.Drawing.Size(610, 57);
+			this.l_fio.Size = new System.Drawing.Size(716, 168);
 			this.l_fio.TabIndex = 2;
-			this.l_fio.Text = "ФИО";
+			this.l_fio.Text = "Ф.И.О.";
+			this.l_fio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// cB_testButton
 			// 
-			this.cB_testButton.Location = new System.Drawing.Point(12, 533);
+			this.cB_testButton.Location = new System.Drawing.Point(630, 308);
 			this.cB_testButton.Name = "cB_testButton";
-			this.cB_testButton.Size = new System.Drawing.Size(75, 25);
+			this.cB_testButton.Size = new System.Drawing.Size(117, 45);
 			this.cB_testButton.TabIndex = 3;
 			this.cB_testButton.Text = "Test";
 			this.cB_testButton.UseVisualStyleBackColor = true;
@@ -211,11 +213,25 @@
 			this.l_NotInTime.Text = "Непредвиденное присутствие";
 			this.l_NotInTime.Visible = false;
 			// 
+			// l_blocked
+			// 
+			this.l_blocked.AutoSize = true;
+			this.l_blocked.BackColor = System.Drawing.Color.Firebrick;
+			this.l_blocked.Font = new System.Drawing.Font("Times New Roman", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_blocked.ForeColor = System.Drawing.Color.Black;
+			this.l_blocked.Location = new System.Drawing.Point(373, 439);
+			this.l_blocked.Name = "l_blocked";
+			this.l_blocked.Size = new System.Drawing.Size(301, 53);
+			this.l_blocked.TabIndex = 18;
+			this.l_blocked.Text = "Заблокирован";
+			this.l_blocked.Visible = false;
+			// 
 			// SecurityForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(740, 571);
+			this.ClientSize = new System.Drawing.Size(740, 682);
+			this.Controls.Add(this.l_blocked);
 			this.Controls.Add(this.l_NotInTime);
 			this.Controls.Add(this.l_actionTime);
 			this.Controls.Add(this.pic_face);
@@ -264,5 +280,6 @@
 		private System.Windows.Forms.Label l_action;
 		private System.Windows.Forms.Label l_actionTime;
 		private System.Windows.Forms.Label l_NotInTime;
+		private System.Windows.Forms.Label l_blocked;
 	}
 }
