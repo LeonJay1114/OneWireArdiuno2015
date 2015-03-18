@@ -9,7 +9,7 @@ namespace SerialPortUsing {
 
 		// Компонент-драйвер базы Access: http://www.microsoft.com/en-us/download/confirmation.aspx?id=23734
 
-		private Access_control_in_OneWire.SystemUsersDataTable _table; // Экземпляр таблички подключенного источника данных
+		private Access_control_in_OneWire.SystemUsersDataTable _usersTable; // Экземпляр таблички подключенного источника данных
 		private SystemUsersTableAdapter _sysUsersTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
 		private const string LOGIN_PASS_FILTER = "login='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
 		// TODO: Это всё хуйня, надо пилить красотищу про хэши и соли.
@@ -17,17 +17,17 @@ namespace SerialPortUsing {
 		public Authorisation() {
 			InitializeComponent();
 
-			_table = new Access_control_in_OneWire.SystemUsersDataTable(); // Инициализируем табличку
+			_usersTable = new Access_control_in_OneWire.SystemUsersDataTable(); // Инициализируем табличку
 			_sysUsersTableAdapter = new SystemUsersTableAdapter(); // Инициализируем адаптер таблицы
 			_sysUsersTableAdapter.ClearBeforeFill = true; // Говорим нашему адаптеру таблицы, чтобы очищал таблицу перед заполнением
 
-			_table = _sysUsersTableAdapter.GetData(); // Дастаём таблицу из базы и кладём в свой адаптер базы
+			_usersTable = _sysUsersTableAdapter.GetData(); // Дастаём таблицу из базы и кладём в свой адаптер базы
 		}
 
 		#region TestDB connection
 		private void Autorization_Load(object sender, EventArgs e) {
 			try {
-				if (_table.IsInitialized)
+				if (_usersTable.IsInitialized)
 					CheckConnection.Text = "Connection OK!";
 			}
 			catch (Exception er) {
@@ -45,7 +45,7 @@ namespace SerialPortUsing {
 			string uPass = tB_password.Text;
 
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
-			searchResult = _table.Select(String.Format(LOGIN_PASS_FILTER, uName)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
+			searchResult = _usersTable.Select(String.Format(LOGIN_PASS_FILTER, uName)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
 
 			string login = searchResult[0][0].ToString();
 			string enteredPass = tB_password.Text;
@@ -78,6 +78,7 @@ namespace SerialPortUsing {
 					case "Admin":
 						form = new AdminForm();
 						form.ShowDialog();
+						_usersTable = _sysUsersTableAdapter.GetData();
 						break;
 					case "Boss":
 						form = new BossForm();
@@ -88,10 +89,7 @@ namespace SerialPortUsing {
 						form.ShowDialog();
 						break;
 				}
-			//}
-			//catch(Exception){
-			//	MessageBox.Show(this, "Имела место серьёзная ошибка. Необходимо участие администратора.", "Ошибка");
-			//}
+			
 			Show();
 		}
 
