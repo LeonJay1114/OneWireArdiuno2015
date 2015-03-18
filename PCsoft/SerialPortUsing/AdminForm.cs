@@ -66,7 +66,7 @@ namespace SerialPortUsing {
 			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.PasswordHashe = passHashe, SystemUsers.PasswordSalt = passSalt WHERE SystemUsers.login = oldLogin", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
-			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
+			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo,"+/*" Staff.[Табельный номер] = @newNumber,"+*/" Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
 		}
 		#endregion
 
@@ -195,7 +195,7 @@ namespace SerialPortUsing {
         {
             if (string.IsNullOrEmpty(tB_staff.Text) || string.IsNullOrEmpty(cB_profession.Text)
             || string.IsNullOrEmpty(tB_photoPath.Text) || string.IsNullOrEmpty(tB_UID_from_gb_staff.Text)
-            || string.IsNullOrEmpty(tB_number.Text) || string.IsNullOrEmpty(tB_multiPasport.Text)
+            || /*string.IsNullOrEmpty(tB_number.Text) ||*/ string.IsNullOrEmpty(tB_multiPasport.Text)
             || string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
             || string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
             {
@@ -276,7 +276,7 @@ namespace SerialPortUsing {
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@profession", cB_profession.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@StaffUID", tB_UID_from_gb_staff.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@Photo", tB_photoPath.Text));
-			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@newNumber", tB_number.Text));
+			//staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@newNumber", tB_number.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@multiPasport", tB_multiPasport.Text));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@empdate", dateTimePicker1.Value.ToString("yy-MM-dd")));
 			staffTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("@workTime", cB_workTime.Text));

@@ -1332,7 +1332,7 @@
 			this.gB_period.ResumeLayout(false);
 			this.gB_period.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_event)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).EndInit();
+			//((System.ComponentModel.ISupportInitialize)(this.joinedEventLogBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.access_control_in_OneWire)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.systemUsersBindingSource)).EndInit();
