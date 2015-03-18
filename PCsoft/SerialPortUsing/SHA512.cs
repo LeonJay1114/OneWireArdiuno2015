@@ -22,7 +22,7 @@ namespace SerialPortUsing {
 			return Convert.ToBase64String(hashed);
 		}
 
-		public static bool CheckPassword(string password, string salt, string hash) {
+		public static bool CheckPassword(string password, string hash, string salt) {
 			byte[] passBytes = Encoding.Unicode.GetBytes(password);
 			byte[] saltBytes = Convert.FromBase64String(salt);
 
@@ -35,7 +35,8 @@ namespace SerialPortUsing {
 			SHA512Managed sha = new SHA512Managed();
 			byte[] hashed = sha.ComputeHash(passAndSalt, 0, totalL);
 
-			return Convert.ToBase64String(hashed) == hash;
+			string hashedstr = Convert.ToBase64String(hashed);
+			return hashedstr == hash;
 		}
 
 		private static byte[] MakeSalt(int saltLength) {

@@ -62,8 +62,8 @@ namespace SerialPortUsing {
 
 		private void InitializeQueries()
 		{
-			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where Uid = par0", systemUsersTableAdapter.Connection);
-			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.Uid = newuid, SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.password = pass WHERE SystemUsers.Uid = olduid", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
+			systemUsersTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from SystemUsers where login = par0", systemUsersTableAdapter.Connection);
+			systemUsersTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE SystemUsers SET SystemUsers.userType = utype, SystemUsers.login = log, SystemUsers.PasswordHashe = passHashe, SystemUsers.PasswordSalt = passSalt WHERE SystemUsers.login = oldLogin", systemUsersTableAdapter.Connection); // Don't delete table names or it'll crash.
 			staffTableAdapter.Adapter.InsertCommand =  new OleDbCommand("INSERT INTO staff (Сотрудник, Должность, UID, Фото, [Номер паспорта], [Дата найма], График, Заблокирован, Подразделение, [Тип UID]) VALUES (Сотр, Долж, Юид, Фотка, НомерПасп, ДатаН, Графк, Забл, Подразд, ТипЮид)", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.DeleteCommand = new OleDbCommand("Delete * from Staff where [Табельный номер] = par1", staffTableAdapter.Connection);
 			staffTableAdapter.Adapter.UpdateCommand = new OleDbCommand("UPDATE Staff SET Staff.Сотрудник = @staffnames, Staff.Должность = @profession, Staff.UID = @StaffUID, Staff.Фото = @Photo, Staff.[Табельный номер] = @newNumber, Staff.[Номер паспорта] = @multiPasport, Staff.[Дата найма] = @empdate, Staff.График = @workTime, Staff.Заблокирован = @blocked, Staff.Подразделение = @subdivision, Staff.[Тип UID] = @TypeUID WHERE Staff.[Табельный номер] = @oldNumber", staffTableAdapter.Connection);
@@ -114,14 +114,23 @@ namespace SerialPortUsing {
 		#region Users groupbox controls events
         private void b_addUser_Click(object sender, EventArgs e)
         {
-			if (string.IsNullOrEmpty(tB_UID.Text) || string.IsNullOrEmpty(cB_userType.Text) 
-			|| string.IsNullOrEmpty(tB_login.Text) || string.IsNullOrEmpty(tB_password.Text))
+			if ( string.IsNullOrEmpty(cB_userType.Text) || string.IsNullOrEmpty(tB_login.Text) || string.IsNullOrEmpty(tB_password.Text))
 			{
 				MessageBox.Show(this, "Нельзя внести пустое значение параметра." + Environment.NewLine + "Пожалуйста, введите все параметры.", "Ошибка");
 				return;
 			}
-	        systemUsersTableAdapter.Insert(tB_UID.Text, cB_userType.Text, tB_login.Text, tB_password.Text);
-			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+	        string pass = tB_password.Text;
+	        string salt = "";
+	        string hashe = SHA512.EncodePassword(pass, 16, ref salt);
+	        try
+	        {
+		        systemUsersTableAdapter.Insert(cB_userType.Text, tB_login.Text, hashe, salt);
+	        }
+	        catch (Exception ex)
+	        {
+		        MessageBox.Show(ex.Message);
+	        }
+	        this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
 	        //dgv_users.Rows.Add(tB_UID.Text, cB_userType.Text, tB_login.Text, tB_password.Text);
         }
 
@@ -134,22 +143,21 @@ namespace SerialPortUsing {
 			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Open();
 			foreach (DataGridViewRow r in dgv_users.SelectedRows)
 			{
-				string test = r.Cells[0].Value.ToString();
-				systemUsersTableAdapter.Adapter.DeleteCommand.Parameters.Add(new OleDbParameter("par0", test));
+				string login = r.Cells[1].Value.ToString();
+				systemUsersTableAdapter.Adapter.DeleteCommand.Parameters.Add(new OleDbParameter("par0", login));
 				systemUsersTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
 				systemUsersTableAdapter.Adapter.DeleteCommand.Parameters.Clear();
 			}
 			systemUsersTableAdapter.Adapter.DeleteCommand.Connection.Close();
-			this.systemUsersTableAdapter.Fill(this.access_control_in_OneWire.SystemUsers);
+			 this.systemUsersTableAdapter.Fill(access_control_in_OneWire.SystemUsers);
 		}
 
 
 
 		private void dgv_users_CellDoubleClick(object sender, DataGridViewCellEventArgs e){
-			tB_UID.Text = dgv_users.SelectedRows[0].Cells[0].Value.ToString(); 
-			cB_userType.Text = dgv_users.SelectedRows[0].Cells[1].Value.ToString();
-			tB_login.Text = dgv_users.SelectedRows[0].Cells[2].Value.ToString();
-			tB_password.Text = dgv_users.SelectedRows[0].Cells[3].Value.ToString();
+			cB_userType.Text = dgv_users.SelectedRows[0].Cells[0].Value.ToString();
+			tB_login.Text = dgv_users.SelectedRows[0].Cells[1].Value.ToString();
+			tB_password.Text = "";
 		}
 
 		private void b_editUser_Click(object sender, EventArgs e)
@@ -158,12 +166,17 @@ namespace SerialPortUsing {
 				MessageBox.Show(this, "Должна быть выделена одна строка.", "Некорректное выделение");
 				return;
 			}
+
+			string pass = tB_password.Text;
+			string salt = "";
+			string hashe = SHA512.EncodePassword(pass, 16, ref salt);
+
 			systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Open();
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("newuid", tB_UID.Text));
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("utype", cB_userType.Text));
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("log", tB_login.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("pass", tB_password.Text));
-			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("olduid", dgv_users.SelectedRows[0].Cells[0].Value.ToString()));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("passHashe", hashe));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("passSalt", salt));
+			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Add(new OleDbParameter("oldLogin", dgv_users.SelectedRows[0].Cells[1].Value.ToString()));
 			systemUsersTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
 			systemUsersTableAdapter.Adapter.UpdateCommand.Parameters.Clear();
 			systemUsersTableAdapter.Adapter.UpdateCommand.Connection.Close();
@@ -399,6 +412,14 @@ namespace SerialPortUsing {
 		}
 
 		#endregion
+
+		private void chB_users_hidePass_CheckedChanged(object sender, EventArgs e)
+		{
+			if (chB_users_hidePass.Checked)
+				tB_password.PasswordChar = (char)0;
+			else
+				tB_password.PasswordChar = (char)0;
+		}
 
 		
 

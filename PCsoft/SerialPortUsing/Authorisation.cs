@@ -11,7 +11,7 @@ namespace SerialPortUsing {
 
 		private Access_control_in_OneWire.SystemUsersDataTable _table; // Экземпляр таблички подключенного источника данных
 		private SystemUsersTableAdapter _sysUsersTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
-		private const string LOGIN_PASS_FILTER = "login='{0}' AND password='{1}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
+		private const string LOGIN_PASS_FILTER = "login='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
 		// TODO: Это всё хуйня, надо пилить красотищу про хэши и соли.
 
 		public Authorisation() {
@@ -21,7 +21,7 @@ namespace SerialPortUsing {
 			_sysUsersTableAdapter = new SystemUsersTableAdapter(); // Инициализируем адаптер таблицы
 			_sysUsersTableAdapter.ClearBeforeFill = true; // Говорим нашему адаптеру таблицы, чтобы очищал таблицу перед заполнением
 
-			_sysUsersTableAdapter.Fill(_table); // Дастаём таблицу из базы и кладём в свой адаптер базы
+			_table = _sysUsersTableAdapter.GetData(); // Дастаём таблицу из базы и кладём в свой адаптер базы
 		}
 
 		#region TestDB connection
@@ -37,23 +37,36 @@ namespace SerialPortUsing {
 		#endregion
 
 		private void Btn_Enter_Click(object sender, EventArgs e) {
+
+			//Login("Admin");
+			//return;
+			
 			string uName = tB_username.Text;
 			string uPass = tB_password.Text;
 
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
-			searchResult = _table.Select(String.Format(LOGIN_PASS_FILTER, uName, uPass)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
+			searchResult = _table.Select(String.Format(LOGIN_PASS_FILTER, uName)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре LOGIN_PASS_FILTER
+
+			string login = searchResult[0][0].ToString();
+			string enteredPass = tB_password.Text;
+			string hash = searchResult[0][2].ToString();
+			string salt = searchResult[0][3].ToString();
 
 			int count = searchResult.Length;
 
-			if (count == 1) {
-				Login(searchResult[0][1].ToString());
-			}
-			else if (count > 1) {
-				MessageBox.Show(this, "Дубликаты логина и пароля, блядь!", "ОХУЕЛ?!");//проверка БД на наличие у разных пользователей одинаковой пары логин-пароль
-			}
-			else {
+			if (count == 0) {
 				MessageBox.Show(this, "Введенная пара логин-пароль отсутствует в базе данных. Обратитесь к системному администратору.", "Ошибка");
+				return;
 			}
+
+			if (CheckPass(enteredPass, hash, salt)){
+				Login(login);
+			}
+		}
+
+		bool CheckPass(string pass, string hashe, string salt)
+		{
+			return SHA512.CheckPassword(pass, hashe, salt);
 		}
 
 		private void Login(string uDuty) {

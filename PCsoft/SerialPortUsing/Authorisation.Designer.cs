@@ -30,15 +30,15 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Authorisation));
 			this.GB_Login = new System.Windows.Forms.GroupBox();
+			this.b_boss = new System.Windows.Forms.Button();
+			this.b_security = new System.Windows.Forms.Button();
+			this.b_admin = new System.Windows.Forms.Button();
 			this.CheckConnection = new System.Windows.Forms.Label();
 			this.tB_password = new System.Windows.Forms.TextBox();
 			this.tB_username = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.Btn_Enter = new System.Windows.Forms.Button();
-			this.b_admin = new System.Windows.Forms.Button();
-			this.b_security = new System.Windows.Forms.Button();
-			this.b_boss = new System.Windows.Forms.Button();
 			this.GB_Login.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,107 +53,72 @@
 			this.GB_Login.Controls.Add(this.label2);
 			this.GB_Login.Controls.Add(this.label1);
 			this.GB_Login.Controls.Add(this.Btn_Enter);
-			this.GB_Login.Location = new System.Drawing.Point(14, 2);
+			resources.ApplyResources(this.GB_Login, "GB_Login");
 			this.GB_Login.Name = "GB_Login";
-			this.GB_Login.Size = new System.Drawing.Size(144, 166);
-			this.GB_Login.TabIndex = 6;
 			this.GB_Login.TabStop = false;
+			// 
+			// b_boss
+			// 
+			resources.ApplyResources(this.b_boss, "b_boss");
+			this.b_boss.Name = "b_boss";
+			this.b_boss.UseVisualStyleBackColor = true;
+			this.b_boss.Click += new System.EventHandler(this.b_boss_Click);
+			// 
+			// b_security
+			// 
+			resources.ApplyResources(this.b_security, "b_security");
+			this.b_security.Name = "b_security";
+			this.b_security.UseVisualStyleBackColor = true;
+			this.b_security.Click += new System.EventHandler(this.b_security_Click);
+			// 
+			// b_admin
+			// 
+			resources.ApplyResources(this.b_admin, "b_admin");
+			this.b_admin.Name = "b_admin";
+			this.b_admin.UseVisualStyleBackColor = true;
+			this.b_admin.Click += new System.EventHandler(this.b_admin_Click);
 			// 
 			// CheckConnection
 			// 
-			this.CheckConnection.AutoSize = true;
-			this.CheckConnection.Location = new System.Drawing.Point(34, 119);
+			resources.ApplyResources(this.CheckConnection, "CheckConnection");
 			this.CheckConnection.Name = "CheckConnection";
-			this.CheckConnection.Size = new System.Drawing.Size(0, 13);
-			this.CheckConnection.TabIndex = 5;
 			// 
 			// tB_password
 			// 
-			this.tB_password.Location = new System.Drawing.Point(26, 96);
+			resources.ApplyResources(this.tB_password, "tB_password");
 			this.tB_password.Name = "tB_password";
-			this.tB_password.PasswordChar = '*';
-			this.tB_password.Size = new System.Drawing.Size(100, 20);
-			this.tB_password.TabIndex = 4;
-			this.tB_password.Text = "Admin";
 			this.tB_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tB_password_KeyDown);
 			// 
 			// tB_username
 			// 
-			this.tB_username.Location = new System.Drawing.Point(26, 33);
+			resources.ApplyResources(this.tB_username, "tB_username");
 			this.tB_username.Name = "tB_username";
-			this.tB_username.Size = new System.Drawing.Size(100, 20);
-			this.tB_username.TabIndex = 3;
-			this.tB_username.Text = "Admin";
 			// 
 			// label2
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(45, 71);
+			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(53, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Password";
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(43, 16);
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(55, 13);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Username";
 			// 
 			// Btn_Enter
 			// 
-			this.Btn_Enter.Location = new System.Drawing.Point(37, 135);
+			resources.ApplyResources(this.Btn_Enter, "Btn_Enter");
 			this.Btn_Enter.Name = "Btn_Enter";
-			this.Btn_Enter.Size = new System.Drawing.Size(75, 23);
-			this.Btn_Enter.TabIndex = 0;
-			this.Btn_Enter.Text = "Enter";
 			this.Btn_Enter.UseVisualStyleBackColor = true;
 			this.Btn_Enter.Click += new System.EventHandler(this.Btn_Enter_Click);
 			// 
-			// b_admin
-			// 
-			this.b_admin.Location = new System.Drawing.Point(0, 12);
-			this.b_admin.Name = "b_admin";
-			this.b_admin.Size = new System.Drawing.Size(26, 20);
-			this.b_admin.TabIndex = 6;
-			this.b_admin.Text = "A";
-			this.b_admin.UseVisualStyleBackColor = true;
-			this.b_admin.Click += new System.EventHandler(this.b_admin_Click);
-			// 
-			// b_security
-			// 
-			this.b_security.Location = new System.Drawing.Point(0, 42);
-			this.b_security.Name = "b_security";
-			this.b_security.Size = new System.Drawing.Size(26, 20);
-			this.b_security.TabIndex = 7;
-			this.b_security.Text = "S";
-			this.b_security.UseVisualStyleBackColor = true;
-			this.b_security.Click += new System.EventHandler(this.b_security_Click);
-			// 
-			// b_boss
-			// 
-			this.b_boss.Location = new System.Drawing.Point(0, 71);
-			this.b_boss.Name = "b_boss";
-			this.b_boss.Size = new System.Drawing.Size(26, 20);
-			this.b_boss.TabIndex = 8;
-			this.b_boss.Text = "B";
-			this.b_boss.UseVisualStyleBackColor = true;
-			this.b_boss.Click += new System.EventHandler(this.b_boss_Click);
-			// 
 			// Authorisation
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(170, 180);
 			this.Controls.Add(this.GB_Login);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Authorisation";
-			this.Text = "Authentication";
 			this.Load += new System.EventHandler(this.Autorization_Load);
 			this.GB_Login.ResumeLayout(false);
 			this.GB_Login.PerformLayout();

@@ -3,6 +3,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 
 namespace SerialPortUsing {
@@ -64,25 +65,22 @@ namespace SerialPortUsing {
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _staffTable.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре
 			
-			bool notInTime = false;
+			bool notInTime = true;
 			_shTable = new Access_control_in_OneWire.ScheduleDataTable();
 
-			_shAdapter.Fill(_shTable, searchResult[0][6].ToString());
-			DateTime start;
-			DateTime fin;
-			DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
-			DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
-			if (DateTime.Now < fin & DateTime.Now > start)
-			{
-				notInTime = false;
-			}
-			else
-			{
-				notInTime = true;
-			}
 			if(searchResult.Length != 0){
 				if (searchResult.Length > 1)
 					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!"); // Time to shit bricks
+				_shAdapter.Fill(_shTable, searchResult[0][6].ToString());
+				DateTime start;
+				DateTime fin;
+				DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
+				DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
+
+				if (CompareHoursAndMinutes(DateTime.Now, fin) == 1 && CompareHoursAndMinutes(DateTime.Now, start) == -1)
+				{
+					notInTime = false;
+				}
 				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
@@ -90,6 +88,15 @@ namespace SerialPortUsing {
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				ShowFace("", "", "", "", "", notInTime, "", "", 0, enterExit);
 			}
+		}
+
+		int CompareHoursAndMinutes(DateTime d1, DateTime d2)
+		{
+			if(d1.Hour > d2.Hour) return -1;
+			else if (d1.Hour == d2.Hour)
+				if (d1.Minute > d2.Minute) return -1;
+				else if (d1.Minute == d2.Minute) return 0;
+			return 1;
 		}
 
 		private void WriteEventToLog(string uid, bool enterExit) {
@@ -138,6 +145,7 @@ namespace SerialPortUsing {
 			else {
 				l_action.Text = "Входит";
 			}
+			l_NotInTime.Visible = notTimed;
 
 
 			this.WindowState = FormWindowState.Minimized;

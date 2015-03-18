@@ -40,7 +40,7 @@
 			this.l_uidType = new System.Windows.Forms.Label();
 			this.l_action = new System.Windows.Forms.Label();
 			this.l_actionTime = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
+			this.l_NotInTime = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -199,24 +199,24 @@
 			this.l_actionTime.TabIndex = 16;
 			this.l_actionTime.Text = "Дата и время";
 			// 
-			// label4
+			// l_NotInTime
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label4.ForeColor = System.Drawing.Color.Maroon;
-			this.label4.Location = new System.Drawing.Point(100, 210);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(149, 21);
-			this.label4.TabIndex = 17;
-			this.label4.Text = "Чё-то не вовремя";
-			this.label4.Visible = false;
+			this.l_NotInTime.AutoSize = true;
+			this.l_NotInTime.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_NotInTime.ForeColor = System.Drawing.Color.Maroon;
+			this.l_NotInTime.Location = new System.Drawing.Point(100, 210);
+			this.l_NotInTime.Name = "l_NotInTime";
+			this.l_NotInTime.Size = new System.Drawing.Size(249, 21);
+			this.l_NotInTime.TabIndex = 17;
+			this.l_NotInTime.Text = "Непредвиденное присутствие";
+			this.l_NotInTime.Visible = false;
 			// 
 			// SecurityForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(740, 571);
-			this.Controls.Add(this.label4);
+			this.Controls.Add(this.l_NotInTime);
 			this.Controls.Add(this.l_actionTime);
 			this.Controls.Add(this.pic_face);
 			this.Controls.Add(this.l_action);
@@ -263,6 +263,6 @@
 		private System.Windows.Forms.Label l_uidType;
 		private System.Windows.Forms.Label l_action;
 		private System.Windows.Forms.Label l_actionTime;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label l_NotInTime;
 	}
 }

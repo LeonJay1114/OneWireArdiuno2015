@@ -118,6 +118,265 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="b_boss.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 71</value>
+  </data>
+  <data name="b_boss.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="b_boss.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="b_boss.Text" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="&gt;&gt;b_boss.Name" xml:space="preserve">
+    <value>b_boss</value>
+  </data>
+  <data name="&gt;&gt;b_boss.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;b_boss.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;b_boss.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="b_security.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 42</value>
+  </data>
+  <data name="b_security.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 20</value>
+  </data>
+  <data name="b_security.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="b_security.Text" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="&gt;&gt;b_security.Name" xml:space="preserve">
+    <value>b_security</value>
+  </data>
+  <data name="&gt;&gt;b_security.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;b_security.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;b_security.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="b_admin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="b_admin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 20</value>
+  </data>
+  <data name="b_admin.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="b_admin.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="&gt;&gt;b_admin.Name" xml:space="preserve">
+    <value>b_admin</value>
+  </data>
+  <data name="&gt;&gt;b_admin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;b_admin.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;b_admin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CheckConnection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckConnection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 119</value>
+  </data>
+  <data name="CheckConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="CheckConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;CheckConnection.Name" xml:space="preserve">
+    <value>CheckConnection</value>
+  </data>
+  <data name="&gt;&gt;CheckConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckConnection.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;CheckConnection.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tB_password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 96</value>
+  </data>
+  <data name="tB_password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="tB_password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="tB_password.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tB_password.Text" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="&gt;&gt;tB_password.Name" xml:space="preserve">
+    <value>tB_password</value>
+  </data>
+  <data name="&gt;&gt;tB_password.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tB_password.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;tB_password.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tB_username.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 33</value>
+  </data>
+  <data name="tB_username.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="tB_username.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tB_username.Text" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="&gt;&gt;tB_username.Name" xml:space="preserve">
+    <value>tB_username</value>
+  </data>
+  <data name="&gt;&gt;tB_username.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tB_username.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;tB_username.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 71</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 16</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Btn_Enter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 135</value>
+  </data>
+  <data name="Btn_Enter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Btn_Enter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Btn_Enter.Text" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="&gt;&gt;Btn_Enter.Name" xml:space="preserve">
+    <value>Btn_Enter</value>
+  </data>
+  <data name="&gt;&gt;Btn_Enter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Enter.Parent" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;Btn_Enter.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="GB_Login.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 2</value>
+  </data>
+  <data name="GB_Login.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 166</value>
+  </data>
+  <data name="GB_Login.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;GB_Login.Name" xml:space="preserve">
+    <value>GB_Login</value>
+  </data>
+  <data name="&gt;&gt;GB_Login.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GB_Login.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GB_Login.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>de-AT</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>170, 180</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAA
@@ -193,5 +452,14 @@
         ///4AA///AAAD/4AAAf/AAAD/4AAAf/AAAD/4AAA//AAAP/wAAD/8AAA//AAAP/wAAD/8AAA//AAAP/w
         AAD/8AAA//AAAP/4AAH//AAD//4AB///AA8=
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Authorisation</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
