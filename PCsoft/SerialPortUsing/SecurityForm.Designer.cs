@@ -67,6 +67,8 @@
 			// 
 			// l_fio
 			// 
+			this.l_fio.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.l_fio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.l_fio.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.l_fio.Location = new System.Drawing.Point(12, 505);
 			this.l_fio.Name = "l_fio";

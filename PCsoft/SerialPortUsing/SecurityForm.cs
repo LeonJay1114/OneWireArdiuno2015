@@ -81,7 +81,7 @@ namespace SerialPortUsing {
 				{
 					notInTime = false;
 				}
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, Convert.ToBoolean(searchResult[0][10]), enterExit);
+				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, Convert.ToBoolean(searchResult[0][7]), enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
 			else{
