@@ -2,6 +2,8 @@
 
 #define EnterPIN 10
 #define ExitPIN 11
+const int RelayPIN = 3;
+const int ButtonPIN = 2;
 
 //const int BUZZER_PINUMBER = 8; // номер пина управления пищалкой
 const int NEW_KEY_CHECK_DELAY = 750; // задержка между проверками поднесённости карты в миллисекундах
@@ -13,19 +15,32 @@ byte curKey[9];
 
 void setup(){
 	Serial.begin(9600); // Начать общение с компом по последовательному порту
+        pinMode (RelayPIN, OUTPUT);
+        pinMode (ButtonPIN, INPUT);
 }
 
 void loop(){
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchEnterKey()){
 		PrintKey();
+                DoorOpen();
 	}
 
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchExitKey()){
 		PrintKey();
+                DoorOpen();
 	}
-	
+        if(digitalRead(ButtonPIN))
+        {
+        DoorOpen();
+        }
+}
+void DoorOpen()
+{
+  digitalWrite(RelayPIN, HIGH);  // реле выключено
+  delay(3000);  
+  digitalWrite(RelayPIN, LOW);   // реле включено               
 }
 
 bool SearchEnterKey(){
