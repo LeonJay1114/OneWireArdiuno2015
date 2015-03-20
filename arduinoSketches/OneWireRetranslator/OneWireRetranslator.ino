@@ -4,9 +4,10 @@
 #define ExitPIN 11
 const int RelayPIN = 3;
 const int ButtonPIN = 2;
-
+const int RGB_LED_PINUMBERS[] = { 5, 6, 7 }; // Номера пинов-выходов для RGB-светодиода
 //const int BUZZER_PINUMBER = 8; // номер пина управления пищалкой
 const int NEW_KEY_CHECK_DELAY = 750; // задержка между проверками поднесённости карты в миллисекундах
+bool white;		// Состояние светодиода(горит ли), пока находимся в состоянии ожидания карты
 
 OneWire dsEnter(EnterPIN); // использующийся пин отправляется инициализатору класса OneWire
 OneWire dsExit(ExitPIN);
@@ -17,9 +18,27 @@ void setup(){
 	Serial.begin(9600); // Начать общение с компом по последовательному порту
         pinMode (RelayPIN, OUTPUT);
         pinMode (ButtonPIN, INPUT);
+        // активируем на выход пины для RGB-лампочки:
+	pinMode(RGB_LED_PINUMBERS[0], OUTPUT); // red
+	pinMode(RGB_LED_PINUMBERS[1], OUTPUT); // green
+	pinMode(RGB_LED_PINUMBERS[2], OUTPUT); // blue
+        white = false; // До начала работы светодиод не горит
 }
 
-void loop(){
+void loop()       {
+	if (!white){
+		digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем светодиод
+		digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем светодиод
+		digitalWrite(RGB_LED_PINUMBERS[2], HIGH);   // зажигаем светодиод
+		white = true;
+	}
+	else{
+		digitalWrite(RGB_LED_PINUMBERS[0], LOW);   // зажигаем светодиод
+		digitalWrite(RGB_LED_PINUMBERS[1], LOW);   // зажигаем светодиод
+		digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // зажигаем светодиод
+		white = false;
+	}
+ 
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchEnterKey()){
 		PrintKey();
@@ -38,6 +57,15 @@ void loop(){
 }
 void DoorOpen()
 {
+        // Желтеем:
+	digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем красный
+	digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем зелёный
+	digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
+        delay(500);
+        // Зеленеем:
+	digitalWrite(RGB_LED_PINUMBERS[0], LOW);   // тушим красный
+	digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем зелёный
+	digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
   digitalWrite(RelayPIN, HIGH);  // реле выключено
   delay(3000);  
   digitalWrite(RelayPIN, LOW);   // реле включено               
