@@ -7,19 +7,44 @@ using System.Windows.Forms.VisualStyles;
 using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 
 namespace SerialPortUsing {
-	public partial class SecurityForm : Form {
 
+	public class StaffOutputInfo {
+		public string Fio;
+		public string Number;
+		public string Division;
+		public string Shedule;
+		public string Profession;
+		public string UidType;
+		public string PicturePath;
+		public bool Blocked;
+		public StaffOutputInfo(Access_control_in_OneWire.StaffRow row) {
+			Profession = row[0].ToString();
+			PicturePath = row[1].ToString();
+			Number = row[3].ToString();
+			Shedule = row[6].ToString();
+			Blocked = Convert.ToBoolean(row[7].ToString());
+			Division = row[8].ToString();
+			UidType = row[9].ToString();
+			Fio = row[10].ToString();
+		}
+	}
+
+	public partial class SecurityForm : Form {
+		#region Constants
+		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
+		#endregion
+
+		#region Serving Objects
 		UIDCOMListener _listener;
+		#endregion
+
+		#region Tables and adapters
 		private Access_control_in_OneWire.StaffDataTable _staffTable; // Экземпляр таблички подключенного источника данных
 		private Access_control_in_OneWire.ScheduleDataTable _shTable;
 		private StaffTableAdapter _staffTableAdapter; // Экземпляр класса адаптера одной из таблиц. (Лежит в SerialPortUsing.AC_DataSetTableAdapters)
 		private ScheduleTableAdapter _shAdapter = new ScheduleTableAdapter();
-		private Access_control_in_OneWire.simpleEventLogDataTable _eventTable;
 		private JoinedEventLogAdapter _eventLogAdapter;
-		
-		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
-
-		
+		#endregion
 
 		#region Structing
 		public SecurityForm() {
@@ -28,12 +53,12 @@ namespace SerialPortUsing {
 			_staffTableAdapter.ClearBeforeFill = true;
 			_staffTableAdapter.Fill(_staffTable);
 
-			_eventTable = new Access_control_in_OneWire.simpleEventLogDataTable();
 			_eventLogAdapter = new JoinedEventLogAdapter();
 			_eventLogAdapter.ClearBeforeFill = true;
 			_eventLogAdapter.Adapter.InsertCommand.Connection = _eventLogAdapter.Connection;
 
 			_shAdapter.ClearBeforeFill = true;
+			_shTable = new Access_control_in_OneWire.ScheduleDataTable();
 			//try{
 				_listener = new UIDCOMListener(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
 			//}
@@ -64,29 +89,20 @@ namespace SerialPortUsing {
 			//MessageBox.Show(enterExit.ToString());
 			System.Data.DataRow[] searchResult; // Массив строк, который получим от поиска по таблице
 			searchResult = _staffTable.Select(String.Format(UID_FILTER, uid)); // Выбор строк, удовлетворяющих условиям, заданным в строке-фильтре
-			
-			bool notInTime = true;
-			_shTable = new Access_control_in_OneWire.ScheduleDataTable();
 
 			if(searchResult.Length != 0){
+				
+				StaffOutputInfo staffInfo = new StaffOutputInfo((Access_control_in_OneWire.StaffRow)searchResult[0]);
+
 				if (searchResult.Length > 1)
 					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!"); // Time to shit bricks
-				_shAdapter.Fill(_shTable, searchResult[0][6].ToString());
-				DateTime start;
-				DateTime fin;
-				DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
-				DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
 
-				if (CompareHoursAndMinutes(DateTime.Now, fin) == 1 && CompareHoursAndMinutes(DateTime.Now, start) == -1)
-				{
-					notInTime = false;
-				}
-				ShowFace(searchResult[0][1].ToString(), searchResult[0][10].ToString(), searchResult[0][3].ToString(), searchResult[0][8].ToString(), searchResult[0][6].ToString(), notInTime, searchResult[0][0].ToString(), searchResult[0][9].ToString(), 0, Convert.ToBoolean(searchResult[0][7]), enterExit);
+				ShowFace(staffInfo, 0, enterExit);
 				WriteEventToLog(uid, enterExit);
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				ShowFace("", "", "", "", "", notInTime, "", "", 0, false, enterExit);
+				ShowFace(null, 0, enterExit);
 			}
 		}
 
@@ -114,39 +130,52 @@ namespace SerialPortUsing {
 			}
 		}
 
-		delegate void ShowFaceCallBack(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit);
-		public void ShowFace(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit)
+		delegate void ShowFaceCallBack(StaffOutputInfo staffInfo, int ttl, bool enterExit);
+		public void ShowFace(StaffOutputInfo staffInfo, int ttl, bool enterExit)
 		{
 			if(pic_face.InvokeRequired) {
 				ShowFaceCallBack cb = ShowFace;
-				this.Invoke(cb,  picturePath,  fio,  number,  division,  shedule, notTimed, profession,  uidType, ttl, blocked, enterExit);
+				this.Invoke(cb,  staffInfo, ttl, enterExit);
 				return;
 			}
-			ShowFace_Invoked(picturePath,  fio,  number,  division,  shedule,  notTimed, profession,  uidType, ttl, blocked, enterExit);
+			ShowFace_Invoked(staffInfo, ttl, enterExit);
 		}
-		private void ShowFace_Invoked(string picturePath, string fio, string number, string division, string shedule, bool notTimed, string profession, string uidType, int ttl, bool blocked, bool enterExit)
+		private void ShowFace_Invoked(StaffOutputInfo staffInfo, int ttl, bool enterExit)
 		{
-			if (fio == "") {FlushFields(); return;}
+			if (staffInfo == null) { FlushFields(); return; }
 
-			try { pic_face.Image = new Bitmap(picturePath); }
+			try { pic_face.Image = new Bitmap(staffInfo.PicturePath); }
 			catch (Exception e) {
-				//MessageBox.Show(null, e.Message, "Ошибка");
+				MessageBox.Show(null, e.Message, "Ошибка");
 			}
-			l_fio.Text = fio;
-			l_division.Text = division;
-			l_number.Text = number;
-			l_profession.Text = profession;
-			l_shedule.Text = shedule;
-			l_uidType.Text = uidType;
+
+			bool notInTime = true;
+			#region CheckingTime
+			_shAdapter.Fill(_shTable, staffInfo.Shedule);
+			DateTime start;
+			DateTime fin;
+			DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
+			DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
+
+			if (CompareHoursAndMinutes(DateTime.Now, fin) == 1 && CompareHoursAndMinutes(DateTime.Now, start) == -1) {
+				notInTime = false;
+			}
+			#endregion
+
+			l_fio.Text = staffInfo.Fio;
+			l_division.Text = staffInfo.Division;
+			l_number.Text = staffInfo.Number;
+			l_profession.Text = staffInfo.Profession;
+			l_shedule.Text = staffInfo.Shedule;
+			l_uidType.Text = staffInfo.UidType;
 			l_actionTime.Text = DateTime.Now.ToString();
-			if(enterExit) {
+			if(enterExit)
 				l_action.Text = "Выходит";
-			}
-			else {
+			else
 				l_action.Text = "Входит";
-			}
-			l_NotInTime.Visible = notTimed;
-			l_blocked.Visible = blocked;
+
+			l_NotInTime.Visible = notInTime;
+			l_blocked.Visible = staffInfo.Blocked;
 
 			this.WindowState = FormWindowState.Minimized;
 			this.WindowState = FormWindowState.Normal;
@@ -171,6 +200,8 @@ namespace SerialPortUsing {
 			l_uidType.Text = "";
 			l_actionTime.Text = "";
 			l_action.Text = "";
+			l_NotInTime.Visible = false;
+			l_blocked.Visible = false;
 		}
 
 		private void tmr_Tick(object sender, EventArgs e) {
@@ -192,7 +223,5 @@ namespace SerialPortUsing {
 
 		
 	}
-}
 
-//
-// "Дэн Дэн\nДэн Денис!"
+}
