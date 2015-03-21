@@ -252,7 +252,7 @@
 			this.Controls.Add(this.l_fio);
 			this.Controls.Add(this.l1);
 			this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+	//		this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SecurityForm";
 			this.Text = "SecurityForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
