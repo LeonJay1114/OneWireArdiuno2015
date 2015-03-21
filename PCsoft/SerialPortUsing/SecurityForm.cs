@@ -8,27 +8,6 @@ using SerialPortUsing.Access_control_in_OneWireTableAdapters;
 
 namespace SerialPortUsing {
 
-	public class StaffOutputInfo {
-		public string Fio;
-		public string Number;
-		public string Division;
-		public string Shedule;
-		public string Profession;
-		public string UidType;
-		public string PicturePath;
-		public bool Blocked;
-		public StaffOutputInfo(Access_control_in_OneWire.StaffRow row) {
-			Profession = row[0].ToString();
-			PicturePath = row[1].ToString();
-			Number = row[3].ToString();
-			Shedule = row[6].ToString();
-			Blocked = Convert.ToBoolean(row[7].ToString());
-			Division = row[8].ToString();
-			UidType = row[9].ToString();
-			Fio = row[10].ToString();
-		}
-	}
-
 	public partial class SecurityForm : Form {
 		#region Constants
 		private const string UID_FILTER = "Uid='{0}'"; // Выражение-фильтр синтаксиса "DataView RowFilter Syntax" http://www.csharp-examples.net/dataview-rowfilter/
@@ -170,9 +149,9 @@ namespace SerialPortUsing {
 			l_uidType.Text = staffInfo.UidType;
 			l_actionTime.Text = DateTime.Now.ToString();
 			if(enterExit)
-				l_action.Text = "Выходит";
+				l_action.Text = "Выход";
 			else
-				l_action.Text = "Входит";
+				l_action.Text = "Проход";
 
 			l_NotInTime.Visible = notInTime;
 			l_blocked.Visible = staffInfo.Blocked;
@@ -222,6 +201,29 @@ namespace SerialPortUsing {
 		#endregion
 
 		
+	}
+
+	public class StaffOutputInfo
+	{
+		public string Fio;
+		public string Number;
+		public string Division;
+		public string Shedule;
+		public string Profession;
+		public string UidType;
+		public string PicturePath;
+		public bool Blocked;
+		public StaffOutputInfo(Access_control_in_OneWire.StaffRow row)
+		{
+			Profession = row[0].ToString();
+			PicturePath = row[1].ToString();
+			Number = row[3].ToString();
+			Shedule = row[6].ToString();
+			Blocked = Convert.ToBoolean(row[7].ToString());
+			Division = row[8].ToString();
+			UidType = row[9].ToString();
+			Fio = row[10].ToString();
+		}
 	}
 
 }
