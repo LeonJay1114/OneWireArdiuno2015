@@ -51,6 +51,7 @@
 			this.cB_listen = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this.coB_coms = new System.Windows.Forms.ComboBox();
+			this.chB_readAll = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.nUD_bytesToRead)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -99,7 +100,7 @@
 			// 
 			// CB_closePort
 			// 
-			this.CB_closePort.Location = new System.Drawing.Point(49, 103);
+			this.CB_closePort.Location = new System.Drawing.Point(84, 306);
 			this.CB_closePort.Name = "CB_closePort";
 			this.CB_closePort.Size = new System.Drawing.Size(191, 23);
 			this.CB_closePort.TabIndex = 5;
@@ -117,9 +118,9 @@
 			// 
 			// CB_writeToPort
 			// 
-			this.CB_writeToPort.Location = new System.Drawing.Point(134, 46);
+			this.CB_writeToPort.Location = new System.Drawing.Point(264, 46);
 			this.CB_writeToPort.Name = "CB_writeToPort";
-			this.CB_writeToPort.Size = new System.Drawing.Size(229, 23);
+			this.CB_writeToPort.Size = new System.Drawing.Size(99, 43);
 			this.CB_writeToPort.TabIndex = 7;
 			this.CB_writeToPort.Text = "Писать в порт";
 			this.CB_writeToPort.UseVisualStyleBackColor = true;
@@ -128,8 +129,9 @@
 			// tB_toWriteToPort
 			// 
 			this.tB_toWriteToPort.Location = new System.Drawing.Point(6, 48);
+			this.tB_toWriteToPort.Multiline = true;
 			this.tB_toWriteToPort.Name = "tB_toWriteToPort";
-			this.tB_toWriteToPort.Size = new System.Drawing.Size(100, 20);
+			this.tB_toWriteToPort.Size = new System.Drawing.Size(233, 119);
 			this.tB_toWriteToPort.TabIndex = 8;
 			this.tB_toWriteToPort.Text = "WorD";
 			// 
@@ -145,7 +147,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(112, 51);
+			this.label2.Location = new System.Drawing.Point(245, 51);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(13, 13);
 			this.label2.TabIndex = 10;
@@ -153,9 +155,9 @@
 			// 
 			// CB_readFromPort
 			// 
-			this.CB_readFromPort.Location = new System.Drawing.Point(66, 75);
+			this.CB_readFromPort.Location = new System.Drawing.Point(6, 199);
 			this.CB_readFromPort.Name = "CB_readFromPort";
-			this.CB_readFromPort.Size = new System.Drawing.Size(129, 23);
+			this.CB_readFromPort.Size = new System.Drawing.Size(100, 49);
 			this.CB_readFromPort.TabIndex = 11;
 			this.CB_readFromPort.Text = "Читать из порта";
 			this.CB_readFromPort.UseVisualStyleBackColor = true;
@@ -163,7 +165,7 @@
 			// 
 			// nUD_bytesToRead
 			// 
-			this.nUD_bytesToRead.Location = new System.Drawing.Point(6, 77);
+			this.nUD_bytesToRead.Location = new System.Drawing.Point(6, 173);
 			this.nUD_bytesToRead.Name = "nUD_bytesToRead";
 			this.nUD_bytesToRead.Size = new System.Drawing.Size(54, 20);
 			this.nUD_bytesToRead.TabIndex = 12;
@@ -177,15 +179,17 @@
 			// 
 			this.tB_gotFromPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tB_gotFromPort.Location = new System.Drawing.Point(219, 77);
+			this.tB_gotFromPort.Location = new System.Drawing.Point(131, 173);
+			this.tB_gotFromPort.Multiline = true;
 			this.tB_gotFromPort.Name = "tB_gotFromPort";
-			this.tB_gotFromPort.Size = new System.Drawing.Size(140, 20);
+			this.tB_gotFromPort.Size = new System.Drawing.Size(231, 127);
 			this.tB_gotFromPort.TabIndex = 13;
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.chB_readAll);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.tB_PortToOpen);
 			this.groupBox1.Controls.Add(this.tB_gotFromPort);
@@ -199,7 +203,7 @@
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Location = new System.Drawing.Point(460, 35);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(368, 137);
+			this.groupBox1.Size = new System.Drawing.Size(368, 337);
 			this.groupBox1.TabIndex = 14;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "COM port using";
@@ -207,7 +211,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(200, 80);
+			this.label3.Location = new System.Drawing.Point(112, 204);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(13, 13);
 			this.label3.TabIndex = 14;
@@ -243,7 +247,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(724, 341);
+			this.button1.Location = new System.Drawing.Point(419, 359);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(84, 23);
 			this.button1.TabIndex = 15;
@@ -301,6 +305,17 @@
 			this.coB_coms.Size = new System.Drawing.Size(121, 21);
 			this.coB_coms.TabIndex = 0;
 			// 
+			// chB_readAll
+			// 
+			this.chB_readAll.AutoSize = true;
+			this.chB_readAll.Location = new System.Drawing.Point(66, 176);
+			this.chB_readAll.Name = "chB_readAll";
+			this.chB_readAll.Size = new System.Drawing.Size(37, 17);
+			this.chB_readAll.TabIndex = 15;
+			this.chB_readAll.Text = "All";
+			this.chB_readAll.UseVisualStyleBackColor = true;
+			this.chB_readAll.CheckedChanged += new System.EventHandler(this.chB_readdAll_CheckedChanged);
+			// 
 			// TestForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,6 +360,7 @@
 		private System.Windows.Forms.ComboBox coB_coms;
         private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox tb_uidOutput;
+		private System.Windows.Forms.CheckBox chB_readAll;
 	}
 }
 

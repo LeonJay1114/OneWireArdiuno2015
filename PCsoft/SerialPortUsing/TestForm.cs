@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
 
@@ -118,20 +119,32 @@ namespace SerialPortUsing {
 			port1.Open();
 		}
 
-		private void CB_writeToPort_Click(object sender, EventArgs e) {
+		private void CB_writeToPort_Click(object sender, EventArgs e){
+			//byte[] t = BitConverter.GetBytes(Convert.ToInt16(tB_toWriteToPort.Text));
+			//port1.Write(t,0,2);
 			port1.Write(tB_toWriteToPort.Text);
+			char[] end = new[] {'\n'};
+			port1.Write(end,0,1);
 		}
 
-		private void CB_readFromPort_Click(object sender, EventArgs e) {
-			int count = (int)nUD_bytesToRead.Value;
-			byte[] buf = new byte[count];
+		private void CB_readFromPort_Click(object sender, EventArgs e)
+		{
 
+			int count;
+			if (chB_readAll.Checked){
+				count = port1.BytesToRead;
+			}
+			else{
+				count = (int)nUD_bytesToRead.Value;
+			}
+
+			byte[] buf = new byte[count];
 			port1.BaseStream.Read(buf, 0, count);
 
-			foreach (var b in buf) {
-				tB_gotFromPort.Text += (int)b + ";";
-			}
-			//tB_gotFromPort.Text += coder.GetString(buf);
+			//foreach (var b in buf) {
+			//	tB_gotFromPort.Text += (int)b + ";";
+			//}
+			tB_gotFromPort.Text += coder.GetString(buf);
 		}
 
 
@@ -141,6 +154,10 @@ namespace SerialPortUsing {
 
 		private void lb_test_DoubleClick(object sender, EventArgs e) {
 			lb_test.Items.Clear();
+		}
+
+		private void chB_readdAll_CheckedChanged(object sender, EventArgs e){
+			nUD_bytesToRead.Enabled = !chB_readAll.Checked;
 		}
 		#endregion
 

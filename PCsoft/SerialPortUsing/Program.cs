@@ -17,7 +17,7 @@ namespace SerialPortUsing
             //SecurityForm form = new SecurityForm();
             //form.ShowFace_tmp(@"C:\OneWireArdiuno2015\Photo\manager.png", "Кирилицын Антон Сергеевич", 3000);
 
-			Application.Run(new Authorisation());
+			Application.Run(new TestForm());
 		}
 
 	}
