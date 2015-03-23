@@ -9,7 +9,8 @@ namespace SerialPortUsing {
 
 	public enum ACCommand:byte{
 		Read = 0,
-		OpenAndRead = 1
+		OpenAndRead = 1,
+		BeepAndRead = 2
 	};
 	
 	/// <summary>

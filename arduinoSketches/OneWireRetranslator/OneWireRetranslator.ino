@@ -13,13 +13,21 @@ OneWire dsEnter(EnterPIN); // использующийся пин отправл
 OneWire dsExit(ExitPIN);
 byte curKey[9];
 
+int speakerPin = 8;
+const int freqLength = 10000;
+const int maxT = 1000;
+const int minT = 60;
+int T;
+
 enum Status{
 	read,
+	beepAndRead,
 	openAndRead
 };Status state;
 
 void setup(){
 	Serial.begin(9600); // Начать общение с компом по последовательному порту
+        pinMode(speakerPin, OUTPUT);
         pinMode (RelayPIN, OUTPUT);
         pinMode (ButtonPIN, INPUT);
         // активируем на выход пины для RGB-лампочки:
@@ -45,15 +53,26 @@ void loop()       {
 	}
 	
 	while(Serial.available()>0){
-		if(Serial.read() == 1)
-			state = openAndRead;
-		else
-			state = read;
+		switch(Serial.read()){
+			case 1:
+				state = openAndRead;
+				break;
+			case 2:
+				state = beepAndRead;
+				break;
+			default:
+				state = read;
+				break;
+                     }
 	}
 
 	switch(state){
 		case openAndRead:
 			DoorOpen();
+			state = read;
+			break;
+		case beepAndRead:
+			Beep();
 			state = read;
 			break;
 		case read:
@@ -64,15 +83,40 @@ void loop()       {
 	if(SearchEnterKey()){
 		PrintKey();
 	}
-
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchExitKey()){
 		PrintKey();
 	}
-    if(digitalRead(ButtonPIN)){
+
+	if(digitalRead(ButtonPIN)){
 		DoorOpen();
-    }
+	}
 }
+
+
+void playTone(int tone, int duration) {
+  for (long i = 0; i < duration; i += tone * 2) {
+    digitalWrite(speakerPin, HIGH);
+    delayMicroseconds(tone);
+    digitalWrite(speakerPin, LOW);
+    delayMicroseconds(tone);
+  }
+}
+void Beep(){
+	for(int i =0; i<3; i++){
+		T=maxT;
+		while(T>minT){
+		playTone(T, freqLength);
+		T-=10;
+		}
+		T = minT;
+		while(T<maxT){
+		playTone(T, freqLength);
+		      T+=10;
+		}
+	}
+}
+
 void DoorOpen()
 {
         // Желтеем:

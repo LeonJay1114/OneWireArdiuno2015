@@ -83,8 +83,9 @@ namespace SerialPortUsing {
 				}
 			}
 			else{
-				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				ShowFace(null, 0, enterExit);
+				_dialog.SendCommand(ACCommand.BeepAndRead);
+				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
