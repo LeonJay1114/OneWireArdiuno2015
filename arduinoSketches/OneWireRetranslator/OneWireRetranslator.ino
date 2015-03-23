@@ -13,6 +13,10 @@ OneWire dsEnter(EnterPIN); // использующийся пин отправл
 OneWire dsExit(ExitPIN);
 byte curKey[9];
 
+enum Status{
+	read,
+	openAndRead
+};Status state;
 
 void setup(){
 	Serial.begin(9600); // Начать общение с компом по последовательному порту
@@ -23,6 +27,7 @@ void setup(){
 	pinMode(RGB_LED_PINUMBERS[1], OUTPUT); // green
 	pinMode(RGB_LED_PINUMBERS[2], OUTPUT); // blue
         white = false; // До начала работы светодиод не горит
+	state = read;
 }
 
 void loop()       {
@@ -38,22 +43,35 @@ void loop()       {
 		digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // зажигаем светодиод
 		white = false;
 	}
- 
+	
+	while(Serial.available()>0){
+		if(Serial.read() == 1)
+			state = openAndRead;
+		else
+			state = read;
+	}
+
+	switch(state){
+		case openAndRead:
+			DoorOpen();
+			state = read;
+			break;
+		case read:
+			break;
+	}
+	 
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchEnterKey()){
 		PrintKey();
-                DoorOpen();
 	}
 
 	delay(NEW_KEY_CHECK_DELAY);
 	if(SearchExitKey()){
 		PrintKey();
-                DoorOpen();
 	}
-        if(digitalRead(ButtonPIN))
-        {
-        DoorOpen();
-        }
+    if(digitalRead(ButtonPIN)){
+		DoorOpen();
+    }
 }
 void DoorOpen()
 {
