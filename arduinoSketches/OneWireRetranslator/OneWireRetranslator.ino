@@ -1,11 +1,9 @@
-#include <OneWire.h>// Библиотека, позволяющая пользоваться протоколом OneWire, не зная протокола OneWire
-
+#include "OneWire.h"// Библиотека, позволяющая пользоваться протоколом OneWire, не зная протокола OneWire
 #define EnterPIN 10
 #define ExitPIN 11
 const int RelayPIN = 3;
 const int ButtonPIN = 2;
 const int RGB_LED_PINUMBERS[] = { 5, 6, 7 }; // Номера пинов-выходов для RGB-светодиода
-//const int BUZZER_PINUMBER = 8; // номер пина управления пищалкой
 const int NEW_KEY_CHECK_DELAY = 750; // задержка между проверками поднесённости карты в миллисекундах
 bool white;		// Состояние светодиода(горит ли), пока находимся в состоянии ожидания карты
 
@@ -13,7 +11,7 @@ OneWire dsEnter(EnterPIN); // использующийся пин отправл
 OneWire dsExit(ExitPIN);
 byte curKey[9];
 
-int speakerPin = 8;
+int speakerPin = 8;// номер пина управления пищалкой
 const int freqLength = 10000;
 const int maxT = 1000;
 const int minT = 60;
@@ -39,16 +37,16 @@ void setup(){
 }
 
 void loop()       {
-	if (!white){
-		digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем светодиод
-		digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем светодиод
-		digitalWrite(RGB_LED_PINUMBERS[2], HIGH);   // зажигаем светодиод
+	if (!white){// Горим
+		digitalWrite(RGB_LED_PINUMBERS[0], HIGH);
+		digitalWrite(RGB_LED_PINUMBERS[1], HIGH);
+		digitalWrite(RGB_LED_PINUMBERS[2], HIGH);
 		white = true;
 	}
-	else{
-		digitalWrite(RGB_LED_PINUMBERS[0], LOW);   // зажигаем светодиод
-		digitalWrite(RGB_LED_PINUMBERS[1], LOW);   // зажигаем светодиод
-		digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // зажигаем светодиод
+	else{// Не горим
+		digitalWrite(RGB_LED_PINUMBERS[0], LOW); 
+		digitalWrite(RGB_LED_PINUMBERS[1], LOW); 
+		digitalWrite(RGB_LED_PINUMBERS[2], LOW); 
 		white = false;
 	}
 	
@@ -72,7 +70,7 @@ void loop()       {
 			state = read;
 			break;
 		case beepAndRead:
-			Beep();
+			Beep_Alert();
 			state = read;
 			break;
 		case read:
@@ -102,7 +100,7 @@ void playTone(int tone, int duration) {
     delayMicroseconds(tone);
   }
 }
-void Beep(){
+void Beep_Alert(){
 	for(int i =0; i<3; i++){
 		T=maxT;
 		while(T>minT){
@@ -116,6 +114,7 @@ void Beep(){
 		}
 	}
 }
+
 
 void DoorOpen()
 {
