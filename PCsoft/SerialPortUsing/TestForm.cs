@@ -14,7 +14,7 @@ namespace SerialPortUsing {
 
 		private static Encoding coder = Encoding.ASCII;
 
-		private UIDCOMListener _listener;
+		private UIDCOMDialog _dialog;
 
 		#region Structing
 		public TestForm() {
@@ -163,9 +163,9 @@ namespace SerialPortUsing {
 
 		#region uid listening
 		private void cB_listen_Click(object sender, EventArgs e) {
-			if(_listener != null && _listener.IsOpen())
-				_listener.Close();
-			_listener = new UIDCOMListener(coB_coms.Text, 9600, 8, OnUIDReceived);
+			if(_dialog != null && _dialog.IsOpen())
+				_dialog.Close();
+			_dialog = new UIDCOMDialog(coB_coms.Text, 9600, 8, OnUIDReceived);
 		}
 
 		private void OnUIDReceived(object sender, string uid, bool enterExit) {

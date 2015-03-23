@@ -14,7 +14,7 @@ namespace SerialPortUsing {
 		#endregion
 
 		#region Serving Objects
-		UIDCOMListener _listener;
+		UIDCOMDialog _dialog;
 		#endregion
 
 		#region Tables and adapters
@@ -39,7 +39,7 @@ namespace SerialPortUsing {
 			_shAdapter.ClearBeforeFill = true;
 			_shTable = new Access_control_in_OneWire.ScheduleDataTable();
 			//try{
-				_listener = new UIDCOMListener(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
+				_dialog = new UIDCOMDialog(Properties.Settings.Default.COMName, Properties.Settings.Default.BaudRate, 8, _listener_UIDReceived);
 			//}
 			//catch(Exception)
 			//{
@@ -73,11 +73,14 @@ namespace SerialPortUsing {
 				
 				StaffOutputInfo staffInfo = new StaffOutputInfo((Access_control_in_OneWire.StaffRow)searchResult[0]);
 
-				if (searchResult.Length > 1)
-					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!"); // Time to shit bricks
-
 				ShowFace(staffInfo, 0, enterExit);
 				WriteEventToLog(uid, enterExit);
+
+				if (searchResult.Length > 1)
+					MessageBox.Show(null, "Дубликаты UID!", "АААА!!!"); // Time to shit bricks
+				else {
+					_dialog.SendCommand(ACCommand.OpenAndRead);
+				}
 			}
 			else{
 				MessageBox.Show(null, "Предъявлен неизвестный UID!\n" + uid, "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -191,7 +194,7 @@ namespace SerialPortUsing {
 		}
 		private void SecurityForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			_listener.Close();
+			_dialog.Close();
 		}
 
 		#region Experimenting

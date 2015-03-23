@@ -126,7 +126,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIDCOMListener.cs" />
+    <Compile Include="UIDCOMDialog.cs" />
     <Compile Include="UIDReadingForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -337,9 +337,13 @@ namespace SerialPortUsing {
 			}
 		}
 		private void dgv_event_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+		}
+		private void dgv_event_SelectionChanged(object sender, EventArgs e) {
+			if(dgv_event.SelectedRows.Count==0)return;
+
 			Application.DoEvents();
-			if (e.RowIndex < 0) return;
-			string path = dgv_event.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+			string path = dgv_event.SelectedRows[0].Cells[3].Value.ToString();
 			if (!string.IsNullOrEmpty(path)) {
 				try {
 					pic_event_photo.Image = new Bitmap(path);
@@ -420,8 +424,5 @@ namespace SerialPortUsing {
 			else
 				tB_password.PasswordChar = (char)0;
 		}
-
-		
-
 	}
 }

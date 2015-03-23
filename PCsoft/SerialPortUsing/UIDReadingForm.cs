@@ -11,7 +11,7 @@ namespace SerialPortUsing
 {
 	public partial class UIDReadingForm : Form
 	{
-		private UIDCOMListener _listener;
+		private UIDCOMDialog _dialog;
 		public string ResultingUID;
 		public UIDReadingForm(){
 			InitializeComponent();
@@ -19,7 +19,7 @@ namespace SerialPortUsing
 
 		private void ReceivingHandler(object sender, string uid, bool enterExit)
 		{
-			_listener.Close();
+			_dialog.Close();
 			ReturnUID(uid);
 		}
 
@@ -41,7 +41,7 @@ namespace SerialPortUsing
 
 		private void b_cancel_Click(object sender, EventArgs e)
 		{
-			_listener.Close();
+			_dialog.Close();
 			DialogResult = DialogResult.Cancel;
 			this.Close();
 		}
@@ -50,7 +50,7 @@ namespace SerialPortUsing
 		{
 			try
 			{
-				_listener = new UIDCOMListener(Settings.Default.COMName, Settings.Default.BaudRate, 8, ReceivingHandler);
+				_dialog = new UIDCOMDialog(Settings.Default.COMName, Settings.Default.BaudRate, 8, ReceivingHandler);
 			}
 			catch (Exception)
 			{
