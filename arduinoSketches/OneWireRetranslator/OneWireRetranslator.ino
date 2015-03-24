@@ -101,6 +101,15 @@ void playTone(int tone, int duration) {
   }
 }
 void Beep_Alert(){
+          // Желтеем:
+	digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // зажигаем красный
+	digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем зелёный
+	digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
+        delay(500);
+        // Краснеем:
+	digitalWrite(RGB_LED_PINUMBERS[0], HIGH);   // тушим красный
+	digitalWrite(RGB_LED_PINUMBERS[1], LOW);   // тушим зелёный
+	digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
 	for(int i =0; i<3; i++){
 		T=maxT;
 		while(T>minT){
@@ -128,10 +137,18 @@ void DoorOpen()
 	digitalWrite(RGB_LED_PINUMBERS[1], HIGH);   // зажигаем зелёный
 	digitalWrite(RGB_LED_PINUMBERS[2], LOW);   // тушим синий
   digitalWrite(RelayPIN, HIGH);  // реле выключено
+  Beep_Good();
   delay(3000);  
   digitalWrite(RelayPIN, LOW);   // реле включено               
 }
-
+void Beep_Good()
+{
+playTone(150,150000);
+delay(100);
+playTone(150,150000);
+delay(100);
+playTone(150,150000);
+}
 bool SearchEnterKey(){
 	dsEnter.reset();
 	delay(50);

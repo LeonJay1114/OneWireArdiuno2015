@@ -161,7 +161,7 @@ namespace SerialPortUsing {
 		public void Close() {
 			if (_port.IsOpen && CheckPortExistance(_port.PortName)){
 				_port.Close();
-				_port.Dispose();
+				//_port.Dispose();
 			}
 		}
 

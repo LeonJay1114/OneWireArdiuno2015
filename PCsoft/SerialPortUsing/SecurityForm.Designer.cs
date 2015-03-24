@@ -38,19 +38,23 @@
 			this.l_shedule = new System.Windows.Forms.Label();
 			this.l_profession = new System.Windows.Forms.Label();
 			this.l_uidType = new System.Windows.Forms.Label();
-			this.l_action = new System.Windows.Forms.Label();
 			this.l_actionTime = new System.Windows.Forms.Label();
-			this.l_NotInTime = new System.Windows.Forms.Label();
 			this.l_blocked = new System.Windows.Forms.Label();
+			this.pB_notInTime = new System.Windows.Forms.PictureBox();
+			this.pB_enter = new System.Windows.Forms.PictureBox();
+			this.pB_vihod = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_notInTime)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_enter)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_vihod)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pic_face
 			// 
 			this.pic_face.BackColor = System.Drawing.Color.Transparent;
-			this.pic_face.Location = new System.Drawing.Point(373, 61);
+			this.pic_face.Location = new System.Drawing.Point(373, 92);
 			this.pic_face.Name = "pic_face";
-			this.pic_face.Size = new System.Drawing.Size(300, 431);
+			this.pic_face.Size = new System.Drawing.Size(300, 400);
 			this.pic_face.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pic_face.TabIndex = 0;
 			this.pic_face.TabStop = false;
@@ -183,37 +187,15 @@
 			this.l_uidType.TabIndex = 13;
 			this.l_uidType.Text = "Значение";
 			// 
-			// l_action
-			// 
-			this.l_action.AutoSize = true;
-			this.l_action.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.l_action.Location = new System.Drawing.Point(445, 9);
-			this.l_action.Name = "l_action";
-			this.l_action.Size = new System.Drawing.Size(206, 31);
-			this.l_action.TabIndex = 14;
-			this.l_action.Text = "Входит/Выходит";
-			// 
 			// l_actionTime
 			// 
-			this.l_actionTime.AutoSize = true;
-			this.l_actionTime.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.l_actionTime.Location = new System.Drawing.Point(475, 41);
+			this.l_actionTime.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.l_actionTime.Location = new System.Drawing.Point(387, 55);
 			this.l_actionTime.Name = "l_actionTime";
-			this.l_actionTime.Size = new System.Drawing.Size(92, 17);
+			this.l_actionTime.Size = new System.Drawing.Size(272, 34);
 			this.l_actionTime.TabIndex = 16;
 			this.l_actionTime.Text = "Дата и время";
-			// 
-			// l_NotInTime
-			// 
-			this.l_NotInTime.AutoSize = true;
-			this.l_NotInTime.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.l_NotInTime.ForeColor = System.Drawing.Color.Maroon;
-			this.l_NotInTime.Location = new System.Drawing.Point(100, 210);
-			this.l_NotInTime.Name = "l_NotInTime";
-			this.l_NotInTime.Size = new System.Drawing.Size(249, 21);
-			this.l_NotInTime.TabIndex = 17;
-			this.l_NotInTime.Text = "Непредвиденное присутствие";
-			this.l_NotInTime.Visible = false;
+			this.l_actionTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// l_blocked
 			// 
@@ -228,16 +210,50 @@
 			this.l_blocked.Text = "Заблокирован";
 			this.l_blocked.Visible = false;
 			// 
+			// pB_notInTime
+			// 
+			this.pB_notInTime.Image = ((System.Drawing.Image)(resources.GetObject("pB_notInTime.Image")));
+			this.pB_notInTime.Location = new System.Drawing.Point(278, 207);
+			this.pB_notInTime.Name = "pB_notInTime";
+			this.pB_notInTime.Size = new System.Drawing.Size(67, 64);
+			this.pB_notInTime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pB_notInTime.TabIndex = 19;
+			this.pB_notInTime.TabStop = false;
+			this.pB_notInTime.Visible = false;
+			// 
+			// pB_enter
+			// 
+			this.pB_enter.Image = ((System.Drawing.Image)(resources.GetObject("pB_enter.Image")));
+			this.pB_enter.Location = new System.Drawing.Point(442, 9);
+			this.pB_enter.Name = "pB_enter";
+			this.pB_enter.Size = new System.Drawing.Size(175, 43);
+			this.pB_enter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pB_enter.TabIndex = 20;
+			this.pB_enter.TabStop = false;
+			this.pB_enter.Visible = false;
+			// 
+			// pB_vihod
+			// 
+			this.pB_vihod.Image = ((System.Drawing.Image)(resources.GetObject("pB_vihod.Image")));
+			this.pB_vihod.Location = new System.Drawing.Point(442, 9);
+			this.pB_vihod.Name = "pB_vihod";
+			this.pB_vihod.Size = new System.Drawing.Size(175, 43);
+			this.pB_vihod.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pB_vihod.TabIndex = 21;
+			this.pB_vihod.TabStop = false;
+			this.pB_vihod.Visible = false;
+			// 
 			// SecurityForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(740, 682);
+			this.Controls.Add(this.pB_vihod);
+			this.Controls.Add(this.pB_enter);
+			this.Controls.Add(this.pB_notInTime);
 			this.Controls.Add(this.l_blocked);
-			this.Controls.Add(this.l_NotInTime);
 			this.Controls.Add(this.l_actionTime);
 			this.Controls.Add(this.pic_face);
-			this.Controls.Add(this.l_action);
 			this.Controls.Add(this.l_uidType);
 			this.Controls.Add(this.l_profession);
 			this.Controls.Add(this.l_shedule);
@@ -252,12 +268,15 @@
 			this.Controls.Add(this.l_fio);
 			this.Controls.Add(this.l1);
 			this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-	//		this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SecurityForm";
 			this.Text = "SecurityForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
 			this.Load += new System.EventHandler(this.SecurityForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_notInTime)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_enter)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pB_vihod)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -279,9 +298,10 @@
 		private System.Windows.Forms.Label l_shedule;
 		private System.Windows.Forms.Label l_profession;
 		private System.Windows.Forms.Label l_uidType;
-		private System.Windows.Forms.Label l_action;
 		private System.Windows.Forms.Label l_actionTime;
-		private System.Windows.Forms.Label l_NotInTime;
 		private System.Windows.Forms.Label l_blocked;
+		private System.Windows.Forms.PictureBox pB_notInTime;
+		private System.Windows.Forms.PictureBox pB_enter;
+		private System.Windows.Forms.PictureBox pB_vihod;
 	}
 }

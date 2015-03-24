@@ -123,26 +123,39 @@ namespace SerialPortUsing {
 			}
 			ShowFace_Invoked(staffInfo, ttl, enterExit);
 		}
+
 		private void ShowFace_Invoked(StaffOutputInfo staffInfo, int ttl, bool enterExit)
 		{
-			if (staffInfo == null) { FlushFields(); return; }
+			if (staffInfo == null)
+			{
+				FlushFields();
+				return;
+			}
 
-			try { pic_face.Image = new Bitmap(staffInfo.PicturePath); }
-			catch (Exception e) {
+			try
+			{
+				pic_face.Image = new Bitmap(staffInfo.PicturePath);
+			}
+			catch (Exception e)
+			{
 				MessageBox.Show(null, e.Message, "Ошибка");
 			}
 
 			bool notInTime = true;
+
 			#region CheckingTime
+
 			_shAdapter.Fill(_shTable, staffInfo.Shedule);
 			DateTime start;
 			DateTime fin;
 			DateTime.TryParse(_shTable.Rows[0][0].ToString(), out start);
 			DateTime.TryParse(_shTable.Rows[0][1].ToString(), out fin);
 
-			if (CompareHoursAndMinutes(DateTime.Now, fin) == 1 && CompareHoursAndMinutes(DateTime.Now, start) == -1) {
+			if (CompareHoursAndMinutes(DateTime.Now, fin) == 1 && CompareHoursAndMinutes(DateTime.Now, start) == -1)
+			{
 				notInTime = false;
 			}
+
 			#endregion
 
 			l_fio.Text = staffInfo.Fio;
@@ -152,12 +165,19 @@ namespace SerialPortUsing {
 			l_shedule.Text = staffInfo.Shedule;
 			l_uidType.Text = staffInfo.UidType;
 			l_actionTime.Text = DateTime.Now.ToString();
-			if(enterExit)
-				l_action.Text = "Выход";
+			if (enterExit)
+			{
+				//l_action.Text = "Выход";
+				pB_vihod.Visible = true;
+				pB_vihod.BringToFront();
+			}
 			else
-				l_action.Text = "Проход";
-
-			l_NotInTime.Visible = notInTime;
+			{
+				pB_enter.Visible = true;
+				pB_enter.BringToFront();
+				//l_action.Text = "Проход";
+			}
+			pB_notInTime.Visible = notInTime;
 			l_blocked.Visible = staffInfo.Blocked;
 
 			this.WindowState = FormWindowState.Minimized;
@@ -182,8 +202,8 @@ namespace SerialPortUsing {
 			l_shedule.Text = "";
 			l_uidType.Text = "";
 			l_actionTime.Text = "";
-			l_action.Text = "";
-			l_NotInTime.Visible = false;
+			//l_action.Text = "";
+			//l_NotInTime.Visible = false;
 			l_blocked.Visible = false;
 		}
 
