@@ -1,7 +1,7 @@
 ﻿/*
-    This file is part of Access control.
+    This file is part of AccessСontrol.
 
-    Foobar is free software: you can redistribute it and/or modify
+    AccessСontrol is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
@@ -16,7 +16,7 @@
 
   (Этот файл — часть СКУД.
 
-   Foobar - свободная программа: вы можете перераспространять ее и/или
+   AccessСontrol - свободная программа: вы можете перераспространять ее и/или
    изменять ее на условиях Стандартной общественной лицензии GNU в том виде,
    в каком она была опубликована Фондом свободного программного обеспечения;
    либо версии 3 лицензии, либо (по вашему выбору) любой более поздней
