@@ -20,7 +20,7 @@
           <y:Geometry height="64.53585815429688" width="56.554996490478516" x="968.8684162466258" y="260.586700535501"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.6796875" x="13.937654495239258" y="68.53585815429688">Staff<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="56.30078125" x="0.1271076202392578" y="68.53585815429688">Работник<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -37,18 +37,18 @@
     <node id="n1" yfiles.foldertype="group">
       <data key="d6">
         <y:TableNode configuration="YED_TABLE_NODE">
-          <y:Geometry height="666.5550191676223" width="727.4970514473882" x="225.94886514610704" y="25.474122594023825"/>
+          <y:Geometry height="676.8071989453142" width="727.497051447388" x="225.94886514610704" y="25.474122594023825"/>
           <y:Fill color="#ECF5FF" color2="#0042F440" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="270.79931640625" x="228.34886752056912" y="4.0">PC&lt;-&gt;Controller main dialog abstraction</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="20.669921875" x="175.99675933750297" y="33.0">PC<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="274.3515625" x="226.572744473694" y="4.0">Блок-схема диалога ПК&lt;-&gt;Контроллер</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="19.615234375" x="176.52410308750297" y="33.0">ПК<y:LabelModel>
               <y:ColumnNodeLabelModel offset="3.0"/>
             </y:LabelModel>
             <y:ModelParameter>
               <y:ColumnNodeLabelModelParameter id="column_0" inside="true" verticalPosition="0.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="56.01953125" x="522.0704803736971" y="33.0">Controller<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="70.486328125" x="514.8370819361969" y="33.0">Контроллер<y:LabelModel>
               <y:ColumnNodeLabelModel offset="3.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -66,7 +66,7 @@
           </y:StyleProperties>
           <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
           <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-          <y:BorderInsets bottom="5" bottomF="5.449055746890508" left="2" leftF="2.1837091843048597" right="5" rightF="4.513342263083359" top="11" topF="11.024957425608903"/>
+          <y:BorderInsets bottom="12" bottomF="11.815299459459538" left="8" leftF="7.636924319439913" right="9" rightF="9.057688209029266" top="11" topF="11.024957425608903"/>
           <y:Table autoResizeTable="true" defaultColumnWidth="120.0" defaultMinimumColumnWidth="80.0" defaultMinimumRowHeight="50.0" defaultRowHeight="80.0">
             <y:DefaultColumnInsets bottom="0.0" left="0.0" right="0.0" top="24.0"/>
             <y:DefaultRowInsets bottom="0.0" left="0.0" right="0.0" top="0.0"/>
@@ -75,12 +75,12 @@
               <y:Column id="column_0" minimumWidth="80.0" width="372.663440550006">
                 <y:Insets bottom="0.0" left="0.0" right="0.0" top="24.0"/>
               </y:Column>
-              <y:Column id="column_1" minimumWidth="80.0" width="354.8336108973822">
+              <y:Column id="column_1" minimumWidth="80.0" width="354.83361089738196">
                 <y:Insets bottom="0.0" left="0.0" right="0.0" top="12.0"/>
               </y:Column>
             </y:Columns>
             <y:Rows>
-              <y:Row height="612.5550191676223" id="row_0" minimumHeight="50.0">
+              <y:Row height="622.8071989453142" id="row_0" minimumHeight="50.0">
                 <y:Insets bottom="0.0" left="0.0" right="0.0" top="0.0"/>
               </y:Row>
             </y:Rows>
@@ -94,7 +94,7 @@
               <y:Geometry height="27.534337969121054" width="219.61541474584413" x="321.3798556205732" y="191.1571774784852"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="148.720703125" x="35.44735581042204" y="4.416583047060527">Send UID-Query command<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="128.857421875" x="45.37899643542204" y="4.416583047060527">Отправить запрос UID<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -107,10 +107,10 @@
         <node id="n1::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.loopLimit">
-              <y:Geometry height="26.59941331680514" width="140.9739977809263" x="709.0514329621415" y="136.24215823474339"/>
+              <y:Geometry height="26.59941331680514" width="140.9739977809263" x="709.0514329621415" y="140.35187267521695"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.04296875" x="30.465514515463155" y="3.949120720902556">The main loop<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="81.044921875" x="29.964537952963155" y="3.949120720902556">Рабочий цикл<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -123,10 +123,10 @@
         <node id="n1::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="20.67822385213765" width="80.0" x="837.4389143010543" y="360.65813767461685"/>
+              <y:Geometry height="20.67822385213765" width="80.0" x="837.4389143010543" y="364.7678521150904"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="71.353515625" x="4.3232421875" y="0.9885259885688242">Receive UID<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="66.619140625" x="6.6904296875" y="0.9885259885688242">Читать UID<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -139,10 +139,10 @@
         <node id="n1::n3">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="20.67822385213765" width="100.12831616757228" x="827.3747562172681" y="399.71108726478474"/>
+              <y:Geometry height="20.67822385213765" width="100.12831616757228" x="827.3747562172681" y="403.8208017052583"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="56.025390625" x="22.051462771286083" y="0.9885259885688242">Send UID<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="87.501953125" x="6.313181521286083" y="0.9885259885688242">Отправить UID<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -158,7 +158,7 @@
               <y:Geometry height="20.67822385213765" width="80.0" x="391.18756299349525" y="248.69151544760626"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="71.353515625" x="4.3232421875" y="0.9885259885688242">Receive UID<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="81.00390625" x="-0.501953125" y="0.9885259885688242">Получить UID<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -171,15 +171,16 @@
         <node id="n1::n5">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="40.0" width="93.08894513242291" x="259.2615996624959" y="232.7027117373376"/>
+              <y:Geometry height="54.011196289731345" width="93.08894513242291" x="254.71725371654992" y="232.0250292288094"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="89.37109375" x="1.8589256912114251" y="3.298828125">View the 
-staff information<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="73.01171875" x="10.038613191211425" y="2.9538403323657008">Отобразить 
+информаци 
+о работнике<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="-3.3306690738754696E-16" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
                 </y:ModelParameter>
               </y:NodeLabel>
             </y:GenericNode>
@@ -187,12 +188,11 @@ staff information<y:LabelModel>
         </node>
         <node id="n1::n6">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="49.67822385213765" width="122.30357974201627" x="367.3516645293146" y="302.7027117373376"/>
+            <y:GenericNode configuration="com.yworks.flowchart.start1">
+              <y:Geometry height="27.534337969121054" width="100.12831616757228" x="547.4464665313308" y="90.49908001963273"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="104.04296875" x="9.130305496008134" y="8.137940051068824">Check information,
-Send Command<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="86.125" x="7.001658083786197" y="4.416583047060527">Работа начата<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -204,11 +204,11 @@ Send Command<y:LabelModel>
         </node>
         <node id="n1::n7">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.start1">
-              <y:Geometry height="27.534337969121054" width="100.12831616757228" x="548.123404909709" y="90.49908001963273"/>
+            <y:GenericNode configuration="com.yworks.flowchart.process">
+              <y:Geometry height="20.67822385213765" width="107.08894513242285" x="725.9939592863932" y="198.9463005764551"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="72.015625" x="14.05634558378614" y="4.416583047060527">Work started<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="106.814453125" x="0.13724600371142515" y="0.9885259885688242">Получить команду<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -220,11 +220,11 @@ Send Command<y:LabelModel>
         </node>
         <node id="n1::n8">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="20.67822385213765" width="107.08894513242285" x="725.9939592863932" y="194.83658613598152"/>
+            <y:GenericNode configuration="com.yworks.flowchart.loopLimit">
+              <y:Geometry height="26.59941331680514" width="140.9739977809263" x="360.7005641030321" y="140.35187267521692"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="106.041015625" x="0.5239647537114251" y="0.9885259885688242">Receive Command<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="81.044921875" x="29.964537952963155" y="3.9491207209025845">Рабочий цикл<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -236,11 +236,11 @@ Send Command<y:LabelModel>
         </node>
         <node id="n1::n9">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.loopLimit">
-              <y:Geometry height="26.59941331680514" width="140.9739977809263" x="360.7005641030321" y="140.35187267521692"/>
+            <y:GenericNode configuration="com.yworks.flowchart.loopLimitEnd">
+              <y:Geometry height="26.599413316805112" width="141.70502705285094" x="357.65094087389724" y="387.4671544786183"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.04296875" x="30.465514515463155" y="3.9491207209025845">The main loop<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="81.044921875" x="30.33005258892547" y="3.949120720902556">Рабочий цикл<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -251,29 +251,15 @@ Send Command<y:LabelModel>
           </data>
         </node>
         <node id="n1::n10">
-          <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.loopLimitEnd">
-              <y:Geometry height="26.599413316805112" width="141.70502705285094" x="357.65094087389724" y="387.4671544786183"/>
-              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.04296875" x="30.83102915142547" y="3.949120720902556">The main loop<y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-            </y:GenericNode>
-          </data>
-        </node>
-        <node id="n1::n11">
           <data key="d4"/>
           <data key="d6">
             <y:UMLNoteNode>
-              <y:Geometry height="28.0" width="720.8" x="228.1325743304119" y="658.5800860147556"/>
+              <y:Geometry height="54.01119628973129" width="710.8024389189188" x="233.58578946554695" y="636.4548257901472"/>
               <y:Fill color="#C0C0C0" transparent="false"/>
               <y:BorderStyle color="#FF9900" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#FF0000" visible="true" width="538.94921875" x="90.92539062499998" y="4.6494140625">Every rectangled action starts after ANY of inputs is received and finishes after ALL outputs are sent.<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#FF0000" visible="true" width="395.505859375" x="157.64828977195947" y="2.953840332365644">Любое указанное в прямоугольнике действие 
+выполняется только после получения хотябы одного действия ввода 
+и заканчивается после исполнения всех операций передачи<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -283,13 +269,29 @@ Send Command<y:LabelModel>
             </y:UMLNoteNode>
           </data>
         </node>
-        <node id="n1::n12">
+        <node id="n1::n11">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.delay">
-              <y:Geometry height="26.599413316805112" width="73.60000000000002" x="675.3784318526046" y="375.0070453433521"/>
+              <y:Geometry height="26.599413316805112" width="73.60000000000002" x="675.3784318526046" y="379.11675978382567"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="54.015625" x="9.792187500000068" y="3.949120720902556">Wait 1.5s<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="66.51953125" x="3.540234375000068" y="3.949120720902556">Ждать 1.5с<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n1::n12">
+          <data key="d6">
+            <y:GenericNode configuration="com.yworks.flowchart.loopLimitEnd">
+              <y:Geometry height="26.599413316805112" width="141.70502705285094" x="708.3100636211818" y="447.9458189959414"/>
+              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="81.044921875" x="30.33005258892547" y="3.949120720902556">Рабочий цикл<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -301,11 +303,12 @@ Send Command<y:LabelModel>
         </node>
         <node id="n1::n13">
           <data key="d6">
-            <y:GenericNode configuration="com.yworks.flowchart.loopLimitEnd">
-              <y:Geometry height="26.599413316805112" width="141.70502705285094" x="708.3100636211818" y="438.7640368549526"/>
+            <y:GenericNode configuration="com.yworks.flowchart.process">
+              <y:Geometry height="44.7058085272547" width="148.2316266577622" x="354.3876410714416" y="306.06554262555375"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.04296875" x="30.83102915142547" y="3.949120720902556">The main loop<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="144.865234375" x="1.6831961413810745" y="5.651732388627352">Проверить информацию,
+ отправить команду<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -318,10 +321,10 @@ Send Command<y:LabelModel>
         <node id="n1::n14">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.decision">
-              <y:Geometry height="40.0" width="134.5852641832468" x="712.2457997609812" y="233.553551945859"/>
+              <y:Geometry height="40.0" width="155.48925553459816" x="691.3418084096298" y="237.66326638633257"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="82.732421875" x="25.92642115412343" y="10.6494140625">Need to open?<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="117.876953125" x="18.806151204799107" y="10.6494140625">Приказано открыть?<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -334,10 +337,10 @@ Send Command<y:LabelModel>
         <node id="n1::n15">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.process">
-              <y:Geometry height="20.67822385213765" width="122.30357974201627" x="795.135334559038" y="277.579370015154"/>
+              <y:Geometry height="20.67822385213765" width="122.30357974201627" x="795.135334559038" y="281.68908445562755"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="33.35546875" x="44.47405549600808" y="0.9885259885688242">Open<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="51.126953125" x="35.58831330850808" y="0.9885259885688242">Открыть<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -350,10 +353,10 @@ Send Command<y:LabelModel>
         <node id="n1::n16">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.flowchart.decision">
-              <y:Geometry height="40.0" width="134.5852641832468" x="712.2457997609812" y="316.63231960532187"/>
+              <y:Geometry height="40.0" width="148.2316266577622" x="701.7938040853055" y="320.74203404579544"/>
               <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="80.04296875" x="27.27114771662343" y="10.6494140625">Need an UID?<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="110.283203125" x="18.97421176638113" y="10.6494140625">Приказано читать?<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -367,13 +370,13 @@ Send Command<y:LabelModel>
           <data key="d4"/>
           <data key="d6">
             <y:UMLNoteNode>
-              <y:Geometry height="142.7760846405015" width="296.68099047446617" x="630.8220819103742" y="505.49404060910524"/>
+              <y:Geometry height="124.59870085671758" width="296.68099047446617" x="630.8220819103742" y="501.85856385234865"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" modelName="custom" textColor="#000000" visible="true" width="186.7890625" x="54.945963987233085" y="39.98569857025075">The UID sending 
-is a sending of a 9-byte sequence:
-8 bytes of the UID 
-and 1 byte for enter(0)/exit(1)<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" modelName="custom" textColor="#000000" visible="true" width="252.19140625" x="22.244792112233085" y="30.89700667835882">Отправка UID — 
+передача 9-байтовой последовательности:
+Восемь байт UID
+И один байт на указание входа(0)/выхода(1)<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -387,12 +390,12 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
           <data key="d4"/>
           <data key="d6">
             <y:UMLNoteNode>
-              <y:Geometry height="142.7760846405015" width="296.68099047446617" x="267.00833418159993" y="505.49404060910524"/>
+              <y:Geometry height="124.59870085671758" width="296.68099047446617" x="267.00833418159993" y="501.85856385234865"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="176.078125" x="60.301432737233085" y="47.33628450775075">Set of command-byte variations:
-00 - UID query
-01 - Open door and UID query<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="158.060546875" x="69.31022179973309" y="38.24759261585882">Варианты команды:
+00 - Чтение UID
+01 - Открытие и чтение UID<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
@@ -408,7 +411,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="-17.733025950200044" sy="17.71100632485087" tx="13.203977017844522" ty="-10.33407149872869">
-            <y:Point x="890.6428913188988" y="319.3618313678572"/>
+            <y:Point x="890.6428913188988" y="323.47154580833075"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -418,7 +421,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
     <edge id="n1::e0" source="n1::n4" target="n1::n5">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="0.0" sy="0.0" tx="39.21740125615236" ty="-6.168337097343652">
+          <y:Path sx="0.0" sy="0.0" tx="39.21740125615236" ty="-8.328981643646493">
             <y:Point x="387.0627130599064" y="289.5327510108599"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -426,11 +429,11 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e1" source="n1::n0" target="n1::n8">
+    <edge id="n1::e1" source="n1::n0" target="n1::n7">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="610.125" y="286.1370563141947"/>
+            <y:Point x="610.125" y="272.9586021225253"/>
             <y:Point x="667.0318810712422" y="117.06214756348388"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
@@ -442,10 +445,10 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="924.5" y="500.5"/>
-            <y:Point x="678.8365929631649" y="549.9591787151999"/>
-            <y:Point x="608.8365929631649" y="277.5"/>
-            <y:Point x="481.8365929631649" y="182.70274964774495"/>
+            <y:Point x="860.3793908010026" y="564.2618381746593"/>
+            <y:Point x="630.8573578378385" y="476.88494918918894"/>
+            <y:Point x="572.6897297297304" y="262.39182054054044"/>
+            <y:Point x="505.39801134154317" y="192.40984586396115"/>
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -461,19 +464,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e4" source="n1::n6" target="n1::n8">
-      <data key="d10">
-        <y:BezierEdge>
-          <y:Path sx="15.567482979568467" sy="24.857632663243695" tx="-41.53640768095738" ty="-10.321172030057653">
-            <y:Point x="625.5405117017391" y="418.39701438849454"/>
-            <y:Point x="593.0858037618398" y="127.17640006709073"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-        </y:BezierEdge>
-      </data>
-    </edge>
-    <edge id="n1::e5" source="n1::n0" target="n1::n4">
+    <edge id="n1::e4" source="n1::n0" target="n1::n4">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-6.3279156363374796"/>
@@ -482,7 +473,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e6" source="n1::n1" target="n1::n8">
+    <edge id="n1::e5" source="n1::n1" target="n1::n7">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -491,7 +482,18 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e7" source="n1::n7" target="n1::n9">
+    <edge id="n1::e6" source="n1::n6" target="n1::n8">
+      <data key="d10">
+        <y:BezierEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="549.0591308108114" y="141.52988576094998"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+        </y:BezierEdge>
+      </data>
+    </edge>
+    <edge id="n1::e7" source="n1::n8" target="n1::n0">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -500,7 +502,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e8" source="n1::n9" target="n1::n0">
+    <edge id="n1::e8" source="n1::n13" target="n1::n9">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -509,7 +511,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e9" source="n1::n6" target="n1::n10">
+    <edge id="n1::e9" source="n1::n11" target="n1::n12">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -518,20 +520,21 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e10" source="n1::n12" target="n1::n13">
+    <edge id="n1::e10" source="n1::n4" target="n1::n13">
       <data key="d10">
-        <y:BezierEdge>
+        <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-        </y:BezierEdge>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
       </data>
     </edge>
     <edge id="n1::e11" source="n1::n14" target="n1::n15">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="67.2913881930491" sy="0.0" tx="27.765828563120976" ty="-10.300143802532375">
-            <y:Point x="884.0529529931671" y="253.553551945859"/>
+          <y:Path sx="77.74319066447467" sy="0.0" tx="27.765828563120976" ty="-10.300143802532375">
+            <y:Point x="884.0529529931671" y="257.66326638633257"/>
           </y:Path>
           <y:LineStyle color="#339966" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -541,16 +544,16 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
     <edge id="n1::e12" source="n1::n14" target="n1::n16">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="-67.29138819304922" sy="0.0" tx="-12.292418497101266" ty="-16.350172456909206">
-            <y:Point x="663.1569495838712" y="253.553551945859"/>
-            <y:Point x="681.8445865960953" y="286.55200063869034"/>
+          <y:Path sx="-77.7431906644748" sy="0.0" tx="-13.538816455435573" ty="-16.350172456909206">
+            <y:Point x="663.1569495838712" y="257.66326638633257"/>
+            <y:Point x="681.8445865960953" y="290.6617150791639"/>
           </y:Path>
           <y:LineStyle color="#FF0000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e13" source="n1::n8" target="n1::n14">
+    <edge id="n1::e13" source="n1::n7" target="n1::n14">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -563,20 +566,20 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
     <edge id="n1::e14" source="n1::n16" target="n1::n2">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="67.2913881930491" sy="0.0" tx="0.0" ty="-10.368180102937401">
-            <y:Point x="878.8081929401814" y="336.63231960532187"/>
+          <y:Path sx="74.11444330438263" sy="0.0" tx="0.0" ty="-10.368180102937401">
+            <y:Point x="877.4389143010543" y="340.74203404579544"/>
           </y:Path>
           <y:LineStyle color="#339966" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e15" source="n1::n16" target="n1::n12">
+    <edge id="n1::e15" source="n1::n16" target="n1::n11">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="-67.29138819304922" sy="0.0" tx="-23.23227393478487" ty="-13.30776708043237">
-            <y:Point x="679.5583865960937" y="324.15246730535733"/>
-            <y:Point x="674.9303819894101" y="356.3123196053219"/>
+          <y:Path sx="-74.11444330438275" sy="0.0" tx="-23.23227393478487" ty="-13.30776708043237">
+            <y:Point x="679.5583865960937" y="335.5331352593444"/>
+            <y:Point x="674.9303819894101" y="360.42203404579544"/>
           </y:Path>
           <y:LineStyle color="#FF0000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -587,11 +590,11 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="-21.488358886356536" sy="10.346442130823789" tx="0.0" ty="0.0">
-            <y:Point x="802.209716796875" y="310.3064270019531"/>
+            <y:Point x="800.3953247070312" y="313.9471435546875"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:Arc height="-8.694869041442871" ratio="-0.516984224319458" type="fixedRatio"/>
+          <y:Arc height="-9.084067344665527" ratio="-0.516984224319458" type="fixedRatio"/>
         </y:ArcEdge>
       </data>
     </edge>
@@ -599,7 +602,7 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="589.6973876953125" y="358.7516174316406"/>
+            <y:Point x="589.6973876953125" y="363.8777160644531"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -607,28 +610,30 @@ and 1 byte for enter(0)/exit(1)<y:LabelModel>
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="n1::e17" source="n1::n7" target="n1::n1">
-      <data key="d9"/>
+    <edge id="n1::e17" source="n1::n6" target="n1::n1">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="632.675096216217" y="139.71214738257163"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e18" source="n1::n4" target="n1::n6">
-      <data key="d9"/>
+    <edge id="n1::e18" source="n1::n13" target="n1::n7">
       <data key="d10">
         <y:BezierEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="659.9411718918926" y="545.0501383783783"/>
+            <y:Point x="539.9704389189196" y="108.7929275675674"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
         </y:BezierEdge>
       </data>
     </edge>
-    <edge id="n1::e19" source="n1::n3" target="n1::n13">
-      <data key="d9"/>
+    <edge id="n1::e19" source="n1::n3" target="n1::n12">
       <data key="d10">
         <y:BezierEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
