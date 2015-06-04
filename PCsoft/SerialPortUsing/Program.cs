@@ -1,28 +1,28 @@
 ﻿/*
-    This file is part of AccessСontrol.
+    This file is part of Access control.
 
-    AccessСontrol is free software: you can redistribute it and/or modify
+    Access control is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    Access control is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+    along with Access control.  If not, see <http://www.gnu.org/licenses/>.
 
   (Этот файл — часть СКУД.
 
-   AccessСontrol - свободная программа: вы можете перераспространять ее и/или
+   Access control - свободная программа: вы можете перераспространять ее и/или
    изменять ее на условиях Стандартной общественной лицензии GNU в том виде,
    в каком она была опубликована Фондом свободного программного обеспечения;
    либо версии 3 лицензии, либо (по вашему выбору) любой более поздней
    версии.
 
-   Foobar распространяется в надежде, что она будет полезной,
+   Access control распространяется в надежде, что она будет полезной,
    но БЕЗО ВСЯКИХ ГАРАНТИЙ; даже без неявной гарантии ТОВАРНОГО ВИДА
    или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННЫХ ЦЕЛЕЙ. Подробнее см. в Стандартной
    общественной лицензии GNU.

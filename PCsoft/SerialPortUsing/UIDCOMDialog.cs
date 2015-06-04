@@ -168,7 +168,9 @@ namespace SerialPortUsing {
 		public void Pause() {
 			_paused = true;
 		}
-		public void Resume() {
+		public void Resume(){
+			_accumulatedBytesCount = 0;
+			_port.DiscardInBuffer();
 			_paused = false;
 		}
 		public void Send(byte[] seq) {

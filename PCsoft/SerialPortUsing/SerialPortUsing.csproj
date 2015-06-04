@@ -133,6 +133,12 @@
     <Compile Include="UIDReadingForm.Designer.cs">
       <DependentUpon>UIDReadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Alram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alram.Designer.cs">
+      <DependentUpon>Alram.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="UIDReadingForm.resx">
       <DependentUpon>UIDReadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alram.resx">
+      <DependentUpon>Alram.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Access_control_in_OneWire.xsc">
       <DependentUpon>Access_control_in_OneWire.xsd</DependentUpon>

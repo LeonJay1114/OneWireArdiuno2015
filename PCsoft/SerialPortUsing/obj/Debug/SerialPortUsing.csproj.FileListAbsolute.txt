@@ -53,4 +53,5 @@ c:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csproj.Ge
 C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.SecurityForm.resources
 C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.UIDReadingForm.resources
 C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.BossForm.resources
+C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.Alarm.resources
 C:\OneWireArdiuno2015\PCsoft\SerialPortUsing\obj\Debug\SerialPortUsing.csprojResolveAssemblyReference.cache

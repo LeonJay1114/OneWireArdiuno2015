@@ -273,6 +273,7 @@
 			this.Text = "SecurityForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityForm_FormClosing);
 			this.Load += new System.EventHandler(this.SecurityForm_Load);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SecurityForm_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.pic_face)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pB_notInTime)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pB_enter)).EndInit();

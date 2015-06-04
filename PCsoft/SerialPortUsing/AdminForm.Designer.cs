@@ -303,9 +303,9 @@
 			this.gb_sys.Controls.Add(this.label2);
 			this.gb_sys.Controls.Add(this.label1);
 			this.gb_sys.Controls.Add(this.cb_speed);
-			this.gb_sys.Location = new System.Drawing.Point(174, 547);
+			this.gb_sys.Location = new System.Drawing.Point(174, 27);
 			this.gb_sys.Name = "gb_sys";
-			this.gb_sys.Size = new System.Drawing.Size(100, 158);
+			this.gb_sys.Size = new System.Drawing.Size(323, 192);
 			this.gb_sys.TabIndex = 2;
 			this.gb_sys.TabStop = false;
 			this.gb_sys.Text = "gb_sys";
@@ -1021,7 +1021,7 @@
 			this.gB_event.Controls.Add(this.pic_event_photo);
 			this.gB_event.Controls.Add(this.gB_period);
 			this.gB_event.Controls.Add(this.dgv_event);
-			this.gB_event.Location = new System.Drawing.Point(162, 37);
+			this.gB_event.Location = new System.Drawing.Point(819, 549);
 			this.gB_event.Name = "gB_event";
 			this.gB_event.Size = new System.Drawing.Size(149, 549);
 			this.gB_event.TabIndex = 5;

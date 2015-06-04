@@ -75,8 +75,10 @@ namespace SerialPortUsing {
 			Form form;
 			Hide();
 
-			//try{
-				switch(uDuty) {
+			try
+			{
+				switch (uDuty)
+				{
 					case "Admin":
 						form = new AdminForm();
 						form.ShowDialog();
@@ -91,7 +93,12 @@ namespace SerialPortUsing {
 						form.ShowDialog();
 						break;
 				}
-			
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+
 			Show();
 		}
 

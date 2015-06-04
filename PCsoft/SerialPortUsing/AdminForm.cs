@@ -259,7 +259,7 @@ namespace SerialPortUsing {
 		private void b_edditStaff_Click(object sender, EventArgs e){
 			if (string.IsNullOrEmpty(tB_staff.Text) || string.IsNullOrEmpty(cB_profession.Text)
 				|| string.IsNullOrEmpty(tB_photoPath.Text) || string.IsNullOrEmpty(tB_UID_from_gb_staff.Text)
-				|| string.IsNullOrEmpty(tB_number.Text) || string.IsNullOrEmpty(tB_multiPasport.Text)
+				/*|| string.IsNullOrEmpty(tB_number.Text)*/ || string.IsNullOrEmpty(tB_multiPasport.Text)
 				|| string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(cB_workTime.Text)
 				|| string.IsNullOrEmpty(cB_subdivision.Text) || string.IsNullOrEmpty(cB_UID_type_from_gb_staff.Text))
 			{
